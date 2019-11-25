@@ -44,21 +44,18 @@ res8: Long = 3
 #### 3.1 宏观overview
 - Speed
   Run programs up to 100x faster than Hadoop MapReduce in memory, or 10x faster on disk.
+  
 - Ease of Use
   Write applications quickly in Java, Scala, Python, R.
+  
 - Generality
   Combine SQL, streaming, and complex analytics. 
-![overview](/pic/spark_overview.png)
+![overview](../pic/spark_overview.png)
+  
 - Runs Everywhere 
-Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3. 
-[引用源自Spark官网](http://spark.apache.org/)![spark_overview](../pic/spark_overview.png
-- ![](/spark_overview.png)
+  Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3. 
 
-![spark_overview](/spark_overview.png)
-
-![spark_overview](/spark_overview.png)
-
-![70_140头像](/70_140头像.jpg)
+  [引用源自Spark官网](http://spark.apache.org/)
 
 #### 3.2 spark知识点
 - Spark Core Api
