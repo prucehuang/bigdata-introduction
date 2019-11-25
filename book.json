@@ -1,0 +1,61 @@
+{
+    "title": "bigdata-introduction",
+    "description": "bigdata notes",
+    "language": "zh-hans",
+    "gitbook": "3.2.3",
+    "styles": {
+        "website": "./styles/website.css"
+    },
+    "structure": {
+        "readme": "README.md"
+    },
+    "author": "pruce",
+    "plugins": [
+        "back-to-top-button",
+        "splitter",
+        "expandable-chapters-small",
+        "-sharing",
+        "search-pro",
+        "tbfed-pagefooter",
+        "github",
+        "donate",
+        "multipart",
+        "mathjax",
+        "echarts"
+    ],
+    "pluginsConfig": {
+        "theme-default": {
+            "showLevel": true
+        },
+        "tbfed-pagefooter": {
+            "copyright": "Copyright (c) 2018 Tencent PRUCE & MG.",
+            "modify_label": "time：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "github": {
+            "url": "https://github.com/prucehuang/bigdata-introduction.git"
+        },
+        "donate": {
+            "wechat": "https://github.com/prucehuang/common-resources/blob/master/pictures/wechat_pay.jpg?raw=true",
+            "alipay": "https://github.com/prucehuang/common-resources/blob/master/pictures/zhifubao_pay.jpg?raw=true",
+            "title": "",
+            "button": "赏",
+            "alipayText": "支付宝",
+            "wechatText": "微信"
+        }
+    },
+    "pdf": {
+        "chapterMark": "pagebreak",
+        "fontFamily": "Arial",
+        "fontSize": 16,
+        "margin": {
+            "bottom": 56,
+            "left": 62,
+            "right": 62,
+            "top": 56
+        },
+        "pageBreaksBefore": "/",
+        "pageNumbers": true,
+        "paperSize": "a4"
+    }
+}
