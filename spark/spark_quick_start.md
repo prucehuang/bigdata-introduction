@@ -1,23 +1,19 @@
----
-typora-root-url: ..\pic
----
-
 # Spark Quick Start
 
 ### 一、安装
 
 [spark下载&解压](http://spark.apache.org/)
 
-[Quick start](http://spark.apache.org/docs/1.6.1/quick-start.html)
+[Quick start](http://spark.apache.org/docs/latest/quick-start.html)
 
-[Spark Overview](http://spark.apache.org/docs/1.6.1/)
+[Spark Overview](http://spark.apache.org/docs/latest/)
 
-[Spark Programming Guide](http://spark.apache.org/docs/1.6.1/programming-guide.html#transformations)
+[Spark Programming Guide](http://spark.apache.org/docs/latest/programming-guide.html#transformations)
 
-[Running Spark on YARN](http://spark.apache.org/docs/1.6.1/running-on-yarn.html)
+[Running Spark on YARN](http://spark.apache.org/docs/latest/running-on-yarn.html)
 
 ### 二、scala shell
-```
+```scala
 ./bin/spark-shell
 
 scala> val lines = sc.textFile("/Users/huanghaifeng/Documents/study/spark/derby.log")
@@ -50,7 +46,7 @@ res8: Long = 3
   
 - Generality
   Combine SQL, streaming, and complex analytics. 
-![overview](../pic/spark_overview.png)
+![overview](../pic/spark/spark_overview.png)
   
 - Runs Everywhere 
   Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse data sources including HDFS, Cassandra, HBase, and S3. 
@@ -69,10 +65,10 @@ res8: Long = 3
 一个Spark应用 --> 一个驱动器(driver program)节点 --> 多个工作节点(worker node)  
 一个工作节点 --> 一个执行器(executor) --> 多个并行任务(task)
 
-![image](http://spark.apache.org/docs/1.6.1/img/cluster-overview.png)
+![cluster-overview](../pic/spark/cluster-overview.png)
 
 #### 3.4 几个任务概念的区分 
-http://spark.apache.org/docs/1.6.1/cluster-overview.html
+http://spark.apache.org/docs/latest/cluster-overview.html
 
 - job 一系列stage组成一个job，一个行动就是一个job
 - stage 一个job可以分为多个stage， stage划分的条件，shuffle或者行动操作
@@ -99,14 +95,14 @@ http://spark.apache.org/docs/1.6.1/cluster-overview.html
 - 【Driver】负责任务拆分、任务调度
 - 程序之间的RDD变换关系组成了一张逻辑上的DAG，程序运行时逻辑图将转换为物理执行过程，Driver在对任务划分的时候会将**连续的映射转为流水线**，将多个操作合并到同一个步骤（stage）中来，明显的例子
 
-```
+```scala
 val local_lines = sc.textFile("XXX")
 local_lines.first()
 #连续起来执行后只需要加载文件的第一行
 ```
 - Application -> Jobs -> stages -> tasks
 
-```
+```scala
 1) val local_lines = sc.textFile("XXX")
 1.2) val local_lines_1 = local_lines.map(xxx)
 2) val local_lines_2 = sc.textFile("XXX")
@@ -123,7 +119,7 @@ local_lines.first()
 
 #### 4.2 DAG、Jobs、Stage、Task详解
 
-```
+```scala
 1）val input = sc.textFile("file:///tmp/input.txt")
 2）val tokenized = input.map(line => line.split(" ")).filter(words => words.size>0)
 3）val counts = tokenized.map(words => (words(0), 1)).reduceByKey((a,b) => a+b)
@@ -151,7 +147,7 @@ res84: String =
     |  file:///tmp/input.txt MapPartitionsRDD[62] at textFile at <console>:27 []
     |  file:///tmp/input.txt HadoopRDD[61] at textFile at <console>:27 []
 
-## 
+## 因为reduceByKey是一个宽依赖，存在shuffle行为
 stage_1 : HadoopRDD --> MapPartitionsRDD --> map --> filter --> map
 stage_2 : reduceByKey
 ```
@@ -163,7 +159,7 @@ stage_2 : reduceByKey
 
 #### 4.3 执行器节点内存分配
 - 默认60% RDD存储
-```
+```scala
 cache()
 persist()
 ```
@@ -184,19 +180,19 @@ Spark还可能会在一台新的节点上投机的执行一个新的重复任务
 RDD（弹性分布式数据集、Resilient Distributed Dataset）是Spark的数据结构。RDD的行为只分为三种：创建、转化（产生一个新的RDD）、行动（对当前RDD进行统计）
 
 #### 5.2 RDD创建
-```
-val local_lines = sc.textFile("file:///usr/local/opt/spark-1.6.1-bin-hadoop2.4/README.md")  
+```scala
+val local_lines = sc.textFile("file:///usr/local/opt/spark-latest-bin-hadoop2.4/README.md")  
 或者  
 val local_lines = sc.parallelize(List("pandas", "i like pandas")
 ```
 
 #### 5.3 RDD的转化
-![transformation](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/A05B62CFAB8A4D739BA1B4C12D04C24A/22322)
-![transformation](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/77567BF17B144D6385043D2D97CDBAFF/22324)
+![rdd_transformation](../pic/spark/rdd_transformation.png)
+![rdd_transformation](../pic/spark/rdd_transformation_1.png)
 系谱图记录各个RDD之间的转换关系
 
 ##### 5.3.1 针对各个元素的转化
-```
+```scala
 # map() 针对每个元素一一对应的转换
 scala> val numbers = sc.parallelize(List(1,2,3,4));
 scala> numbers.map(x => x*x).collect().foreach(println)
@@ -243,7 +239,7 @@ scala> numbers.sample(true, 0.5).collect().foreach(println)
 
 ```
 ##### 5.3.2 伪集合操作
-```
+```scala
 scala>  numbers.collect().foreach(println)
 1
 2
@@ -302,10 +298,10 @@ scala> numbers.cartesian(numbers_1).collect().foreach(println)
 (4,6)
 ```
 #### 5.4 RDD的行动
-![Actions](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/D6EFF9E491E24678B449B0402B51004A/22320)
+![rdd_action](../pic/spark/rdd_action.png)
 
 
-```
+```scala
 # reduce
 scala> numbers.reduce((x, y) => x*y)
 res102: Int = 24
@@ -336,33 +332,33 @@ res1: Double = 4.5
 
 #### 5.5 RDD的打印
 - take(n) 分区就近原则出
-```
+```scala
 scala> numbers.take(2).foreach(println)
 1
 2
 ```
 - top(n)
-```
+```scala
 scala> numbers.top(2).foreach(println) 按照数据集合自己的顺序出
 4
 3
 ```
 - sample(bWithReplacement, dFraction, seed) 丢骰子取样
-```
+```scala
 scala> numbers.sample(false, 0.3).foreach(println)
 3
 4
 2
 ```
 - takeSample(bWithReplacement, n, seed) 随机取样n个
-```
+```scala
 scala> numbers.takeSample(false, 3).foreach(println)
 4
 3
 1
 ```
 - collect() 全返回
-```
+```scala
 scala> numbers.collect().foreach(println)
 1
 2
@@ -395,7 +391,7 @@ res2: String = 1,2,3,4
 
 #### 6.1 创建Pair RDD
 
-```
+```scala
 scala> numbers.collect().mkString(",")
 res7: String = 3,4,5,6
 
@@ -411,11 +407,11 @@ val counts = pairs.reduceByKey((a, b) => a + b)
 ```
 
 #### 6.2 转化操作
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/ED39BA7D712D4DAAB55A0F5E5C5BABB0/22345)
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/D110862D657C451692E02FC41EC288DE/22347)
+![prdd_transformation](../pic/spark/prdd_transformation.png)
+![prdd_transformation](../pic/spark/prdd_transformation_1.png)
 ![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/9B12AADDB815469ABBE5DE9EC764330E/22349)
 
-```
+```scala
 scala> val pairs_1 = sc.parallelize(List((1, 2), (3, 4), (3, 6)))
 pairs_1: org.apache.spark.rdd.RDD[(Int, Int)] = ParallelCollectionRDD[3] at parallelize at <console>:27
 
@@ -472,7 +468,7 @@ res40: String = (3,6)
 
 #### 6.3 行动操作
 
-```
+```scala
 scala> pairs_1.collect.mkString(",")
 res48: String = (1,2),(3,4),(3,6)
 
@@ -502,7 +498,7 @@ res55: String = WrappedArray(4, 6)
 分区完毕后还需要用到则需要使用缓存函数persist，避免每次都重新分区
 
 
-```
+```scala
 scala> pairs_1.partitioner
 res56: Option[org.apache.spark.Partitioner] = None
 
@@ -524,7 +520,7 @@ res63: Option[org.apache.spark.Partitioner] = Some(org.apache.spark.RangePartiti
 
 这里列出了所有会为生成的结果 RDD 设好分区方式的操作：
 
-```
+```scala
 cogroup()
 groupWith()
 join()
@@ -566,7 +562,7 @@ filter()（如果父 RDD 有分区方式的话）
 | Protocol buffers | 是       | 一种快速、节约空间的跨语言格式                               |
 | 对象文件         | 是       | 用来将 Spark 作业中的数据存储下来以让共享的代码读取。改变类的时候 它会失效，因为它依赖于 Java 序列化 |
 
-```
+```scala
 # 当传入的参数是目录的时候
 ## 转化为一个RDD
 val input = sc.textFiles(inputFile)
@@ -578,7 +574,7 @@ val input = sc.wholeTextFiles(inputFile)
 rdd.saveAsTextFile(output_path)
 ```
 
-```
+```scala
 def main(args: Array[String]) {
     if (args.length < 3) {
         println("Usage: [sparkmaster] [inputfile] [outputfile]")
@@ -595,7 +591,7 @@ def main(args: Array[String]) {
 }
 ```
 
-```
+```scala
 case class Person(name: String, favouriteAnimal: String)
 
 def main(args: Array[String]) {
@@ -635,9 +631,9 @@ def main(args: Array[String]) {
 - Spark SQL
 - etc. Spark supports text files, SequenceFiles, and any other Hadoop InputFormat.
 
-```
-val lines = sc.textFile("file:///usr/local/opt/spark-1.6.1-bin-hadoop2.4/README.md")  
-val lines = sc.textFile("hdfs:///usr/local/opt/spark-1.6.1-bin-hadoop2.4/README.md")  
+```scala
+val lines = sc.textFile("file:///usr/local/opt/spark-latest-bin-hadoop2.4/README.md")  
+val lines = sc.textFile("hdfs:///usr/local/opt/spark-latest-bin-hadoop2.4/README.md")  
 val lines = sc.textFile("s3n://bigdata-east/tmp/README.md")  
 ```
 
@@ -650,7 +646,7 @@ val lines = sc.textFile("s3n://bigdata-east/tmp/README.md")
 - 累加器不是严格的只累计一次  
     转化操作可以因为一些原因被多次执行（任务执行失败重新执行、任务执行的太慢呗重新执行、原来RDD占用的内存被回收转化操作重新加载并执行方法），从而导致目前的累加器只适合做debug使用，或者foreach
 - 累加器的操作需要满足交换律(即，a op b等同于b op a) 和 结合律(即、 (a op b) op c 等同于 a op (b op c)），比如加法、乘法、max函数
-```
+```scala
 def main(args: Array[String]) {
     val master = args(0)
     val inputFile = args(1)
@@ -687,7 +683,7 @@ def main(args: Array[String]) {
 - 广播变量只会被发到各个节点一次，应作为只读值处理(但是，如果修改了这个值，将不会影响到别的节点)
 - 传输中选择一个既好又快的序列化格式是很重要的
 
-```
+```scala
 val signPrefixes = sc.broadcast(loadCallSignTable())
 val countryContactCounts = contactCounts.map{
     case (sign, count) =>
@@ -709,7 +705,7 @@ def loadCallSignTable() = {
 ```
 
 #### 8.2 调用第三方脚本 Pipe
-```
+```scala
 val pwd = System.getProperty("user.dir")
 val distScript = pwd + "/bin/finddistance.R"
 val distScriptName = "finddistance.R"
@@ -733,29 +729,8 @@ sampleVariance() 从采样中计算出的方差
 stdev() 标准差  
 sampleStdev() 采样的标准差
 
-```
+```scala
 val stats = distanceDoubles.stats()
 val stddev = stats.stdev
 val mean = stats.mean
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-jar tvf target/scala-2.10/learning-spark-mini-example_2.10-0.0.1.jar
-
-
-numbers.sample(true, 0.5).collect().foreach(println)
