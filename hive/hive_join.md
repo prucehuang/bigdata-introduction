@@ -42,7 +42,8 @@ SELECT * FROM 0_a
 JOIN 0_b
 ON 0_a.id = 0_b.id
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name | 0_b.id | 0_b.age |
 | ------ | -------- | ---- | ---- |
 | 1 | zhangsan | 1 | 23 |
@@ -55,7 +56,8 @@ SELECT * FROM 0_a
 LEFT JOIN 0_b
 ON 0_a.id = 0_b.id
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name | 0_b.id | 0_b.age |
 | ---|---|---|--- |
 | 1 | zhangsan | 1 | 23 |
@@ -69,7 +71,8 @@ SELECT * FROM 0_a
 RIGHT JOIN 0_b
 ON 0_a.id = 0_b.id
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name | 0_b.id | 0_b.age |
 | ---|---|---|--- |
 | 1 | zhangsan | 1 | 23 |
@@ -84,7 +87,8 @@ SELECT * FROM 0_a
 FULL JOIN 0_b
 ON 0_a.id = 0_b.id
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name | 0_b.id | 0_b.age |
 | ---|---|---|--- |
 | 1 | zhangsan | 1 | 23 |
@@ -98,7 +102,8 @@ ON 0_a.id = 0_b.id
 SELECT * FROM 0_a
 CROSS JOIN 0_b
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name | 0_b.id | 0_b.age |
 | ---|---|---|--- |
 | 1 | zhangsan | 1 | 23 |
@@ -118,7 +123,8 @@ SELECT * FROM 0_a
 LEFT SEMI JOIN 0_b
 ON 0_a.id = 0_b.id
 ```
-运行结果
+运行结果  
+
 | 0_a.id | 0_a.name |
 | ---|--- |
 | 1 | zhangsan |
@@ -153,7 +159,7 @@ FROM a JOIN b
 ON (a.id = b.id);
 ```
 
-![image](http://7xipth.com1.z0.glb.clouddn.com/0625-1.jpg)
+![reduce_join](../pic/hive/reduce_join.jpg)
 - map 阶段
 1. 读取源数据表数据
 2. 解析成<key. value>结构，key是where条件字段，value是表名tag+select需要查询出的字段内容
@@ -167,7 +173,8 @@ ON (a.id = b.id);
 
 #### 2）MAP JOIN
 map join的执行流程中已经不再具有reduce阶段，和shuffle阶段，直接从map端输出结果
-![image](http://7xipth.com1.z0.glb.clouddn.com/0625-3.jpg)
+![mapjoin](../pic/hive/map_join.jpg)
+
 1. 在客户端本地执行Task A，读取小表b的数据，将其转换成hash的<key， value>结构
 2. 在客户端生成一个本地文件HashTableFile
 3. 将文件加载到DistributeCache中
