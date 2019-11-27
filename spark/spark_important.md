@@ -18,8 +18,7 @@ val sc = new SparkContext(conf)
 - job， 每一个行动操作就是一个job，比如take、first、foreach
 - stage，每一个行动操作、每一次触发shuffle都会产生一次新的stage
 - task，stage在executor上并行执行，分成的小任务就是task  
-- 【重点，stage如何划分】
-http://www.cnblogs.com/bonelee/p/6039469.html  
+- 【重点，stage如何划分】 
 1、当触发rdd的action时: 比如collect，count、take、first、reduce、foreach  
 2、当触发rdd的shuffle操作时: 比如repartition、coalesce、ByKey operations (except for counting) like groupByKey and reduceByKey, sortByKey and join operations like cogroup and join.
 
@@ -27,7 +26,7 @@ http://www.cnblogs.com/bonelee/p/6039469.html
 
 #### 1.3 partition划分
 
-```
+```java
 ## step1：读文件
 val textFile = sc.textFile("/hhf/LICENSE")
 
@@ -163,7 +162,7 @@ return Math.max(minSize, Math.min(goalSize, blockSize));
 【过程总说】  
 shuffle是map到reduce中间的一个数据传输和分配的过程，即，如何将map的数据产出，传输到reduce的输入。   
 常用的shuffle策略比如hash，(a,1)(b,2)(c,3)分别传到reduce各个节点上，hash（a） 然后对reduce的个数取余数，分配不同的reduce并行执行后面的过程。  
-![image](http://images.cnitblog.com/blog/381412/201502/240105358467767.png )
+![shuffle](../pic/spark/shuffle.png )
 
 【过程详解】
 - Map端: DataNode --> InputSplit --> 环形内存缓冲区 --> partition、sort和combine --> 逾出到本地磁盘 --> Merge
@@ -197,24 +196,24 @@ numPartitions <= bypassMergeThreshold && aggregator.isEmpty && keyOrdering.isEmp
 
 - 未优化的HashShuffle
 
-![image](http://images2015.cnblogs.com/blog/776149/201611/776149-20161111095529655-137621849.png)
+![shuffle_1](../pic/spark/shuffle_1.png)
 shuffle write会生成M*R个小文件，shuffle read的拉取过程是一边拉取一边进行聚合的。每个shuffle read task都会有一个自己的buffer缓冲，每次都只能拉取与buffer缓冲相同大小的数据，然后通过内存中的一个Map进行聚合等操作。聚合完一批数据后，再拉取下一批数据，并放到buffer缓冲中进行聚合操作。以此类推，直到最后将所有数据到拉取完，并得到最终的结果。
 
 - 优化后的HashShuffle
 
-![image](http://images2015.cnblogs.com/blog/776149/201611/776149-20161111095603452-1435999076.png)
+![shuffle_2](../pic/spark/shuffle_2.png)
 设置spark.shuffle.consolidateFiles参数为true，开启优化之路。consolidate机制允许不同的task复用同一批磁盘文件，这样就可以有效将多个task的磁盘文件进行一定程度上的合并，从而大幅度减少磁盘文件的数量，进而提升shuffle write的性能。shuffle write会生成Core_num*R个小文件
 
 - SortShuffle的普通运行机制  
 
-![image](http://tech.meituan.com/img/spark-tuning/sort-shuffle-common.png)
+![sort-shuffle-common](../pic/spark/sort-shuffle-common.png)
 过程同Hadoop的shuffle是一样的，不过map的输出格式不再只是<K, V>了，需要根据shuffle的算子来确定，如reduceByKey，则选用Map数据结构；如是join，则选用Array数据结构。  
 在溢写到磁盘文件之前，会先根据key对内存数据结构中已有的数据进行排序。排序过后，会分批将数据写入磁盘文件。默认的batch数量是10000条，也就是说，排序好的数据，会以每批1万条数据的形式分批写入磁盘文件。写入磁盘文件是通过Java的BufferedOutputStream实现的。BufferedOutputStream是Java的缓冲输出流，首先会将数据缓冲在内存中，当内存缓冲满溢之后再一次写入磁盘文件中，这样可以减少磁盘IO次数，提升性能。  
 同样map的最后还有一个Merge的过程，输出是一个文件和一份索引文件，其中标识了下游各个task的数据在文件中的start offset与end offset。
 
 - bypass运行机制
 
-![image](http://tech.meituan.com/img/spark-tuning/sort-shuffle-bypass.png)
+![sort-shuffle-bypass](../pic/spark/sort-shuffle-bypass.png)
 bypass运行机制的触发条件如下：  
 1、shuffle map task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值（默认为200）  
 2、不是排序类的shuffle算子（比如reduceByKey）  
@@ -291,7 +290,7 @@ bypass运行机制的触发条件如下：
 - 1个父RDD对应非全部多个子RDD分区，比如groupByKey，reduceByKey，sortByKey
 - 1个父RDD对应所有子RDD分区，比如未经协同划分的join
 
-![image](http://images2015.cnblogs.com/blog/776149/201610/776149-20161013181036875-857329541.png)
+![broad_ narrow_dependent](../pic/spark/broad_ narrow_dependent.png)
 
 - 在容灾恢复的时候，窄依赖的时候只需要恢复父RDD的一分分区，但是宽依赖会需要恢复多个分区，会带来一些数据的让费
 - 窄依赖可以出发流水线操作  
@@ -441,7 +440,13 @@ res18: Int = 1428
 因此，zeroValue即确定了U的类型，也会对结果产生至关重要的影响，使用时候要特别注意。
 ```
 
-#### updateStateByKey
+updateStateByKey
+
+
+> 参考文章  
+> [用实例说明Spark stage划分原理](https://www.cnblogs.com/bonelee/p/6039469.html)
+> [Spark性能优化指南——基础篇](https://tech.meituan.com/2016/04/29/spark-tuning-basic.html)
+> [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)
 
 > @ 学必求其心得，业必贵其专精
 > @ WHAT - HOW - WHY
