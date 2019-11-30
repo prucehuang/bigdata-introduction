@@ -18,17 +18,13 @@ service network restart
 **二、添加Hadoop用户**
 2.1创建hhadoop用户组
 ![img](../pic/hadoop/wps30b2.tmp.png)
-
 （ 在centos上需要将addgroup改为groupadd）
 2.2创建hadoop用户
 ![img](../pic/hadoop/wps30c3.tmp.png)
-
 （在centos需要将adduser改为useradd，并设置密码为hadoop）画
-
 ![img](../pic/hadoop/wps30c4.tmp.png)
 2.3给hadoop用户添加权限，打开/etc/sudoers文件
 ![img](../pic/hadoop/wps30c5.tmp.png)
-
 （centos可以直接使用vi代替gedit）
 在root  ALL=(ALL:ALL)  ALL后添加hadoop  ALL=(ALL:ALL) ALL
 ![img](../pic/hadoop/wps30d5.tmp.png)
@@ -36,7 +32,6 @@ service network restart
 **三、修改主机名**
 集群中需要给每台机器取个不同的名字。Ubuntu中机器名由 /etc/hostname文件决定。
 3.1打开/etc/hostname文件
-
 ![img](../pic/hadoop/wps30d6.tmp.png)
 3.2回车后就打开/etc/hostname文件了，将/etc/hostname文件中的ubuntu改为你想取的机器名，如master、slave1、slave2。
 3.3重启系统（reboot）后生效。
@@ -48,10 +43,8 @@ service network restart
 ![img](../pic/hadoop/wps30d8.tmp.png)
 
 **五、添加无密码SSH服务**
-5.1安装openssh-server
-
+5.1安装openssh-server   
 ![img](../pic/hadoop/wps30d9.tmp.png)
-
 （注：自动安装openssh-server时，可能会进行不下去，可以先进行如下操作：)
 
 ![img](../pic/hadoop/wps30da.tmp.png)
@@ -64,7 +57,6 @@ service network restart
 
 5.2生成RSA对称密码
 ![img](../pic/hadoop/wps30fc.tmp.png)
-
 ssh-keygen -t rsa
 回车后会在~/.ssh/下生成两个文件：
 id_rsa是私钥
@@ -73,7 +65,6 @@ id_rsa.pub是公钥
 ![img](../pic/hadoop/wps30fd.tmp.png)
 5.4本机测试
 ![img](../pic/hadoop/wps310e.tmp.png)
-
 ( 注：当ssh远程登录到其它机器后，现在你控制的是远程的机器，需要执行退出命令才能重新控制本地主机。) 
 ![img](../pic/hadoop/wps311f.tmp.png)
 
@@ -169,6 +160,7 @@ mv hadoop-2.2.0 hadoop
 slave1
 slave2
 9.6配置文件4：core-site.xml
+```
 <configuration>
 ​    <property>
 ​        <name>fs.defaultFS</name>
@@ -192,7 +184,9 @@ slave2
 ​        <value>*</value>
 ​    </property>
 </configuration>
+```
 9.7配置文件5：hdfs-site.xml
+```
 <configuration>
 ​    <property>
 ​        <name>dfs.namenode.secondary.http-address</name>
@@ -215,7 +209,9 @@ slave2
 ​         <value>true</value>
 ​     </property>
 </configuration>
+```
 9.8配置文件6：mapred-site.xml
+```
 <configuration>
 ​     <property>            
 ​        <name>mapreduce.framework.name</name>
@@ -230,7 +226,9 @@ slave2
 ​        <value>master:19888</value>
 ​    </property>
 </configuration>
+```
 9.9配置文件7：yarn-site.xml
+```
 <configuration>
 ​    <property>
 ​        <name>yarn.nodemanager.aux-services</name>
@@ -261,6 +259,7 @@ slave2
 ​        <value>master:8088</value>
 ​    </property>
 </configuration>
+```
 9.10将配置文件复制到其他节点
 上面配置完毕，我们基本上完成了90%了剩下就是复制。我们也可以把整个hadoop复制过去（注意slaves文件不一样）
 【注意】拷贝配置文件的时候修改文件所有者
@@ -381,55 +380,55 @@ aboutyun@master:~$ hadoop jar /usr/hadoop/share/hadoop/mapreduce/hadoop-mapreduc
 14/05/14 10:34:19 INFO mapreduce.Job: map 100% reduce 100%
 14/05/14 10:34:19 INFO mapreduce.Job: Job job_1400084979891_0004 completed successfully
 14/05/14 10:34:20 INFO mapreduce.Job: Counters: 43
-​    File System Counters
-​        FILE: Number of bytes read=81
-​        FILE: Number of bytes written=158693
-​        FILE: Number of read operations=0
-​        FILE: Number of large read operations=0
-​        FILE: Number of write operations=0
-​        HDFS: Number of bytes read=175
-​        HDFS: Number of bytes written=51
-​        HDFS: Number of read operations=6
-​        HDFS: Number of large read operations=0
-​        HDFS: Number of write operations=2
-​    Job Counters 
-​        Launched map tasks=1
-​        Launched reduce tasks=1
-​        Data-local map tasks=1
-​        Total time spent by all maps in occupied slots (ms)=23099
-​        Total time spent by all reduces in occupied slots (ms)=6768
-​    Map-Reduce Framework
-​        Map input records=5
-​        Map output records=10
-​        Map output bytes=106
-​        Map output materialized bytes=81
-​        Input split bytes=108
-​        Combine input records=10
-​        Combine output records=6
-​        Reduce input groups=6
-​        Reduce shuffle bytes=81
-​        Reduce input records=6
-​        Reduce output records=6
-​        Spilled Records=12
-​        Shuffled Maps =1
-​        Failed Shuffles=0
-​        Merged Map outputs=1
-​        GC time elapsed (ms)=377
-​        CPU time spent (ms)=11190
-​        Physical memory (bytes) snapshot=284524544
-​        Virtual memory (bytes) snapshot=2000748544
-​        Total committed heap usage (bytes)=136450048
-​    Shuffle Errors
-​        BAD_ID=0
-​        CONNECTION=0
-​        IO_ERROR=0
-​        WRONG_LENGTH=0
-​        WRONG_MAP=0
-​        WRONG_REDUCE=0
-​    File Input Format Counters 
-​        Bytes Read=67
-​    File Output Format Counters 
-​        Bytes Written=51
+    File System Counters
+        FILE: Number of bytes read=81
+        FILE: Number of bytes written=158693
+        FILE: Number of read operations=0
+        FILE: Number of large read operations=0
+        FILE: Number of write operations=0
+        HDFS: Number of bytes read=175
+        HDFS: Number of bytes written=51
+        HDFS: Number of read operations=6
+        HDFS: Number of large read operations=0
+        HDFS: Number of write operations=2
+    Job Counters 
+        Launched map tasks=1
+        Launched reduce tasks=1
+        Data-local map tasks=1
+        Total time spent by all maps in occupied slots (ms)=23099
+        Total time spent by all reduces in occupied slots (ms)=6768
+    Map-Reduce Framework
+        Map input records=5
+        Map output records=10
+        Map output bytes=106
+        Map output materialized bytes=81
+        Input split bytes=108
+        Combine input records=10
+        Combine output records=6
+        Reduce input groups=6
+        Reduce shuffle bytes=81
+        Reduce input records=6
+        Reduce output records=6
+        Spilled Records=12
+        Shuffled Maps =1
+        Failed Shuffles=0
+        Merged Map outputs=1
+        GC time elapsed (ms)=377
+        CPU time spent (ms)=11190
+        Physical memory (bytes) snapshot=284524544
+        Virtual memory (bytes) snapshot=2000748544
+        Total committed heap usage (bytes)=136450048
+    Shuffle Errors
+        BAD_ID=0
+        CONNECTION=0
+        IO_ERROR=0
+        WRONG_LENGTH=0
+        WRONG_MAP=0
+        WRONG_REDUCE=0
+    File Input Format Counters 
+        Bytes Read=67
+    File Output Format Counters 
+        Bytes Written=51
 12.4查看结果
 hadoop fs -text /output/wordcount/part-r-00000
 结果数据示例如下：
@@ -442,9 +441,9 @@ slave    2
 what    1
 ![img](../pic/hadoop/wps31e7.tmp.png)
 登录到Web控制台，访问链接http://master:8088/可以看到任务记录情况。 
-![img](../pic/hadoop/wps31e8.tmp.png)
+![img](../pic/hadoop/wps31e8.tmp.png)   
 
-![img](../pic/hadoop/wps31e9.tmp.png)
+![img](../pic/hadoop/wps31e9.tmp.png)  
 
 **【转载博客】**
 为虚拟机设置静态IP
@@ -463,7 +462,7 @@ http://www.aboutyun.com/thread-7713-1-1.html
 问题一：
 master: Error: JAVA_HOME is not set and could not be found.
 slave1: Error: JAVA_HOME is not set and could not be found.
-slave2: Error: JAVA_HOME is not set and could not be found.
+slave2: Error: JAVA_HOME is not set and could not be found.  
 ![img](../pic/hadoop/wps31fa.tmp.png)
 
 [hadoop@master hadoop]$ start-dfs.sh 
@@ -487,15 +486,15 @@ slave2: Error: JAVA_HOME is not set and could not be found.
 2415 Jps
 [hadoop@master hadoop]$
 
-解决办法：
-![img](../pic/hadoop/wps31fb.tmp.png)
+解决办法：  
+![img](../pic/hadoop/wps31fb.tmp.png)  
 
-![img](../pic/hadoop/wps31fc.tmp.png)
+![img](../pic/hadoop/wps31fc.tmp.png)  
 
 改为
-![img](../pic/hadoop/wps31fd.tmp.png)
+![img](../pic/hadoop/wps31fd.tmp.png)  
 
-![img](../pic/hadoop/wps31fe.tmp.png)
+![img](../pic/hadoop/wps31fe.tmp.png)  
 
 问题二：无法启动NodeManager
 NodeManager启动失败。查看日志，记录错误如下：
@@ -537,17 +536,6 @@ vi /etc/sysconfig/iptables 打开配置文件加入如下语句:
 查看端口状态
 /etc/init.d/iptables status
 4、关闭系统防火墙。这是最容易出现的问题。用此命令service iptables stop关闭后，一切正常集群正常使用
-防火墙操作
-http://java--hhf.iteye.com/admin/blogs/2100086
-【相关文章】
-在Ubuntu/Centos上部署Hadoop2.X集群并运行实例
-http://note.youdao.com/share/?id=c62173da12f0501f1b225ab03482225a&type=note
-CEPH介绍（一）—— 基本结构和设计思想
-http://note.youdao.com/share/?id=400c7c42dabdc5d97d4ca5c21693c697&type=note
-CEPH介绍（二）—— 三种存储结构和四个组件
-http://note.youdao.com/share/?id=cc9bdc87b6286691827a88de280a5386&type=note
-CEPH介绍（三）—— 总架构
-http://note.youdao.com/share/?id=a1b03842b4081e12b3b0279cf331d860&type=note
 
 > @ 学必求其心得，业必贵其专精
 > @ WHAT - HOW - WHY
