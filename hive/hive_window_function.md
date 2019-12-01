@@ -151,9 +151,9 @@ ROW_NUMBER、DENSE_RANK、RANK都是进行组内排序，他们可以为每一�
 
 ```sql
 -----------------------------------
--- ROW_NUMBER( ) OVER([query_partition_clause] order_by_clause)
--- DENSE_RANK( ) OVER([query_partition_clause] order_by_clause)
--- RANK( ) OVER([query_partition_clause] order_by_clause)
+-- ROW_NUMBER() OVER([query_partition_clause] order_by_clause)
+-- DENSE_RANK() OVER([query_partition_clause] order_by_clause)
+-- RANK() OVER([query_partition_clause] order_by_clause)
 -----------------------------------
 SELECT 
 	cookieid,
