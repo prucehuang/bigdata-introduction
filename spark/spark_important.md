@@ -306,6 +306,7 @@ bypass运行机制的触发条件如下：
 
 ### 四、spark调优
 #### 4.1 程序调优
+
 ##### 1、优化并行度【parallel】
 每一个分区对应一个map任务，并行度指的是reduce的任务个数
 - 在数据混洗的时候传合理的参指定并行度  
@@ -313,6 +314,7 @@ bypass运行机制的触发条件如下：
 ##### 2、函数优化 优化分区【partition】 减少shuffle任务 减少副本
 - 对已有的数据进行重新分区repartition、减少分区数coalesce  
 - 执行操作的时候继承父RDD的分区，减少shuffle
+- 使用map-side预聚合的shuffle操作
 - reduceByKey/aggregateByKey替代groupByKey  
   reduceByKey/aggregateByKey底层使用combinerByKey实现，会在map端进行局部聚合；groupByKey不会
 - mapPartitions替代map、foreachPartitions替代foreach  
@@ -320,22 +322,24 @@ mapPartitions类的算子，一次函数调用会处理一个partition所有的�
 - repartitionAndSortWithinPartitions替代repartition与sort类操作  
   repartitionAndSortWithinPartitions算子可以一边进行重分区的shuffle操作，一边进行排序。shuffle与sort两个操作同时进行，比先shuffle再sort来说，性能可能是要高的
 - 优先使用broadcast
-  广播变量不会有副本，可以再大文件变量的时候减少副本储存传输
+  广播变量不会有副本，可以在大文件变量的时候减少副本储存传输，广播变量可以把变量从task级别提高到executor级别的共享
 
-##### 3、设置kyro的系列化方式
+##### 3、设置kyro的系列化方式  
+	官方介绍，Kryo序列化机制比Java序列化机制，性能高10倍左右。Spark之所以默认没有使用Kryo作为序列化类库，是因为Kryo要求提前注册好所有需要进行序列化的自定义类型，这种方式比较麻烦。 
+
 - 普通的序列化
-```
+```scala
 val conf = new SparkConf()
 conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 ```
 - 有注册过的序列化
-```
+```scala
 val conf = new SparkConf()
 conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 ```
 - 有强制要求必须注册的序列化
-```
+```scala
 val conf = new SparkConf()
 conf.set("spark.serializer", "org.apache.spark.serializer.KryoSerializer")
 // 严格要求注册类
@@ -346,14 +350,15 @@ conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 ##### 4、缓存&缓存策略调优【persist】
 - 缓存父类RDD有利于子类计算  
 - 改进缓存策略，比方说MEMORY_ONLY 改为 MEMORY_AND_DISK，当数据缓存空间不够的时候就不会删除旧数据导致重新加载计算，而是直接从磁盘load数据；再比方说MEMORY_ONLY 改为 MEMORY_AND_DISK_SER 或者 MEMORY_ONLY_SER，虽然增加了序列化的时间，但是可以大量的减少GC的时间
+- MEMORY_ONLY --> MEMORY_ONLY_SER --> MEMORY_AND_DISK_SER
 
 #### 4.2 参数调优
 ##### 1、尽可能的将执行器节点分配在同一台物理机器上
 设置参数spark.deploy.spreadOut=false 尽量减少物理节点的分配，如果你有一个集群（20台物理节点，每个节点4cores），当你提交一个任务（8cores，每个core1G），默认情况下，Spark将会在8台物理节点上召唤起8个core，每个core1G，设置为false后尽可能少的物理节点——2台物理节点、2*4cores
 
 ##### 2、重新分配RDD存储、数据混洗聚合存储、用户存储占比，调大shuffle的内存占比
-- 默认60% RDD存储
-- 默认20% 数据清洗与聚合
+- 默认60% RDD存储 spark.storage.memoryFraction
+- 默认20% 数据清洗与聚合 spark.shuffle.memoryFraction
 - 默认20% 用户代码 与代码中的中间数据存储，比如创建数组
 
 #### 4.3机器调优
@@ -361,7 +366,8 @@ conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 ##### 2、更大的本地磁盘可以帮助提高Spark的应用性能
 
 > 参考
-> http://www.cnblogs.com/arachis/p/Spark_API.html
+> [Spark算子选择策略](https://www.cnblogs.com/arachis/p/Spark_API.html)
+> [Spark性能优化指南——基础篇](https://tech.meituan.com/2016/04/29/spark-tuning-basic.html)  
 
 ### 五、Hadoop，Spark内部通讯 从akka到netty
 启动Master并开启清空超时Worker的定时任务
@@ -371,8 +377,7 @@ Worker收到注册成功的消息后，定时给Master发生心跳消息
 - 为什么用netty代替akka  
 主要原因是解决用户的Spark Application中akka版本和Spark内置的akka版本冲突的问题。比如，用户开发的Spark Application中用到了Spray框架，Spray依赖的akka版本跟Spark的不一致就会导致冲突，这个影响比较重要
 
-
-### 重点函数突破
+### 六、重点函数突破
 #### repartition VS coalesce
 repartition(numPartitions:Int):RDD[T]和coalesce(numPartitions:Int，shuffle:Boolean=false):RDD[T]，repartition只是coalesce接口中shuffle为true的简易实现  
 - before numPartitions > after numPartitions  
@@ -440,13 +445,17 @@ res18: Int = 1428
 因此，zeroValue即确定了U的类型，也会对结果产生至关重要的影响，使用时候要特别注意。
 ```
 
-updateStateByKey
-
+### 七、数据倾斜
+- 找出数据倾斜的原因
+- 提高shuffle的并行度
+- 两阶段聚合（局部聚合+全局聚合），先加随机前缀，后去掉前缀执行一遍全局聚合
+- reduce join 转为 map join，将小表缓存变成广播变量
+- 随机前缀+扩展RDD，左边有数据倾斜的RDD进行随机前缀，后边小数据RDD扩展N倍，正常join操作
+- 
 
 > 参考文章  
-> [用实例说明Spark stage划分原理](https://www.cnblogs.com/bonelee/p/6039469.html)
-> [Spark性能优化指南——基础篇](https://tech.meituan.com/2016/04/29/spark-tuning-basic.html)
-> [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)
+> [用实例说明Spark stage划分原理](https://www.cnblogs.com/bonelee/p/6039469.html)  
+> [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)  
 
 > @ 学必求其心得，业必贵其专精
 > @ WHAT - HOW - WHY
