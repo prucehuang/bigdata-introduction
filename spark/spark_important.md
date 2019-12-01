@@ -451,7 +451,6 @@ res18: Int = 1428
 - 两阶段聚合（局部聚合+全局聚合），先加随机前缀，后去掉前缀执行一遍全局聚合
 - reduce join 转为 map join，将小表缓存变成广播变量
 - 随机前缀+扩展RDD，左边有数据倾斜的RDD进行随机前缀，后边小数据RDD扩展N倍，正常join操作
-- 
 
 > 参考文章  
 > [用实例说明Spark stage划分原理](https://www.cnblogs.com/bonelee/p/6039469.html)  

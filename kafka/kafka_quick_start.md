@@ -87,7 +87,6 @@ Exactly once 每条消息肯定会被传输一次且仅传输一次，很多时�
   ![kafka save](../pic/kafka/save.png)
 ### 2、根据offset检索数据流程
 offset -> find segment -> look for index find 物理位置偏移量 -> read data from log file
-
 ![consumer-groups](../pic/kafka/consumer-groups.png)
 
 ## 四、Kafka实现高吞吐量
