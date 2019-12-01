@@ -409,7 +409,7 @@ val counts = pairs.reduceByKey((a, b) => a + b)
 #### 6.2 转化操作
 ![prdd_transformation](../pic/spark/prdd_transformation.png)
 ![prdd_transformation](../pic/spark/prdd_transformation_1.png)
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/9B12AADDB815469ABBE5DE9EC764330E/22349)
+![prdd_transformation](../pic/spark/prdd_transformation_2.png)
 
 ```scala
 scala> val pairs_1 = sc.parallelize(List((1, 2), (3, 4), (3, 6)))

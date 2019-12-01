@@ -16,8 +16,8 @@ val sc = new SparkContext(conf)
 #### 1.2 任务提交 - DAG
 任务首先到driver节点上，driver节点负责任务的划分和调度，executor节点负责任务的执行和必要数据的缓存。程序RDD之间的转化定义了一张DAG有向无环图，driver节点将DAG转换成物理执行过程，划分成job、stage分发到各个executor节点上执行。
 - job， 每一个行动操作就是一个job，比如take、first、foreach
-- stage，每一个行动操作、每一次触发shuffle都会产生一次新的stage
-- task，stage在executor上并行执行，分成的小任务就是task  
+- stage，每一次宽依赖的转化(有shuffle)都会产生一个新的stage
+- task，stage在executor上并行执行，分成的小任务就是task，task对应于一个partition数据
 - 【重点，stage如何划分】 
 1、当触发rdd的action时: 比如collect，count、take、first、reduce、foreach  
 2、当触发rdd的shuffle操作时: 比如repartition、coalesce、ByKey operations (except for counting) like groupByKey and reduceByKey, sortByKey and join operations like cogroup and join.

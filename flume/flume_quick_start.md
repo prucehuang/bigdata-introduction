@@ -1,6 +1,8 @@
 # Flume Quick Start
 
-## （一）Flume是什么
+## 一、开始
+[官网]( https://flume.apache.org/)
+[User Guide](https://flume.apache.org/FlumeUserGuide.html#)
 1. Flume是Cloudera提供的一个高可用的，高可靠的，分布式的海量日志采集、聚合和传输的系统。
 2. Flume支持在日志系统中定制各类数据发送方，用于收集数据；同时，对数据进行简单处理，并写到各种数据接受方。
 3. Flume有两个版本   
@@ -9,50 +11,6 @@
 
 - Flume1.X版本的统称Flume-ng  
   取消了集中管理配置的 Master 和 Zookeeper，变为一个纯粹的传输工具。读入数据和写出数据现在由不同的工作线程处理（称为 Runner）。 在 Flume-og 中，读入线程同样做写出工作（除了故障重试）。如果写出慢的话（不是完全失败），它将阻塞 Flume 接收数据的能力。这种异步的设计使读入线程可以顺畅的工作而无需关注下游的任何问题
-
-## （二）Flume设计图解
-1. 系统结构图：  
-![image](http://note.youdao.com/yws/public/resource/9ebdf9c096cb214fb5e5099f50390f94/1892AE987CB7451C8F1D27240F5A3A06)
-
-系统可分为三层 —— Agent、Collector、Store ——收集log并存起来  
-每个flume可分三层 —— Source、Channel、Sink —— 收集/传递/存储  
-
-2. 结构图详解：  
-- 单个  
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/95CBB246187342F5A91F3F2A11317F4C/-1)  
-- 多个  
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/2AC03BD5E7B84FA7819C98E8CEC44450/-1)
-- 复杂型  
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/20F791CF0AE4475BA6855978EFF3EDDC/-1)
-
-### （三）Flume设计原理详解
-每个flume分三层 —— Source、Channel、Sink —— 收集/传递/存储  
-1. Source有几种
-- Exec source  
-实现：Unix command获得数据，最常用的就是tail -F [file]  
-优点：简单，文件实时传输  
-缺点：断点不能续传  
-- Spooling Directory Source  
-介绍：监控配置目录下新增的文件，并实时的将文件数据读出来  
-优点：只要是在监控目录下的新文件都可以传输  
-缺点：新文件不能再编辑、不能有子目录、只能做到近乎实时（如，一分钟一个文件）  
-
-2. Channel有几种 
-- MemoryChannel
-可以实现高速的吞吐，但是无法保证数据的完整性
-- JDBC Channel
-- MemoryRecoverChannel
-- FileChannel - 官方推荐
-保证数据的完整性与一致性
-
-3. Sink  
-- 文件系统
-- 集群文件系统
-- 数据库
-
-## 一、最好的开始
-官网 - https://flume.apache.org/  
-User Guide - https://flume.apache.org/FlumeUserGuide.html#
 
 ## 二、安装配置
 ### 1、get 压缩包
@@ -85,8 +43,46 @@ echo 'confgratulations! fluem has been installed and flume-env.sh has been set!'
 ```
 flume-ng version
 ```
+## 三、Flume设计图解
+1. 系统结构图：  
+![image](../pic/flume/clipboard.png)
+系统可分为三层 —— Agent、Collector、Store ——收集log并存起来  
+每个flume可分三层 —— Source、Channel、Sink —— 收集/传递/存储  
 
-## 三、实践出新知
+2. 结构图详解：  
+- 单个  
+  ![image](../pic/flume/flume.png)
+- 多个  
+  ![image](../pic/flume/flumes.png)
+- 复杂型  
+![image](../pic/flume/flumess.png)
+
+### （三）Flume设计原理详解
+每个flume分三层 —— Source、Channel、Sink —— 收集/传递/存储  
+1. Source有几种
+- Exec source  
+实现：Unix command获得数据，最常用的就是tail -F [file]  
+优点：简单，文件实时传输  
+缺点：断点不能续传  
+- Spooling Directory Source  
+介绍：监控配置目录下新增的文件，并实时的将文件数据读出来  
+优点：只要是在监控目录下的新文件都可以传输  
+缺点：新文件不能再编辑、不能有子目录、只能做到近乎实时（如，一分钟一个文件）  
+
+2. Channel有几种 
+- MemoryChannel
+可以实现高速的吞吐，但是无法保证数据的完整性
+- JDBC Channel
+- MemoryRecoverChannel
+- FileChannel - 官方推荐
+保证数据的完整性与一致性
+
+3. Sink  
+- 文件系统
+- 集群文件系统
+- 数据库
+
+## 四、实践出新知
 ### 测试1 —— netcat_to_logger
 ```
 vim flume-netcat-to-logger.conf
@@ -119,7 +115,6 @@ bin/flume-ng agent --conf conf --conf-file conf/flume-netcat-to-logger.conf --na
 开启输入
 telnet localhost 44444
 ```
-
 
 ### 测试2 —— file_to_kafka
 ```
@@ -201,7 +196,6 @@ vim conf/flume-kafka-to-hdfs.conf
  done
  
  sh -x tmp.sh | /usr/local/opt/kafka/bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
- 
 ```
 
 ### 测试4 —— file_to_HDFS
@@ -267,8 +261,6 @@ agent.sources.s1.kafka.num.consumer.fetchers = 2
 agent.sources.s1.kafka.auto.commit.enable= true
 agent.sources.s1.kafka.auto.offset.reset = largest
 agent.sources.s1.channels = c1
-
-
 
 agent.sources.s1.interceptors = i1
 agent.sources.s1.interceptors.i1.type = static

@@ -6,56 +6,44 @@
 笛卡尔积数据量大，被分配的reduce任务个数少，耗时严重  
 以下两种形式的SQL会导致全表笛卡尔积：  
 
-```
+```sql
 select * from A, B where A.key = B.key and A.key > 10;  
 select * from A join B where A.key = B.key and A.key > 10;
 ```
 
 正确写法
 
-```
+```sql
 select * from A join B on A.key = B.key where A.key > 10;
 ```
 
 多个数据表连接时，也要注意将on内写
 
-```
+```sql
 A join B join tablec join ... on A.col1 = B.col2 and ...
 ```
 改为
 
-```
+```sql
 A join B on A.key = B.key and A.key > 10 join C on  A.key = C.key join  ... on  ...
-
 ```
 
 ### 2、尽量使用map join
 小表join大表的时候，使用mapjoin把小表放到内存中处理，  
 语法很简单只需要增加 /*+ MAPJOIN(pt) */ ，把需要分发的表放入到内存中
 
-```
-SELECT
-    0_test.pv,
-    1_test.pv
-FROM
-    0_test
-JOIN 
-	1_test
-ON 
-	0_test.cookieid = 1_test.cookieid
+```sql
+SELECT 0_test.pv, 1_test.pv 
+FROM 0_test
+JOIN 1_test
+ON 0_test.cookieid = 1_test.cookieid
 ```
 改为
-```
-SELECT
-	/*+ mapjoin(0_test)*/
-    0_test.pv,
-    1_test.pv
-FROM
-    0_test
-JOIN 
-	1_test
-ON 
-	0_test.cookieid = 1_test.cookieid
+```sql
+SELECT /*+ mapjoin(0_test)*/ 0_test.pv, 1_test.pv
+FROM 0_test
+JOIN 1_test
+ON 0_test.cookieid = 1_test.cookieid
 ```
 考虑到map join比较消耗内存，不支持多表连接  
 在开始执行hash map join之前，需要对部分参数进行设置。主要包括：
@@ -72,7 +60,7 @@ TDW中提供了两种hash map join算法，两者的区别是一种算法使用h
 
 ### 3、及时掌握表的数据情况
 
-```
+```sql
 # 查看每个分区数据量大小
 show rowcount extended A
 # 查看每个分区数据大小，单位是字节
@@ -87,104 +75,77 @@ show tablesize extended  A
 
 ### 4、全局distinct、count
 
-```
-SELECT
-    COUNT(DISTINCT key)
-FROM
-    A
-WHERE
-    key >= 20121001
+```sql
+SELECT COUNT(DISTINCT key)
+FROM A
+WHERE key >= 20121001
 ```
 改为
 
-```
-SELECT
-    COUNT(key)
-FROM        
-    SELECT
-        DISTINCT key AS key
-    FROM
-        A
-    WHERE
-        key >= 20121001
+```sql
+SELECT COUNT(key)
+FROM (        
+    SELECT DISTINCT key AS key
+    FROM A
+    WHERE key >= 20121001
+)
 ```
 虽然修改后的方法繁琐一些，但是执行效率高很多，前者只会有一个reduce的任务，在数据量大的时候问题比较严重
 
 ### 5、全局的group by， count
 
-```
-SELECT 
-    count(1) 
-FROM 
-    A;
+```sql
+SELECT count(1) FROM A;
 ```
 改写成
 
-```
-SELECT 
-    pt,count(1) 
-FROM
-    A 
-GROUP BY
-    pt;
+```sql
+SELECT pt,count(1) 
+FROM A 
+GROUP BY pt;
 ```
 
 ### 5、减少使用exists 和 not exists
 exists内部是join实现的，
-- NOT EXISTS改写为left outer join加is null
+- NOT EXISTS改写为left join加is null
 
-```
-SELECT 
-    a
-FROM
-    A
+```sql
+SELECT a
+FROM A
 WHERE
     a.key not exists
-        (
-            # exists 后面的子查询返回的是一个boolean值，和select查询的出来的字段没有任何关系，只要where条件通过即可
-            select 1 from B where A.col1=B.col2 and B.col3=… and…
-        )
+	(# exists 后面的子查询返回的是一个boolean值，和select查询的出来的字段没有任何关系，只要where条件通过即可
+		select 1 from B where A.col1=B.col2 and B.col3=… and…
+	)
 ```
 改写为
-```
-SELECT
-    a
-FROM
-    A 
-LEFT OUTER JOIN 
-    B 
-ON
-    A.col1=B.col2 and B.col3=… and …
+```sql
+SELECT a
+FROM A 
+LEFT JOIN B 
+ON A.col1=B.col2 and B.col3=… and …
 Where … and b.col2 is null
 ```
-- exists改写成left simi join
+- exists改写成left simi join（左主表连接，只能查出左表的字段）
 
-```
-SELECT
-	… 
-FROM 
-	A
+```sql
+SELECT … 
+FROM A
 WHERE 
-	… AND exists(
-		SELECT 
-			1 
-		FROM 
-			B 
-		WHERE 
-			A.col1=B.col2 AND B.col3=… AND…)
+	… AND exists
+	(
+		SELECT 1 
+		FROM B 
+		WHERE A.col1=B.col2 AND B.col3=… AND…
+    )
 ```
 改写
-```
-SELECT 
-	… 
-FROM 
-	A 
-left semi join 
-	B 
-on 
-	A.col1=B.col2 AND B.col3=… AND …
-WHERE 
-	…
+```sql
+SELECT … 
+FROM A 
+left semi join B 
+on A.col1=B.col2 AND B.col3=… AND …
+WHERE …
 ```
 改写后，根据各表的数据量大小调整join顺序，保证小表连接大表，或者使用map join
 
@@ -233,55 +194,20 @@ set hive.exec.reducers.bytes.per.reducer=500000000; （500M）
 set mapred.reduce.tasks = 15;
 ```
 
-7、join优化
-string和bigint比较的时候，reduce会发生数据倾斜
-```
+### 7、避免不同的数据结构发生对比
+string和bigint比较的时候，reduce会发生数据倾斜，请先cast强制转换格式
+```sql
 SELECT 
 	t2.inewlevel8 as snewlevel8,t1.skey,t1.svalue
-from 
-(
-    SELECT 
-    	suin,skey,svalue    
-    from 
-    	t_dw_face_dil_game_login_info
-    where  
-    	skey='30008' and saccounttype=0 and idate=20171101
-)t1 join
-(    
-    SELECT
-        cast(iuin as STRING) as suin,
-        inewlevel8
-    FROM 
-    	ied_osrd::t_dw_tgclub_info
-    where 
-    	statis_date=20171130    
-) t2 on (t1.suin = t2.suin)
+from (
+    SELECT suin from tA
+)t1 
+join (    
+    SELECT cast(iuin as STRING) as suin
+    FROM tB
+) t2 
+on (t1.suin = t2.suin)
 ```
-bigint优化成string
-
-```
-SELECT 
-	t2.inewlevel8 as snewlevel8,t1.skey,t1.svalue
-from 
-(
-    SELECT 
-    	suin,skey,svalue    
-    from 
-    	t_dw_face_dil_game_login_info
-    where  
-    	skey='30008' and saccounttype=0 and idate=20171101
-)t1 join
-(    
-    SELECT
-        cast(iuin as STRING) as suin,
-        inewlevel8
-    FROM 
-    	ied_osrd::t_dw_tgclub_info
-    where 
-    	statis_date=20171130    
-) t2 on (t1.suin = t2.suin)
-```
-
 
 ## 大牛博客参考
 [控制hive任务中的map数和reduce数](http://lxw1234.com/archives/2015/04/15.htm)  

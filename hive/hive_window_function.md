@@ -2,7 +2,7 @@
 
 ## 一、数据准备
 
-```
+```sql
 -----------------------------------
 --- 创建表
 -----------------------------------
@@ -31,20 +31,23 @@ INSERT INTO 0_test VALUES ('cookie2', '2015-04-16', 3);
 select * from 0_test;
 ```
 
-
 ## 二、统计窗口函数
 窗口，也就是分组的概念，统计窗口函数就是分组后的统计函数。  
+分组的关键字是**PARTITION BY**，相当于GROUP BY  
+- 如没有ORDER BY，统计的就是全组的数据，
+- 如有ORDER BY，就是根据排序字段的一个累积统计
+常用的使用场景比如：
+- 统计每个组内某个字段最大的记录
+- 统计每个组内某个字段在全组中的权重占比
+- 统计每个组内某个字段的累积值等等
 
-分组的关键字是PARTITION BY，相当于GROUP BY，如果没有加上ORDER BY语句，统计的就是全组的数据，有ORDER BY的话就是根据排序字段的一个累积统计，详见下面的PV_\*\_1 和 PV_\*\_2  
-
-常用的使用场景比如：统计每个组内某个字段最大的记录、统计每个组内某个字段在全组中的权重占比、统计每个组内某个字段的累积值等等
-```
+```sql
 -----------------------------------
--- SUM ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
--- AVG ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
--- MAX ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
--- MIN ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
--- RATIO_TO_REPORT  ( expr )OVER ( [query_partition_clause] [order_by_clause] )
+-- SUM ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
+-- AVG ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
+-- MAX ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
+-- MIN ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
+-- RATIO_TO_REPORT  (expr) OVER ([query_partition_clause] [order_by_clause])
 -----------------------------------
 SELECT 
 	cookieid,
@@ -83,11 +86,10 @@ FROM
 | cookie2  | 2015-04-15 | 2    | 3        | 6        | 1.5                | 2.0                | 2        | 3        | 1        | 1        | 0.6666666666666666   | 0.3333333333333333   |
 | cookie2  | 2015-04-16 | 3    | 6        | 6        | 2.0                | 2.0                | 3        | 3        | 1        | 1        | 0.5                  | 0.5                  |
 
-
-```
-# 为了加深分组|窗口的理解，单独介绍一下count over函数
+```sql
+# 为了加深分组|窗口的理解，单独介绍一下count over函数，统计当前分组的内的次数
 -----------------------------------
---- COUNT( 1 | [ DISTINCT ] expr)OVER ( [query_partition_clause] [order_by_clause] )
+--- COUNT( 1 | [DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
 -----------------------------------
 SELECT
 	cookieid,
@@ -114,7 +116,7 @@ FROM
 | cookie2  | 3            | 3            | 3             | 3                      |
 
 
-```
+```sql
 # 类似的常规SQL
 SELECT 
 	cookieid,
@@ -135,23 +137,23 @@ GROUP BY
 | cookie2  | 3            | 3            | 3             | 3                      |
 
 **区别**
-- 使用带有OVER的窗口函数查询出来的行数等于原始数据行数，而GROUP BY行数的分组的组数
+- 使用带有OVER的窗口函数查询出来的行数等于原始数据行数，而GROUP BY行数为分组的组数
 - 窗口函数在不带ORDER BY语句的时候使用方法和效果同基本函数
-
 
 ## 三、排序窗口函数
 ROW_NUMBER、DENSE_RANK、RANK都是进行组内排序，他们可以为每一行输出一个组内的顺序编号。区别在于
 - ROW_NUMBER 每一行都有一个**唯一**的编号
 - DENSE_RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号连续，比如两个并列第三名，下一个就是第四名
-- RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号不连续，比如两个并列第三名，下一个就是第五名
+- RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号不连续，比如两个并列第三名，下一个就是第五名  
+常用的使用场景比如
+- 统计每个班每个同学的成绩排名
+- 统计每个组根据某个字段排序的第N条记录
 
-常用的使用场景比如：统计每个班每个同学的成绩排名、统计每个组根据某个字段排序的第N条记录
-
-```
+```sql
 -----------------------------------
--- ROW_NUMBER ( ) OVER ( [query_partition_clause] order_by_clause 
--- DENSE_RANK ( ) OVER ( [query_partition_clause] order_by_clause 
--- RANK ( ) OVER ( [query_partition_clause] order_by_clause 
+-- ROW_NUMBER() OVER([query_partition_clause] order_by_clause)
+-- DENSE_RANK() OVER([query_partition_clause] order_by_clause)
+-- RANK() OVER([query_partition_clause] order_by_clause)
 -----------------------------------
 SELECT 
 	cookieid,
@@ -178,19 +180,19 @@ FROM 0_test
 | cookie2  | 2015-04-15 | 2    | 2             | 2             | 2       |
 | cookie2  | 2015-04-14 | 1    | 3             | 3             | 3       |
 
-
 ## 四、位移窗口函数
 在每个分组中，每行记录都有自己的顺序，也就有了位移的概念。  
-LAG OVER函数可以方便的获得自己前N行记录的某个字段的内容，LEAD OVER与之相反，取的是后N行的记录数据，所有offset必然都是一个正整数  
-值得注意的是，每行记录在每个分组中都会有自己的顺序，统计值根据位移来统计，所以如果最后输出的顺序不一致的话可能导致每个组的统计位移和最后输出的顺序不一致的情况，建议加上ORDER BY
-
-使用场景比如：统计每一组中最早加入的人
-```
+- LAG OVER函数可以方便的获得自己前N行记录的某个字段的内容，
+- LEAD OVER与之相反，取的是后N行的记录数据  
+所有offset必然都是一个正整数，值得注意的是，每行记录在每个分组中都会有自己的顺序，统计值根据位移来统计，所以如果最后输出的顺序不一致的话可能导致每个组的统计位移和最后输出的顺序不一致的情况，建议加上ORDER BY
+使用场景比如：
+- 统计每一组中最早加入的人
+```sql
 -----------------------------------
--- LAG ( value_expr [, offset ] [, default] )OVER ( [query_partition_clause] order_by_clause )
--- LEAD (value_expr [, offset ] [, default ] ) OVER ( [query_partition_clause] order_by_clause )
--- FIRST_VALUE ( expr ) OVER ( [query_partition_clause] [order_by_clause] )
--- LAST_VALUE ( expr ) OVER ( [query_partition_clause] [order_by_clause] )
+-- LAG (value_expr [, offset] [, default]) OVER ([query_partition_clause] order_by_clause)
+-- LEAD (value_expr [, offset] [, default]) OVER ([query_partition_clause] order_by_clause)
+-- FIRST_VALUE (expr) OVER ([query_partition_clause] [order_by_clause])
+-- LAST_VALUE (expr) OVER ([query_partition_clause] [order_by_clause])
 -----------------------------------
 SELECT 
 	cookieid,
@@ -223,7 +225,6 @@ ORDER BY
 | cookie2  | 2015-04-14 | 1    | 1    | default        | 2015-04-16      | 2015-04-14       | 2015-04-16      |      |
 | cookie2  | 2015-04-15 | 2    | 2    | default        | default         | 2015-04-14       | 2015-04-16      |      |
 | cookie2  | 2015-04-16 | 3    | 3    | 2015-04-14     | default         | 2015-04-14       | 2015-04-16      |      |
-
 
 ## 大牛文章参考
 [Hive分析窗口函数(一) SUM,AVG,MIN,MAX](http://lxw1234.com/archives/2015/04/176.htm)  
