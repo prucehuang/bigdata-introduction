@@ -393,7 +393,7 @@ SparkContext中维护了一张哈希表persistRdds，用于登记所有被持久
 
 #### combineByKey
 groupByKey,reduceByKey等的底层都是调用combineByKey实现的
-```
+```scala
 def combineByKey[C](  
       createCombiner: V => C,  
       mergeValue: (C, V) => C,  
@@ -403,7 +403,7 @@ def combineByKey[C](
       serializer: Serializer = null) 
 ```
 
-```
+```scala
 scala> val initialScores = Array(("Fred", 88.0), ("Fred", 95.0), ("Fred", 91.0), ("Wilma", 93.0), ("Wilma", 95.0), ("Wilma", 98.0))
 initialScores: Array[(String, Double)] = Array((Fred,88.0), (Fred,95.0), (Fred,91.0), (Wilma,93.0), (Wilma,95.0), (Wilma,98.0))
 
@@ -423,7 +423,7 @@ res0: Array[(String, Double)] = Array((Wilma,95.33333333333333), (Fred,91.333333
 
 #### aggregate 
 
-```
+```scala
 def aggregate[U](zeroValue: U)
     (
         seqOp: (U, T) ⇒ U, 
