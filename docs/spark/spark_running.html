@@ -1,0 +1,781 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Spark Running · bigdata-introduction</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="pruce">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="spark_streaming_quick_start.html" />
+    
+    
+    <link rel="prev" href="spark_quick_start.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Spark</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="spark_quick_start.html">
+            
+                <a href="spark_quick_start.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Spark Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="spark_running.html">
+            
+                <a href="spark_running.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Spark Running
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="spark_streaming_quick_start.html">
+            
+                <a href="spark_streaming_quick_start.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Spark Streaming Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="spark_important.html">
+            
+                <a href="spark_important.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    Spark划重点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hadoop</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../hadoop/hadoop_deploy_linux.html">
+            
+                <a href="../hadoop/hadoop_deploy_linux.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    在Ubuntu_Centos上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../hadoop/hadoop_deploy_mac.html">
+            
+                <a href="../hadoop/hadoop_deploy_mac.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    在Mac OS上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hive</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../hive/hive_quick_start.html">
+            
+                <a href="../hive/hive_quick_start.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Hive Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../hive/hive_join.html">
+            
+                <a href="../hive/hive_join.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Join解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../hive/hive_window_function.html">
+            
+                <a href="../hive/hive_window_function.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    分析窗口函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../hive/hive_optimize.html">
+            
+                <a href="../hive/hive_optimize.html">
+            
+                    
+                        <b>4.4.</b>
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Kafka</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../kafka/kafka_quick_start.html">
+            
+                <a href="../kafka/kafka_quick_start.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Kafka Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flume</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../flume/flume_quick_start.html">
+            
+                <a href="../flume/flume_quick_start.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Flume Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Zookeeper</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../zookeeper/zookeeper_quick_start.html">
+            
+                <a href="../zookeeper/zookeeper_quick_start.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    Zookeeper Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Thanks</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../thanks.html">
+            
+                <a href="../thanks.html">
+            
+                    
+                        <b>8.1.</b>
+                    
+                    感谢&参考文章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Spark Running</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="sparkrunning">Spark_Running</h1>
+<h3 id="&#x4E00;&#x3001;&#x5DE5;&#x7A0B;&#x6253;&#x5305;">&#x4E00;&#x3001;&#x5DE5;&#x7A0B;&#x6253;&#x5305;</h3>
+<h4 id="11-maven">1.1 Maven</h4>
+<pre><code class="lang-shell">mvn clean
+mvn package
+jar tf target/*jar
+</code></pre>
+<h4 id="12-sbt">1.2 sbt</h4>
+<pre><code class="lang-shell">sbt clean
+sbt package
+jar tf target/scala-2.10/*jar
+</code></pre>
+<h3 id="&#x4E8C;&#x3001;spark-submit">&#x4E8C;&#x3001;Spark Submit</h3>
+<h4 id="21-&#x542F;&#x52A8;">2.1 &#x542F;&#x52A8;</h4>
+<pre><code class="lang-shell">$ ./bin/spark-submit 
+    --master yarn \
+    --deploy-mode cluster \
+    --driver-memory 4g \
+    --executor-memory 2g \
+    --executor-cores 1 \
+    --queue thequeue \    
+    --jars my-other-jar.jar,my-other-other-jar.jar \
+    --class org.apache.spark.examples.SparkPi \
+    lib/spark-examples*.jar \
+    app_arg1 app_arg2
+</code></pre>
+<pre><code class="lang-shell">#!\bin\bash
+
+SPARK_SUBMIT_SCRIPT=${SPARK_HOME}/bin/spark-submit
+ASSEMBLY_JAR=./target/*0.0.1.jar
+
+${SPARK_SUBMIT_SCRIPT} \
+    --class com.oreilly.learningsparkexamples.scala.WordCount \
+    ${ASSEMBLY_JAR} local
+</code></pre>
+<h4 id="22-spark-conf&#x53C2;&#x6570;&#x914D;&#x7F6E;">2.2 Spark Conf&#x53C2;&#x6570;&#x914D;&#x7F6E;</h4>
+<p><a href="http://spark.apache.org/docs/latest/configuration.html#application-properties" target="_blank">http://spark.apache.org/docs/latest/configuration.html#application-properties</a>
+| &#x5E38;&#x7528;&#x53C2;&#x6570;          | &#x63CF;&#x8FF0;                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| --master          | &#x8868;&#x793A;&#x8981;&#x8FDE;&#x63A5;&#x7684;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;                                       |
+| --deploy-mode     | &#x9009;&#x62E9;&#x9A71;&#x52A8;&#x5668;&#x7A0B;&#x5E8F;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;1)&#x672C;&#x5730;&#x5BA2;&#x6237;&#x7AEF;&#x201C;client&#x201D;&#xFF0C;&#x5373;&#x5728; spark-submit &#x88AB;&#x8C03;&#x7528;&#x7684;&#x8FD9;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#x542F;&#x52A8;&#xFF1B; 2&#xFF09;&#x96C6;&#x7FA4;&#x201C;cluster&#x201D;&#xFF0C;&#x5373;&#x9A71;&#x52A8;&#x5668;&#x7A0B;&#x5E8F;&#x4F1A;&#x88AB;&#x4F20;&#x8F93;&#x5E76;&#x6267;&#x884C; &#x4E8E;&#x96C6;&#x7FA4;&#x7684;&#x4E00;&#x4E2A;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x4E0A;&#x3002;&#x9ED8;&#x8BA4;&#x662F;&#x672C;&#x5730;&#x6A21;&#x5F0F; |
+| --class           | &#x8FD0;&#x884C; Java &#x6216; Scala &#x7A0B;&#x5E8F;&#x65F6;&#x5E94;&#x7528;&#x7684;&#x4E3B;&#x7C7B;                          |
+| --name            | &#x5E94;&#x7528;&#x7684;&#x663E;&#x793A;&#x540D;&#xFF0C;&#x4F1A;&#x663E;&#x793A;&#x5728; Spark &#x7684;&#x7F51;&#x9875;&#x7528;&#x6237;&#x754C;&#x9762;&#x4E2D;                |
+| --jars            | &#x9700;&#x8981;&#x4E0A;&#x4F20;&#x5E76;&#x653E;&#x5230;&#x5E94;&#x7528;&#x7684; CLASSPATH &#x4E2D;&#x7684; JAR                      |
+| --files           | &#x9700;&#x8981;&#x653E;&#x5230;&#x5E94;&#x7528;&#x5DE5;&#x4F5C;&#x76EE;&#x5F55;&#x4E2D;&#x7684;&#x6587;&#x4EF6;&#x7684;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x4E00;&#x822C;&#x7528;&#x6765;&#x653E;&#x9700;&#x8981;&#x5206;&#x53D1;&#x5230;&#x5404;&#x8282;&#x70B9;&#x7684; &#x6570;&#x636E;&#x6587;&#x4EF6; |
+| --executor-memory | &#x6267;&#x884C;&#x5668;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x91CF;&#xFF0C;&#x4EE5;&#x5B57;&#x8282;&#x4E3A;&#x5355;&#x4F4D;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540E;&#x7F00;&#x6307;&#x5B9A;&#x66F4;&#x5927;&#x7684;&#x5355;&#x4F4D;&#xFF0C;&#x6BD4;&#x5982; &#x201C;512m&#x201D;(512 MB)&#x6216;&#x201C;15g&#x201D;(15 GB) |
+| --driver-memory   | &#x9A71;&#x52A8;&#x5668;&#x8FDB;&#x7A0B;&#x4F7F;&#x7528;&#x7684;&#x5185;&#x5B58;&#x91CF;&#xFF0C;&#x4EE5;&#x5B57;&#x8282;&#x4E3A;&#x5355;&#x4F4D;&#x3002;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x540E;&#x7F00;&#x6307;&#x5B9A;&#x66F4;&#x5927;&#x7684;&#x5355;&#x4F4D;&#xFF0C;&#x6BD4;&#x5982; &#x201C;512m&#x201D;(512 MB)&#x6216;&#x201C;15g&#x201D;(15 GB) |</p>
+<ul>
+<li><p>Spark&#x4E2D;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x5730;&#x65B9;&#x6709;&#x56DB;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x5206;&#x522B;&#x662F;  </p>
+<p>1&#x3001;&#x7A0B;&#x5E8F;&#x8BBE;&#x5B9A;set</p>
+<pre><code class="lang-scala"><span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;conf&#x5BF9;&#x8C61;</span>
+<span class="hljs-keyword">val</span> conf = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>()
+conf.set(<span class="hljs-string">&quot;spark.app.name&quot;</span>, <span class="hljs-string">&quot;My Spark App&quot;</span>) 
+conf.set(<span class="hljs-string">&quot;spark.master&quot;</span>, <span class="hljs-string">&quot;local[4]&quot;</span>) 
+conf.set(<span class="hljs-string">&quot;spark.ui.port&quot;</span>, <span class="hljs-string">&quot;36000&quot;</span>) 
+<span class="hljs-comment">// &#x91CD;&#x8F7D;&#x9ED8;&#x8BA4;&#x7AEF;&#x53E3;&#x914D;&#x7F6E;</span>
+<span class="hljs-comment">// &#x4F7F;&#x7528;&#x8FD9;&#x4E2A;&#x914D;&#x7F6E;&#x5BF9;&#x8C61;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;SparkContext </span>
+<span class="hljs-keyword">val</span> sc = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkContext</span>(conf)
+</code></pre>
+</li>
+</ul>
+<p>2&#x3001;spark submit &#x4F20;&#x53C2;&#x6570;&#x6307;&#x5B9A;</p>
+<pre><code class="lang-shell">spark-submit \
+   --class com.example.MyApp \
+   --master local[4] \
+   --name &quot;My Spark App&quot; \
+   --conf spark.ui.port=36000 \
+   myApp.jar
+</code></pre>
+<p>3&#x3001;spark submit &#x4F20;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8BBE;&#x5B9A;</p>
+<pre><code class="lang-shell">spark-submit \
+   --class com.example.MyApp \
+   --properties-file my-config.conf \
+   myApp.jar
+
+## Contents of my-config.conf ##
+spark.master    local[4]
+spark.app.name  &quot;My Spark App&quot;
+spark.ui.port   36000
+</code></pre>
+<p>4&#x3001;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;&#x9ED8;&#x8BA4;&#x503C;</p>
+<pre><code>Spark &#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E2D;&#x627E;&#x5230; conf/spark-defaults.conf &#x6587;&#x4EF6;&#xFF0C;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;&#x8BE5;&#x6587;&#x4EF6;&#x4E2D;&#x4EE5;&#x7A7A;&#x683C;&#x9694;&#x5F00;&#x7684;&#x952E;&#x503C;&#x5BF9;&#x6570;&#x636E;
+</code></pre><h2 id="&#x4E09;&#x3001;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#x8BE6;&#x89E3;">&#x4E09;&#x3001;&#x8FD0;&#x884C;&#x53C2;&#x6570;&#x8BE6;&#x89E3;</h2>
+<h3 id="31---master">3.1 --master</h3>
+<p><a href="http://spark.apache.org/docs/latest/submitting-applications.html" target="_blank">http://spark.apache.org/docs/latest/submitting-applications.html</a>
+| &#x503C;                | &#x63CF;&#x8FF0;                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| spark://host:port | &#x8FDE;&#x63A5;&#x5230;&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x7684; Spark &#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x4E0A;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; Spark &#x72EC;&#x7ACB;&#x4E3B;&#x8282;&#x70B9;&#x4F7F;&#x7528; 7077 &#x7AEF;&#x53E3; |
+| mesos://host:port | &#x8FDE;&#x63A5;&#x5230;&#x6307;&#x5B9A;&#x7AEF;&#x53E3;&#x7684; Mesos &#x96C6;&#x7FA4;&#x4E0A;&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B; Mesos &#x4E3B;&#x8282;&#x70B9;&#x76D1;&#x542C; 5050 &#x7AEF;&#x53E3; |
+| yarn              | &#x8FDE;&#x63A5;&#x5230;&#x4E00;&#x4E2A; YARN &#x96C6;&#x7FA4;&#x3002;&#x5F53;&#x5728; YARN &#x4E0A;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF; HADOOP _CONF_DIR &#x6307;&#x5411; Hadoop &#x914D;&#x7F6E;&#x76EE;&#x5F55;&#xFF0C;&#x4EE5;&#x83B7;&#x53D6;&#x96C6;&#x7FA4;&#x4FE1;&#x606F; |
+| local             | &#x8FD0;&#x884C;&#x672C;&#x5730;&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x5355;&#x6838;                                       |
+| local[N]          | &#x8FD0;&#x884C;&#x672C;&#x5730;&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528; N &#x4E2A;&#x6838;&#x5FC3;                                  |
+| local[*]          | &#x8FD0;&#x884C;&#x672C;&#x5730;&#x6A21;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x6838;&#x5FC3;                             |</p>
+<h3 id="&#x56DB;&#x3001;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;">&#x56DB;&#x3001;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;</h3>
+<h4 id="41-saprk&#x81EA;&#x5E26;&#x7684;&#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;">4.1 Saprk&#x81EA;&#x5E26;&#x7684;&#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;</h4>
+<p><a href="http://spark.apache.org/docs/latest/spark-standalone.html" target="_blank">http://spark.apache.org/docs/latest/spark-standalone.html</a></p>
+<ul>
+<li>&#x542F;&#x52A8;&#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;</li>
+</ul>
+<pre><code>(1) &#x5C06;&#x7F16;&#x8BD1;&#x597D;&#x7684; Spark &#x590D;&#x5236;&#x5230;&#x6240;&#x6709;&#x673A;&#x5668;&#x7684;&#x4E00;&#x4E2A;&#x76F8;&#x540C;&#x7684;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x6BD4;&#x5982; /home/yourname/spark&#x3002;
+(2) &#x8BBE;&#x7F6E;&#x597D;&#x4ECE;&#x4E3B;&#x8282;&#x70B9;&#x673A;&#x5668;&#x5230;&#x5176;&#x4ED6;&#x673A;&#x5668;&#x7684; SSH &#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x3002;&#x8FD9;&#x9700;&#x8981;&#x5728;&#x6240;&#x6709;&#x673A;&#x5668;&#x4E0A;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7528; &#x6237;&#x8D26;&#x53F7;&#xFF0C;&#x5E76;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x901A;&#x8FC7; ssh-keygen &#x751F;&#x6210; SSH &#x79C1;&#x94A5;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8FD9;&#x4E2A;&#x79C1;&#x94A5;&#x653E;&#x5230;&#x6240;&#x6709;&#x5DE5;&#x4F5C; &#x8282;&#x70B9;&#x7684; .ssh/authorized_keys &#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x4F60;&#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x8FC7;&#x8FD9;&#x79CD;&#x914D;&#x7F6E;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x5982;&#x4E0B; &#x547D;&#x4EE4;:
+# &#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;:&#x8FD0;&#x884C;ssh-keygen&#x5E76;&#x63A5;&#x53D7;&#x9ED8;&#x8BA4;&#x9009;&#x9879;
+$ ssh-keygen -t dsa
+Enter file in which to save the key (/home/you/.ssh/id_dsa): [&#x56DE;&#x8F66;] Enter passphrase (empty for no passphrase): [&#x7A7A;]
+Enter same passphrase again: [&#x7A7A;]
+# &#x5728;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x4E0A;:
+# &#x628A;&#x4E3B;&#x8282;&#x70B9;&#x7684;~/.ssh/id_dsa.pub&#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;: $ cat ~/.ssh/id_dsa.pub &gt;&gt; ~/.ssh/authorized_keys
+$ chmod 644 ~/.ssh/authorized_keys
+(3) &#x7F16;&#x8F91;&#x4E3B;&#x8282;&#x70B9;&#x7684; conf/slaves &#x6587;&#x4EF6;&#x5E76;&#x586B;&#x4E0A;&#x6240;&#x6709;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x7684;&#x4E3B;&#x673A;&#x540D;&#x3002;
+(4) &#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x8FD0;&#x884C; sbin/start-all.sh(&#x8981;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x8FD0;&#x884C;&#x800C;&#x4E0D;&#x662F;&#x5728;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x4E0A;)&#x4EE5;&#x542F;&#x52A8;&#x96C6;&#x7FA4;&#x3002; &#x5982;&#x679C;&#x5168;&#x90E8;&#x542F;&#x52A8;&#x6210;&#x529F;&#xFF0C;&#x4F60;&#x4E0D;&#x4F1A;&#x5F97;&#x5230;&#x9700;&#x8981;&#x5BC6;&#x7801;&#x7684;&#x63D0;&#x793A;&#x7B26;&#xFF0C;&#x800C;&#x4E14;&#x53EF;&#x4EE5;&#x5728; http://masternode:8080 &#x770B;&#x5230;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;&#x7684;&#x7F51;&#x9875;&#x7528;&#x6237;&#x754C;&#x9762;&#xFF0C;&#x4E0A;&#x9762;&#x663E;&#x793A;&#x7740;&#x6240;&#x6709;&#x7684;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x3002;
+(5) &#x8981;&#x505C;&#x6B62;&#x96C6;&#x7FA4;&#xFF0C;&#x5728;&#x4E3B;&#x8282;&#x70B9;&#x4E0A;&#x8FD0;&#x884C; bin/stop-all.sh&#x3002;
+</code></pre><ul>
+<li>&#x68C0;&#x67E5;&#x7BA1;&#x7406;&#x5668;&#x662F;&#x5426;&#x6B63;&#x5E38;</li>
+</ul>
+<pre><code class="lang-shell">spark-shell --master spark://masternode:7077
+</code></pre>
+<ul>
+<li>&#x63D0;&#x4EA4;&#x7A0B;&#x5E8F;</li>
+</ul>
+<pre><code class="lang-shell">spark-submit --master spark://masternode:7077 yourapp
+
+&#x7BA1;&#x7406;&#x754C;&#x9762;
+http://masternode:8080
+&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;
+(1)&#x5E94;&#x7528;&#x8FDE;&#x63A5;&#x4E0A;&#x4E86;(&#x5373;&#x51FA;&#x73B0;&#x5728;&#x4E86; Running Applications &#x4E2D;);
+(2) &#x5217;&#x51FA;&#x7684;&#x6240;&#x4F7F;&#x7528;&#x7684;&#x6838;&#x5FC3;&#x548C;&#x5185;&#x5B58;&#x5747;&#x5927;&#x4E8E; 0&#x3002;
+</code></pre>
+<ul>
+<li>&#x8BF4;&#x660E;<blockquote>
+<p>&#x6267;&#x884C;&#x5668;&#x8FDB;&#x7A0B;&#x7533;&#x8BF7;&#x7684;&#x5185;&#x5B58;(--executor-memory&#x503C;)&#x8D85;&#x8FC7;&#x4E86;&#x96C6;&#x7FA4;&#x6240;&#x80FD;&#x63D0;&#x4F9B;&#x7684;&#x5185;&#x5B58;&#x603B;&#x91CF;&#xFF0C;&#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;&#x59CB;&#x7EC8;&#x65E0;&#x6CD5;&#x4E3A;&#x5E94;&#x7528;&#x5206;&#x914D;&#x6267;&#x884C;&#x5668;&#x8282;&#x70B9;  </p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>&#x72EC;&#x7ACB;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;&#x652F;&#x6301;&#x4E24;&#x79CD;&#x90E8;&#x7F72;&#x6A21;&#x5F0F;&#xFF08;--deploy-mode&#xFF09;&#xFF0C;client&#xFF08;&#x9ED8;&#x8BA4;&#xFF0C;&#x9A71;&#x52A8;&#x5668;&#x7A0B;&#x5E8F;&#x5C31;&#x662F;&#x4F60;&#x63D0;&#x4EA4;&#x4EFB;&#x52A1;&#x7684;&#x673A;&#x5668;&#xFF09;&#x548C; cluster&#xFF08;&#x9A71;&#x52A8;&#x5668;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x5728;&#x96C6;&#x7FA4;&#x7684;&#x67D0;&#x4E2A;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#xFF09;</p>
+<p>&#x5982;&#x679C;&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#xFF08;20&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;4cores&#xFF09;&#xFF0C;&#x5F53;&#x4F60;&#x63D0;&#x4EA4;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF08;8cores&#xFF0C;&#x6BCF;&#x4E2A;core1G&#xFF09;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Spark&#x5C06;&#x4F1A;&#x5728;8&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#x4E0A;&#x53EC;&#x5524;&#x8D77;8&#x4E2A;core&#xFF0C;&#x6BCF;&#x4E2A;core1G&#xFF0C;&#x5F53;&#x7136;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x914D;&#x7F6E;spark.deploy.spreadOut=false&#x6765;&#x8981;&#x6C42;&#x7533;&#x8BF7;&#x5C3D;&#x53EF;&#x80FD;&#x5C11;&#x7684;&#x7269;&#x7406;&#x8282;&#x70B9;&#xFF0C;&#x6BD4;&#x5982;2&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#x3001;2*4cores</p>
+</blockquote>
+<h4 id="42-yarn">4.2 YARN</h4>
+<p><a href="http://spark.apache.org/docs/latest/running-on-yarn.html" target="_blank">http://spark.apache.org/docs/latest/running-on-yarn.html</a></p>
+<ul>
+<li>&#x914D;&#x7F6E;&#x5E76;&#x63D0;&#x4EA4;&#x4EFB;&#x52A1;<pre><code>(1) &#x8BBE;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF; HADOOP_CONF_DIR&#x3002;&#x8FD9;&#x4E2A;&#x76EE;&#x5F55; &#x5305;&#x542B; yarn-site.xml &#x548C;&#x5176;&#x4ED6;&#x914D;&#x7F6E;&#x6587;&#x4EF6;;&#x5982;&#x679C;&#x4F60;&#x628A; Hadoop &#x88C5;&#x5230; HADOOP_HOME &#x4E2D;&#xFF0C;&#x90A3;&#x4E48;&#x8FD9; &#x4E2A;&#x76EE;&#x5F55;&#x901A;&#x5E38;&#x4F4D;&#x4E8E; HADOOP_HOME/conf &#x4E2D;&#xFF0C;&#x5426;&#x5219;&#x53EF;&#x80FD;&#x4F4D;&#x4E8E;&#x7CFB;&#x7EDF;&#x76EE;&#x5F55; /etc/hadoop/conf &#x4E2D;
+(2) &#x7136;&#x540E;&#x7528;&#x5982;&#x4E0B;&#x65B9;&#x5F0F;&#x63D0;&#x4EA4;&#x4F60;&#x7684;&#x5E94;&#x7528;:
+  export HADOOP_CONF_DIR=&quot;...&quot;
+  spark-submit --master yarn yourapp
+</code></pre></li>
+</ul>
+<h4 id="43-mesos">4.3 Mesos</h4>
+<p><a href="http://spark.apache.org/docs/latest/running-on-mesos.html" target="_blank">http://spark.apache.org/docs/latest/running-on-mesos.html</a></p>
+<ul>
+<li>&#x6267;&#x884C;&#x5668;&#x4E4B;&#x95F4;&#x7684;&#x8D44;&#x6E90;&#x5171;&#x4EAB;&#xFF0C;&#x5206;&#x4E3A;&#x7EC6;&#x7C92;&#x5EA6;&#x6A21;&#x5F0F;&#xFF08;&#x9ED8;&#x8BA4;&#xFF0C;&#x6267;&#x884C;&#x5668;cores&#x7684;&#x6570;&#x91CF;&#x4F1A;&#x968F;&#x7740;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x800C;&#x53D8;&#x5316;&#xFF09;&#xFF0C;&#x548C;&#x7C97;&#x7C92;&#x5EA6;&#x6A21;&#x5F0F;&#xFF08;spark.mesos.coarse=true, &#x6BD4;&#x8F83;&#x9002;&#x5408;streaming&#x8FD9;&#x6837;&#x7684;&#x9AD8;&#x5B9E;&#x6548;&#x6027;&#x4EFB;&#x52A1;&#xFF0C;&#x51CF;&#x5C11;core&#x8C03;&#x5EA6;&#x4E4B;&#x95F4;&#x7684;&#x5EF6;&#x8FDF;&#xFF09;</li>
+</ul>
+<h4 id="44-ec2">4.4 EC2</h4>
+<p><a href="http://spark.apache.org/docs/latest/ec2-scripts.html" target="_blank">http://spark.apache.org/docs/latest/ec2-scripts.html</a></p>
+<ul>
+<li>&#x6BD4;&#x8F83;&#x9002;&#x5408;&#x642D;&#x914D;S3</li>
+</ul>
+<h3 id="&#x4E94;&#x3001;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x754C;&#x9762;">&#x4E94;&#x3001;&#x4EFB;&#x52A1;&#x7BA1;&#x7406;&#x754C;&#x9762;</h3>
+<ul>
+<li>Jobs \ Stages &#x65B9;&#x4FBF;&#x67E5;&#x770B;&#x5404;&#x4E2A;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x65F6;&#x95F4;
+<img src="../pic/spark/jobs.png" alt="jobs"></li>
+<li><img src="../pic/spark/stages.png" alt="stages"></li>
+<li>Storage &#x8868;&#x793A;&#x5DF2;&#x7F13;&#x5B58;&#x7684;RDD&#x4FE1;&#x606F;
+<img src="../pic/spark/storage.png" alt="storage"></li>
+<li>Environment &#x53EF;&#x4EE5;&#x67E5;&#x770B;&#x6211;&#x4EEC;&#x8BBE;&#x7F6E;&#x7684;&#x914D;&#x7F6E;&#x4FE1;&#x606F;
+<img src="../pic/spark/environment.png" alt="environment"></li>
+<li>Executors &#x5404;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x6267;&#x884C;&#x548C;&#x914D;&#x7F6E;&#x60C5;&#x51B5;
+<img src="../pic/spark/executors.png" alt="executors"></li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8C03;&#x4F18;">&#x516D;&#x3001;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x8C03;&#x4F18;</h3>
+<h4 id="61-&#x4F18;&#x5316;&#x5206;&#x533A;&#x6570;&#x3001;&#x5E76;&#x884C;&#x5EA6;">6.1 &#x4F18;&#x5316;&#x5206;&#x533A;&#x6570;&#x3001;&#x5E76;&#x884C;&#x5EA6;</h4>
+<ul>
+<li><p>&#x5728;&#x6570;&#x636E;&#x6DF7;&#x6D17;&#x7684;&#x65F6;&#x5019;&#x4F20;&#x5408;&#x7406;&#x7684;&#x53C2;&#x6307;&#x5B9A;&#x5E76;&#x884C;&#x5EA6;</p>
+</li>
+<li><p>&#x5BF9;&#x5DF2;&#x6709;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x4ECE;&#x65B0;&#x5206;&#x533A; repartition&#x3001;&#x51CF;&#x5C11;&#x5206;&#x533A;&#x6570;coalesce</p>
+<pre><code># &#x4EE5;&#x53EF;&#x4EE5;&#x5339;&#x914D;&#x6570;&#x5343;&#x4E2A;&#x6587;&#x4EF6;&#x7684;&#x901A;&#x914D;&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;&#x8F93;&#x5165;
+&gt;&gt;&gt; input = sc.textFile(&quot;s3n://log-files/2014/*.log&quot;)
+&gt;&gt;&gt; input.getNumPartitions()
+35154
+# &#x6392;&#x9664;&#x6389;&#x5927;&#x90E8;&#x5206;&#x6570;&#x636E;&#x7684;&#x7B5B;&#x9009;&#x65B9;&#x6CD5;
+&gt;&gt;&gt; lines = input.filter(lambda line: line.startswith(&quot;2014-10-17&quot;)) &gt;&gt;&gt; lines.getNumPartitions()
+35154
+# &#x5728;&#x7F13;&#x5B58;lines&#x4E4B;&#x524D;&#x5148;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x5408;&#x5E76;&#x64CD;&#x4F5C;
+&gt;&gt;&gt; lines = lines.coalesce(5).cache()
+&gt;&gt;&gt; lines.getNumPartitions()
+4
+# &#x53EF;&#x4EE5;&#x5728;&#x5408;&#x5E76;&#x4E4B;&#x540E;&#x7684;RDD&#x4E0A;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x5206;&#x6790;
+&gt;&gt;&gt; lines.count()
+</code></pre></li>
+</ul>
+<h4 id="62-&#x8BBE;&#x7F6E;kyro&#x7684;&#x7CFB;&#x5217;&#x5316;&#x65B9;&#x5F0F;">6.2 &#x8BBE;&#x7F6E;kyro&#x7684;&#x7CFB;&#x5217;&#x5316;&#x65B9;&#x5F0F;</h4>
+<p>org.apache.spark.serializer.KryoSerializer&#x4F1A;&#x4F18;&#x4E8E;&#x9ED8;&#x8BA4;&#x7684;java&#x5E8F;&#x5217;&#x5316;&#x7684;&#x5E93;</p>
+<ul>
+<li><p>&#x666E;&#x901A;&#x7684;&#x5E8F;&#x5217;&#x5316;</p>
+<pre><code>val conf = new SparkConf()
+conf.set(&quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;)
+</code></pre></li>
+<li><p>&#x6709;&#x6CE8;&#x518C;&#x8FC7;&#x7684;&#x5E8F;&#x5217;&#x5316;
+```
+val conf = new SparkConf()
+conf.set(&quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;)
+conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))</p>
+</li>
+</ul>
+<pre><code>
+- &#x6709;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x5FC5;&#x987B;&#x6CE8;&#x518C;&#x7684;&#x5E8F;&#x5217;&#x5316;
+</code></pre><p>val conf = new SparkConf()
+conf.set(&quot;spark.serializer&quot;, &quot;org.apache.spark.serializer.KryoSerializer&quot;)
+// &#x4E25;&#x683C;&#x8981;&#x6C42;&#x6CE8;&#x518C;&#x7C7B;
+conf.set(&quot;spark.kryo.registrationRequired&quot;, &quot;true&quot;)
+conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))</p>
+<p>```</p>
+<h4 id="63-&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x7B56;&#x7565;">6.3 &#x4FEE;&#x6539;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x7B56;&#x7565;</h4>
+<p>1&#x3001;&#x91CD;&#x65B0;&#x5206;&#x914D;RDD&#x5B58;&#x50A8;&#x3001;&#x6570;&#x636E;&#x6DF7;&#x6D17;&#x805A;&#x5408;&#x5B58;&#x50A8;&#x3001;&#x7528;&#x6237;&#x5B58;&#x50A8;&#x5360;&#x6BD4;<br>2&#x3001;&#x6539;&#x8FDB;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF0C;&#x6BD4;&#x65B9;&#x8BF4;MEMORY_ONLY &#x6539;&#x4E3A; MEMORY_AND_DISK&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x7F13;&#x5B58;&#x7A7A;&#x95F4;&#x4E0D;&#x591F;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4E0D;&#x4F1A;&#x5220;&#x9664;&#x65E7;&#x6570;&#x636E;&#x5BFC;&#x81F4;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x8BA1;&#x7B97;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x4ECE;&#x78C1;&#x76D8;load&#x6570;&#x636E;&#xFF1B;&#x518D;&#x6BD4;&#x65B9;&#x8BF4;MEMORY_ONLY &#x6539;&#x4E3A; MEMORY_AND_DISK_SER &#x6216;&#x8005; MEMORY_ONLY_SER&#xFF0C;&#x867D;&#x7136;&#x589E;&#x52A0;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5927;&#x91CF;&#x7684;&#x51CF;&#x5C11;GC&#x7684;&#x65F6;&#x95F4;</p>
+<h4 id="64-&#x786C;&#x4EF6;&#x4F18;&#x5316;">6.4 &#x786C;&#x4EF6;&#x4F18;&#x5316;</h4>
+<p>1&#x3001;&#x53CC;&#x500D;&#x7684;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF08;CPU&#x3001;Core&#xFF09;&#x5F80;&#x5F80;&#x80FD;&#x5E26;&#x6765;&#x5E94;&#x7528;&#x65F6;&#x95F4;&#x51CF;&#x534A;&#x7684;&#x6548;&#x679C;<br>2&#x3001;&#x66F4;&#x5927;&#x7684;&#x672C;&#x5730;&#x78C1;&#x76D8;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x63D0;&#x9AD8;Spark&#x7684;&#x5E94;&#x7528;&#x6027;&#x80FD;</p>
+<blockquote>
+<p>@ &#x5B66;&#x5FC5;&#x6C42;&#x5176;&#x5FC3;&#x5F97;&#xFF0C;&#x4E1A;&#x5FC5;&#x8D35;&#x5176;&#x4E13;&#x7CBE;
+@ WHAT - HOW - WHY
+@ &#x4E0D;&#x79EF;&#x8DEC;&#x6B65; - &#x65E0;&#x4EE5;&#x81F3;&#x5343;&#x91CC; </p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright (c) 2019 Tencent PRUCE &amp; KB. all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">time&#xFF1A;
+2019-11-27 13:33:24
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="spark_quick_start.html" class="navigation navigation-prev " aria-label="Previous page: Spark Quick Start">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="spark_streaming_quick_start.html" class="navigation navigation-next " aria-label="Next page: Spark Streaming Quick Start">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Spark Running","level":"2.2","depth":1,"next":{"title":"Spark Streaming Quick Start","level":"2.3","depth":1,"path":"spark/spark_streaming_quick_start.md","ref":"spark/spark_streaming_quick_start.md","articles":[]},"previous":{"title":"Spark Quick Start","level":"2.1","depth":1,"path":"spark/spark_quick_start.md","ref":"spark/spark_quick_start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","splitter","expandable-chapters-small","-sharing","search-pro","tbfed-pagefooter","github","donate","multipart","mathjax","echarts"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright (c) 2019 Tencent PRUCE & KB.","modify_label":"time：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/prucehuang/bigdata-introduction.git"},"splitter":{},"search-pro":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"https://github.com/prucehuang/common-resources/blob/master/pictures/zhifubao_pay.jpg?raw=true","alipayText":"支付宝","button":"赏","title":"","wechat":"https://github.com/prucehuang/common-resources/blob/master/pictures/wechat_pay.jpg?raw=true","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"echarts":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"chart":{}},"theme":"default","author":"pruce","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"bigdata-introduction","language":"zh-hans","gitbook":"3.2.3","description":"bigdata notes"},"file":{"path":"spark/spark_running.md","mtime":"2019-11-27T05:33:24.990Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-01T09:30:28.029Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

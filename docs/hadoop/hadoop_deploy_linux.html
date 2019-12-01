@@ -1,0 +1,1053 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>在Ubuntu_Centos上部署Hadoop · bigdata-introduction</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="pruce">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="hadoop_deploy_mac.html" />
+    
+    
+    <link rel="prev" href="../spark/spark_important.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Spark</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../spark/spark_quick_start.html">
+            
+                <a href="../spark/spark_quick_start.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Spark Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../spark/spark_running.html">
+            
+                <a href="../spark/spark_running.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Spark Running
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../spark/spark_streaming_quick_start.html">
+            
+                <a href="../spark/spark_streaming_quick_start.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Spark Streaming Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../spark/spark_important.html">
+            
+                <a href="../spark/spark_important.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    Spark划重点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hadoop</li>
+        
+        
+    
+        <li class="chapter active" data-level="3.1" data-path="hadoop_deploy_linux.html">
+            
+                <a href="hadoop_deploy_linux.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    在Ubuntu_Centos上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="hadoop_deploy_mac.html">
+            
+                <a href="hadoop_deploy_mac.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    在Mac OS上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hive</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../hive/hive_quick_start.html">
+            
+                <a href="../hive/hive_quick_start.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Hive Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../hive/hive_join.html">
+            
+                <a href="../hive/hive_join.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Join解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../hive/hive_window_function.html">
+            
+                <a href="../hive/hive_window_function.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    分析窗口函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../hive/hive_optimize.html">
+            
+                <a href="../hive/hive_optimize.html">
+            
+                    
+                        <b>4.4.</b>
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Kafka</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../kafka/kafka_quick_start.html">
+            
+                <a href="../kafka/kafka_quick_start.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Kafka Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flume</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../flume/flume_quick_start.html">
+            
+                <a href="../flume/flume_quick_start.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Flume Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Zookeeper</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../zookeeper/zookeeper_quick_start.html">
+            
+                <a href="../zookeeper/zookeeper_quick_start.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    Zookeeper Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Thanks</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../thanks.html">
+            
+                <a href="../thanks.html">
+            
+                    
+                        <b>8.1.</b>
+                    
+                    感谢&参考文章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >在Ubuntu_Centos上部署Hadoop</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x5728;ubuntucentos&#x4E0A;&#x90E8;&#x7F72;hadoop">&#x5728;Ubuntu_Centos&#x4E0A;&#x90E8;&#x7F72;Hadoop</h1>
+<h2 id="&#x4E00;&#x3001;&#x7528;&#x865A;&#x62DF;&#x673A;&#x6A21;&#x62DF;&#x4E09;&#x53F0;&#x670D;&#x52A1;&#x5668;">&#x4E00;&#x3001;&#x7528;&#x865A;&#x62DF;&#x673A;&#x6A21;&#x62DF;&#x4E09;&#x53F0;&#x670D;&#x52A1;&#x5668;</h2>
+<p>&#x521B;&#x5EFA;&#x4E09;&#x53F0;&#x865A;&#x62DF;&#x673A;&#x5E76;&#x5206;&#x522B;&#x8BBE;&#x7F6E;&#x5176;&#x72EC;&#x7ACB;&#x9759;&#x6001;IP</p>
+<h3 id="11&#x8BBE;&#x7F6E;&#x865A;&#x62DF;&#x673A;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x65B9;&#x5F0F;">1.1&#x8BBE;&#x7F6E;&#x865A;&#x62DF;&#x673A;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x65B9;&#x5F0F;</h3>
+<p>&#x5C06;&#x865A;&#x62DF;&#x673A;&#x7F51;&#x5361;&#x548C;&#x4E3B;&#x673A;&#x4E4B;&#x95F4;&#x7684;&#x65B9;&#x5F0F;&#x8BBE;&#x7F6E;&#x4E3A;&#x6865;&#x63A5;&#x6A21;&#x5F0F; 
+<img src="../pic/hadoop/wps30a1.tmp.png" alt="img"></p>
+<h3 id="12&#x8BBE;&#x7F6E;&#x9759;&#x6001;ip">1.2&#x8BBE;&#x7F6E;&#x9759;&#x6001;IP</h3>
+<p>&#x6253;&#x5F00;&#x6587;&#x4EF6;/etc/sysconfig/network-scrip/ifcfg-eth0
+DEVICE=&#x201D;eth0&#x201D;
+BOOTPROTO=&quot;static&quot;
+IPADDR=&#x201D;&#x672C;&#x865A;&#x62DF;&#x673A;&#x9759;&#x6001;IP&#x201D;
+GATEWAY=&#x201D;&#x9ED8;&#x8BA4;&#x7F51;&#x5173;&#x201D;
+NETMASK=&#x201D;&#x5B50;&#x7F51;&#x63A9;&#x7801;&#x201D;
+ONBOOT=&#x201D;yes&#x201D;</p>
+<h3 id="13&#x91CD;&#x542F;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x547D;&#x4EE4;">1.3&#x91CD;&#x542F;&#x7F51;&#x7EDC;&#x670D;&#x52A1;&#x547D;&#x4EE4;</h3>
+<p>service network restart
+<strong>&#x4E8C;&#x3001;&#x6DFB;&#x52A0;Hadoop&#x7528;&#x6237;</strong>
+2.1&#x521B;&#x5EFA;hhadoop&#x7528;&#x6237;&#x7EC4;
+<img src="../pic/hadoop/wps30b2.tmp.png" alt="img">
+&#xFF08; &#x5728;centos&#x4E0A;&#x9700;&#x8981;&#x5C06;addgroup&#x6539;&#x4E3A;groupadd&#xFF09;
+2.2&#x521B;&#x5EFA;hadoop&#x7528;&#x6237;
+<img src="../pic/hadoop/wps30c3.tmp.png" alt="img">
+&#xFF08;&#x5728;centos&#x9700;&#x8981;&#x5C06;adduser&#x6539;&#x4E3A;useradd&#xFF0C;&#x5E76;&#x8BBE;&#x7F6E;&#x5BC6;&#x7801;&#x4E3A;hadoop&#xFF09;&#x753B;
+<img src="../pic/hadoop/wps30c4.tmp.png" alt="img">
+2.3&#x7ED9;hadoop&#x7528;&#x6237;&#x6DFB;&#x52A0;&#x6743;&#x9650;&#xFF0C;&#x6253;&#x5F00;/etc/sudoers&#x6587;&#x4EF6;
+<img src="../pic/hadoop/wps30c5.tmp.png" alt="img">
+&#xFF08;centos&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;vi&#x4EE3;&#x66FF;gedit&#xFF09;
+&#x5728;root  ALL=(ALL:ALL)  ALL&#x540E;&#x6DFB;&#x52A0;hadoop  ALL=(ALL:ALL) ALL
+<img src="../pic/hadoop/wps30d5.tmp.png" alt="img"></p>
+<p><strong>&#x4E09;&#x3001;&#x4FEE;&#x6539;&#x4E3B;&#x673A;&#x540D;</strong>
+&#x96C6;&#x7FA4;&#x4E2D;&#x9700;&#x8981;&#x7ED9;&#x6BCF;&#x53F0;&#x673A;&#x5668;&#x53D6;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x540D;&#x5B57;&#x3002;Ubuntu&#x4E2D;&#x673A;&#x5668;&#x540D;&#x7531; /etc/hostname&#x6587;&#x4EF6;&#x51B3;&#x5B9A;&#x3002;
+3.1&#x6253;&#x5F00;/etc/hostname&#x6587;&#x4EF6;
+<img src="../pic/hadoop/wps30d6.tmp.png" alt="img">
+3.2&#x56DE;&#x8F66;&#x540E;&#x5C31;&#x6253;&#x5F00;/etc/hostname&#x6587;&#x4EF6;&#x4E86;&#xFF0C;&#x5C06;/etc/hostname&#x6587;&#x4EF6;&#x4E2D;&#x7684;ubuntu&#x6539;&#x4E3A;&#x4F60;&#x60F3;&#x53D6;&#x7684;&#x673A;&#x5668;&#x540D;&#xFF0C;&#x5982;master&#x3001;slave1&#x3001;slave2&#x3002;
+3.3&#x91CD;&#x542F;&#x7CFB;&#x7EDF;&#xFF08;reboot&#xFF09;&#x540E;&#x751F;&#x6548;&#x3002;
+&#xFF08;&#x5982;&#x679C;&#x662F;centos&#xFF0C;&#x5219;&#x9700;&#x8981;&#x4FEE;&#x6539;/etc/sysconfig/network&#x6587;&#x4EF6;&#xFF09;
+<img src="../pic/hadoop/wps30d7.tmp.png" alt="img"></p>
+<p><strong>&#x56DB;&#x3001;&#x4FEE;&#x6539;host&#x6587;&#x4EF6;</strong>
+&#x5C06;&#x96C6;&#x7FA4;&#x4E2D;&#x5404;&#x4E3B;&#x673A;&#x540D;&#x5BF9;&#x5E94;&#x7684;IP&#x6DFB;&#x52A0;&#x5230;&#x6BCF;&#x53F0;&#x4E3B;&#x673A;&#x7684;host&#x6587;&#x4EF6;&#x4E2D;
+<img src="../pic/hadoop/wps30d8.tmp.png" alt="img"></p>
+<p><strong>&#x4E94;&#x3001;&#x6DFB;&#x52A0;&#x65E0;&#x5BC6;&#x7801;SSH&#x670D;&#x52A1;</strong>
+5.1&#x5B89;&#x88C5;openssh-server<br><img src="../pic/hadoop/wps30d9.tmp.png" alt="img">
+&#xFF08;&#x6CE8;&#xFF1A;&#x81EA;&#x52A8;&#x5B89;&#x88C5;openssh-server&#x65F6;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x8FDB;&#x884C;&#x4E0D;&#x4E0B;&#x53BB;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#xFF1A;)</p>
+<p><img src="../pic/hadoop/wps30da.tmp.png" alt="img">
+&#x66F4;&#x65B0;&#x7684;&#x5FEB;&#x6162;&#x53D6;&#x51B3;&#x4E8E;&#x7F51;&#x901F;&#xFF0C;&#x5982;&#x679C;&#x4E2D;&#x9014;&#x56E0;&#x4E3A;&#x65F6;&#x95F4;&#x8FC7;&#x957F;&#x4E2D;&#x65AD;&#x4E86;&#x66F4;&#x65B0;&#xFF08;ctrl+z&#xFF09;&#xFF0C;&#x5F53;&#x518D;&#x6B21;&#x66F4;&#x65B0;&#x65F6;&#xFF0C;&#x4F1A;&#x66F4;&#x65B0;&#x4E0D;&#x4E86;&#xFF0C;&#x62A5;&#x9519;&#x4E3A;&#xFF1A;&#x201C;Ubuntu&#x65E0;&#x6CD5;&#x9501;&#x5B9A;&#x7BA1;&#x7406;&#x76EE;&#x5F55;&#xFF08;/var/lib/dpkg/&#xFF09;&#xFF0C;&#x662F;&#x5426;&#x6709;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x5360;&#x7528;&#x5B83;&#xFF1F;&#x201C;&#x9700;&#x8981;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;</p>
+<p><img src="../pic/hadoop/wps30eb.tmp.png" alt="img">
+&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x540E;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x7B2C;1&#x6B65;
+&#x5982;&#x679C;&#x662F;centos&#x5219;&#x4F7F;&#x7528;yum&#x4EE3;&#x66FF;apt-get
+<img src="../pic/hadoop/wps30ec.tmp.png" alt="img"></p>
+<p>5.2&#x751F;&#x6210;RSA&#x5BF9;&#x79F0;&#x5BC6;&#x7801;
+<img src="../pic/hadoop/wps30fc.tmp.png" alt="img">
+ssh-keygen -t rsa
+&#x56DE;&#x8F66;&#x540E;&#x4F1A;&#x5728;~/.ssh/&#x4E0B;&#x751F;&#x6210;&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF1A;
+id_rsa&#x662F;&#x79C1;&#x94A5;
+id_rsa.pub&#x662F;&#x516C;&#x94A5;
+5.3&#x8FDB;&#x5165;~/.ssh/&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x5C06;id_rsa.pub&#x8FFD;&#x52A0;&#x5230;&#x63D2;&#x5934;&#x6388;&#x6743;&#x6587;&#x4EF6;&#x4E2D;
+<img src="../pic/hadoop/wps30fd.tmp.png" alt="img">
+5.4&#x672C;&#x673A;&#x6D4B;&#x8BD5;
+<img src="../pic/hadoop/wps310e.tmp.png" alt="img">
+( &#x6CE8;&#xFF1A;&#x5F53;ssh&#x8FDC;&#x7A0B;&#x767B;&#x5F55;&#x5230;&#x5176;&#x5B83;&#x673A;&#x5668;&#x540E;&#xFF0C;&#x73B0;&#x5728;&#x4F60;&#x63A7;&#x5236;&#x7684;&#x662F;&#x8FDC;&#x7A0B;&#x7684;&#x673A;&#x5668;&#xFF0C;&#x9700;&#x8981;&#x6267;&#x884C;&#x9000;&#x51FA;&#x547D;&#x4EE4;&#x624D;&#x80FD;&#x91CD;&#x65B0;&#x63A7;&#x5236;&#x672C;&#x5730;&#x4E3B;&#x673A;&#x3002;) 
+<img src="../pic/hadoop/wps311f.tmp.png" alt="img"></p>
+<p>&#x3010;&#x5207;&#x8BB0;&#x3011;
+SSH&#x4E2D;&#x5BC6;&#x94A5;&#x6587;&#x4EF6;&#x7684;&#x6743;&#x9650;&#x503C;&#x5FC5;&#x987B;&#x90FD;&#x8BBE;&#x4E3A;600
+sudo chmod 600 /home/hadoop/.ssh/<em>
+<strong>&#x516D;&#x3001;&#x8282;&#x70B9;&#x95F4;&#x4F7F;&#x7528;SSH&#x8FDE;&#x63A5;</strong>
+6.1&#x5C06;<strong>&#x5404;&#x8282;&#x70B9;</strong>&#x7684;id_rsa.pub&#x516C;&#x94A5;&#x62F7;&#x8D1D;&#x5230;<em>*&#x5404;&#x8282;&#x70B9;&#x7684;</em></em>authorized_keys&#x5185;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5404;&#x8282;&#x70B9;&#x4E4B;&#x95F4;&#x7684;&#x65E0;SSH&#x5BC6;&#x7801;&#x901A;&#x8BAF;
+<img src="../pic/hadoop/wps3120.tmp.png" alt="img"></p>
+<p> 6.2&#x6D4B;&#x8BD5;&#x8FDE;&#x63A5;
+<img src="../pic/hadoop/wps3121.tmp.png" alt="img"></p>
+<p>&#x5173;&#x4E8E;SSH&#x7684;&#x901A;&#x8BAF;&#x539F;&#x7406;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x505A;&#x8BE6;&#x8FF0;&#xFF0C;&#x6709;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x535A;&#x5BA2;
+<a href="http://qindongliang.iteye.com/blog/1958518" target="_blank">http://qindongliang.iteye.com/blog/1958518</a> &#x4ECB;&#x7ECD;&#x7684;&#x5F88;&#x8BE6;&#x7EC6;&#x7684;&#x6837;&#x5B50;</p>
+<p><strong>&#x4E03;&#x3001;&#x5B89;&#x88C5;JDK</strong>
+&#x6211;&#x4EEC;&#x9009;&#x62E9;&#x7684;&#x662F;jdk1.6.0_30&#x7248;&#x672C;,&#x5B89;&#x88C5;&#x6587;&#x4EF6;&#x540D;&#x4E3A;jdk-6u30-linux-i586.bin.
+<strong>7.1&#x590D;&#x5236;jdk&#x5230;&#x5B89;&#x88C5;&#x76EE;&#x5F55;</strong>
+&#x6211;&#x4EEC;&#x6307;&#x5B9A;&#x7684;&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x662F;&#xFF1A;/usr/local/java&#xFF0C;&#x5148;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;java&#x6587;&#x4EF6;&#x5939; </p>
+<p><img src="../pic/hadoop/wps3131.tmp.png" alt="img">
+&#x518D;&#x5C06;bin&#x6587;&#x4EF6;&#x62F7;&#x8D1D;&#x8FDB;&#x53BB;
+<img src="../pic/hadoop/wps3132.tmp.png" alt="img"></p>
+<p><strong>7.2&#x5B89;&#x88C5;jdk</strong>
+&#x5207;&#x6362;&#x5230;root&#x7528;&#x6237;&#x4E0B;
+<img src="../pic/hadoop/wps3133.tmp.png" alt="img">
+<strong>&#xFF08;&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x56E0;&#x5FD8;&#x8BB0;&#x5BC6;&#x7801;&#x800C;&#x8BA4;&#x8BC1;&#x5931;&#x8D25;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x4FEE;&#x6539;root&#x7528;&#x6237;&#x7684;&#x5BC6;&#x7801;&#xFF0C;&#x518D;&#x6267;&#x884C;&#xFF09;</strong>
+<img src="../pic/hadoop/wps3134.tmp.png" alt="img">
+&#x8FD0;&#x884C;jdk-6u30-linux-i586.bin
+<img src="../pic/hadoop/wps3135.tmp.png" alt="img"></p>
+<p>&#xFF08;&#x6CE8;&#xFF1A;&#x5982;&#x679C;&#x9047;&#x5230;&#x6743;&#x9650;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x66F4;&#x6539;jdk-6u30-linux-i586.bin&#x6743;&#x9650;&#xFF09; 
+<img src="../pic/hadoop/wps3136.tmp.png" alt="img"></p>
+<p>&#x66F4;&#x6539;&#x6743;&#x9650;&#x540E;&#x518D;&#x6267;&#x884C;&#x4E0A;&#x4E00;&#x6B65;&#xFF0C;&#x5F53;&#x770B;&#x5230;&#x4E0B;&#x56FE;&#x60C5;&#x51B5;&#x65F6;&#xFF0C;&#x8BF4;&#x660E;&#x4F60;&#x5B89;&#x88C5;&#x6210;&#x529F;&#x4E86;&#x3002;
+<img src="../pic/hadoop/wps3147.tmp.png" alt="img"></p>
+<p><strong>&#x8FD9;&#x65F6;&#x5728;/usr/local/java&#x76EE;&#x5F55;&#x4E0B;&#x5C31;&#x591A;&#x4E86;&#x4E00;&#x4E2A;jdk1.6.0_30&#x6587;&#x4EF6;&#x5939;</strong></p>
+<p><img src="../pic/hadoop/wps3148.tmp.png" alt="img">
+<strong>7.3&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</strong>
+&#xFF08;1&#xFF09;&#x6253;&#x5F00;/etc/profile&#x6587;&#x4EF6;
+<img src="../pic/hadoop/wps3158.tmp.png" alt="img"></p>
+<p><strong>&#xFF08;2&#xFF09;&#x6DFB;&#x52A0;&#x53D8;&#x91CF;&#x5982;&#x4E0B;&#xFF1A;</strong>
+# /etc/profile: system-wide .profile file for the Bourne shell (sh(1)) 
+# and Bourne compatible shells (bash(1), ksh(1), ash(1), ...). 
+#set java environment<br>export JAVA_HOME=/usr/local/java/jdk1.6.0_30<br>export JRE_HOME=/usr/local/java/jdk1.6.0_30/jre<br>export CLASSPATH=.:$JAVA_HOME/lib:$JRE_HOME/lib:$CLASSPATH<br>export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$JAVA_HOME:$PATH<br>&#xFF08;&#x6CE8;&#xFF1A;&#x4E3A;&#x4E86;&#x4EE5;&#x540E;&#x96C6;&#x7FA4;&#x5DE5;&#x4F5C;&#x7684;&#x65B9;&#x4FBF;&#xFF0C;&#x8FD9;&#x91CC;&#x5EFA;&#x8BAE;&#x6BCF;&#x53F0;&#x673A;&#x5668;&#x7684;java&#x73AF;&#x5883;&#x6700;&#x597D;&#x4E00;&#x81F4;&#x3002;&#xFF09;
+&#x4E00;&#x822C;&#x66F4;&#x6539;/etc/profile&#x6587;&#x4EF6;&#x540E;&#xFF0C;&#x9700;&#x8981;&#x91CD;&#x542F;&#x673A;&#x5668;&#x624D;&#x80FD;&#x751F;&#x6548;&#x3002;&#x8FD9;&#x91CC;&#x4ECB;&#x7ECD;&#x4E00;&#x79CD;&#x4E0D;&#x7528;&#x91CD;&#x542F;&#x4F7F;&#x5176;&#x751F;&#x6548;&#x7684;&#x65B9;&#x6CD5;
+<img src="../pic/hadoop/wps3169.tmp.png" alt="img"></p>
+<p><strong>&#xFF08;3&#xFF09;&#x67E5;&#x770B;java&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x662F;&#x5426;&#x914D;&#x7F6E;&#x6210;&#x529F;</strong> 
+<img src="../pic/hadoop/wps316a.tmp.png" alt="img"></p>
+<p><strong>&#x516B;&#x3001;&#x4E0B;&#x8F7D;&#x89E3;&#x538B;Hadoop</strong>
+&#x5B98;&#x7F51;&#x4E0B;&#x8F7D;<a href="http://www.apache.org/dyn/closer.cgi/hadoop/core/" target="_blank">http://www.apache.org/dyn/closer.cgi/hadoop/core/</a>
+hadoop&#x96C6;&#x7FA4;&#x4E2D;&#x6BCF;&#x4E2A;&#x673A;&#x5668;&#x4E0A;&#x9762;&#x7684;&#x914D;&#x7F6E;&#x57FA;&#x672C;&#x76F8;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x5728;master&#x4E0A;&#x9762;&#x8FDB;&#x884C;&#x914D;&#x7F6E;&#x90E8;&#x7F72;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x590D;&#x5236;&#x5230;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7684;&#x5B89;&#x88C5;&#x8FC7;&#x7A0B;&#x76F8;&#x5F53;&#x4E8E;&#x5728;&#x6BCF;&#x53F0;&#x673A;&#x5668;&#x4E0A;&#x9762;&#x90FD;&#x8981;&#x6267;&#x884C;&#x3002;
+&#x3010;&#x6CE8;&#x610F;&#x3011;&#xFF1A;master&#x548C;slaves&#x5B89;&#x88C5;&#x7684;hadoop&#x8DEF;&#x5F84;&#x8981;&#x5B8C;&#x5168;&#x4E00;&#x6837;&#xFF0C;&#x7528;&#x6237;&#x548C;&#x7EC4;&#x4E5F;&#x8981;&#x5B8C;&#x5168;&#x4E00;&#x81F4;
+&#x89E3;&#x538B;&#x6587;&#x4EF6;&#x5230;/usr&#x8DEF;&#x5F84;&#x4E0B;&#xFF0C;&#x5E76;&#x91CD;&#x547D;&#x540D;
+tar  zxvf hadoop-2.2.0_x64.tar.gz
+mv hadoop-2.2.0 hadoop
+<img src="../pic/hadoop/wps317b.tmp.png" alt="img">
+&#xFF08;&#x89E3;&#x538B;&#x547D;&#x4EE4;&#x5728;Ubuntu&#x662F; tar -zxf xxx.tar.gz&#xFF0C;centos&#x662F;tar zxvf xxx.tar.gz&#xFF09;
+<strong>&#x4E5D;&#x3001;Hadoop&#x914D;&#x7F6E;&#x6587;&#x4EF6;</strong>
+9.1&#x521B;&#x5EFA;&#x5FC5;&#x8981;&#x6587;&#x4EF6;&#x5939;
+&#x5728;master&#x672C;&#x5730;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x521B;&#x5EFA;&#x4EE5;&#x4E0B;&#x6587;&#x4EF6;&#x5939;&#xFF1A;
+~/dfs/name
+~/dfs/data
+~/tmp
+&#x6CE8;&#x610F;&#x6587;&#x4EF6;&#x6240;&#x5C5E;&#x7528;&#x6237;&#x53CA;&#x7528;&#x6237;&#x7EC4;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5728;&#x65B0;&#x5EFA;&#x7684;&#x7528;&#x6237;&#x7EC4;&#x4E0B;&#x9762;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;chown&#x547D;&#x4EE4;&#x6765;&#x4FEE;&#x6539;&#xFF1A;&#xFF08;chmod&#x548C;chown&#x547D;&#x4EE4;&#x7684;&#x7528;&#x6CD5;<a href="http://www.aboutyun.com/thread-7675-1-1.html" target="_blank">http://www.aboutyun.com/thread-7675-1-1.html</a>)
+9.2&#x8FD9;&#x91CC;&#x8981;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x6709;7&#x4E2A;
+~/hadoop-2.2.0/etc/hadoop/hadoop-env.sh
+~/hadoop-2.2.0/etc/hadoop/yarn-env.sh
+~/hadoop-2.2.0/etc/hadoop/slaves
+~/hadoop-2.2.0/etc/hadoop/core-site.xml
+~/hadoop-2.2.0/etc/hadoop/hdfs-site.xml
+~/hadoop-2.2.0/etc/hadoop/mapred-site.xml
+~/hadoop-2.2.0/etc/hadoop/yarn-site.xml
+&#x4EE5;&#x4E0A;&#x6587;&#x4EF6;&#x6709;&#x4E9B;&#x9ED8;&#x8BA4;&#x4E0D;&#x5B58;&#x5728;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x590D;&#x5236;&#x76F8;&#x5E94;&#x7684;.template&#x6587;&#x4EF6;&#x83B7;&#x5F97;
+9.3&#x914D;&#x7F6E;&#x6587;&#x4EF6;1&#xFF1A;hadoop-env.sh
+&#x4FEE;&#x6539;JAVA_HOME&#x503C;&#xFF08;export JAVA_HOME=/usr/jdk1.7&#xFF09;
+9.4&#x914D;&#x7F6E;&#x6587;&#x4EF6;2&#xFF1A;yarn-env.sh
+&#x4FEE;&#x6539;JAVA_HOME&#x503C;&#xFF08;export JAVA_HOME=/usr/jdk1.7&#xFF09;
+9.5&#x914D;&#x7F6E;&#x6587;&#x4EF6;3&#xFF1A;slaves&#xFF08;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x91CC;&#x9762;&#x4FDD;&#x5B58;&#x6240;&#x6709;slave&#x8282;&#x70B9;&#xFF09;
+&#x5199;&#x5165;&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#xFF1A;
+slave1
+slave2
+9.6&#x914D;&#x7F6E;&#x6587;&#x4EF6;4&#xFF1A;core-site.xml</p>
+<pre><code>&lt;configuration&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;fs.defaultFS&lt;/name&gt;
+&#x200B;        &lt;value&gt;hdfs://master:8020&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;io.file.buffer.size&lt;/name&gt;
+&#x200B;        &lt;value&gt;131072&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;hadoop.tmp.dir&lt;/name&gt;
+&#x200B;        &lt;value&gt;file:/home/hadoop/tmp&lt;/value&gt;
+&#x200B;        &lt;description&gt;Abase for other temporary  directories.&lt;/description&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;hadoop.proxyuser.aboutyun.hosts&lt;/name&gt;
+&#x200B;        &lt;value&gt;*&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;hadoop.proxyuser.aboutyun.groups&lt;/name&gt;
+&#x200B;        &lt;value&gt;*&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p>9.7&#x914D;&#x7F6E;&#x6587;&#x4EF6;5&#xFF1A;hdfs-site.xml</p>
+<pre><code>&lt;configuration&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;dfs.namenode.secondary.http-address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:9001&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+   &lt;property&gt;
+&#x200B;       &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;
+&#x200B;       &lt;value&gt;file:/home/hadoop/dfs/name&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+   &lt;property&gt;
+&#x200B;       &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;
+&#x200B;       &lt;value&gt;file:/home/hadoop/dfs/data&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;dfs.replication&lt;/name&gt;
+&#x200B;        &lt;value&gt;3&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;         &lt;name&gt;dfs.webhdfs.enabled&lt;/name&gt;
+&#x200B;         &lt;value&gt;true&lt;/value&gt;
+&#x200B;     &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p>9.8&#x914D;&#x7F6E;&#x6587;&#x4EF6;6&#xFF1A;mapred-site.xml</p>
+<pre><code>&lt;configuration&gt;
+&#x200B;     &lt;property&gt;            
+&#x200B;        &lt;name&gt;mapreduce.framework.name&lt;/name&gt;
+&#x200B;        &lt;value&gt;yarn&lt;/value&gt;
+&#x200B;      &lt;/property&gt;
+&#x200B;     &lt;property&gt;
+&#x200B;         &lt;name&gt;mapreduce.jobhistory.address&lt;/name&gt;
+&#x200B;         &lt;value&gt;master:10020&lt;/value&gt;
+&#x200B;     &lt;/property&gt;
+&#x200B;     &lt;property&gt;
+&#x200B;        &lt;name&gt;mapreduce.jobhistory.webapp.address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:19888&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p>9.9&#x914D;&#x7F6E;&#x6587;&#x4EF6;7&#xFF1A;yarn-site.xml</p>
+<pre><code>&lt;configuration&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;
+&#x200B;        &lt;value&gt;mapreduce_shuffle&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;                                
+&lt;name&gt;yarn.nodemanager.aux-services.mapreduce.shuffle.class&lt;/name&gt;
+&#x200B;        &lt;value&gt;org.apache.hadoop.mapred.ShuffleHandler&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;yarn.resourcemanager.address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:8032&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;yarn.resourcemanager.scheduler.address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:8030&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;      &lt;name&gt;yarn.resourcemanager.resource-tracker.address&lt;/name&gt;
+&#x200B;       &lt;value&gt;master:8031&lt;/value&gt;
+   &lt;/property&gt;
+   &lt;property&gt;
+&#x200B;       &lt;name&gt;yarn.resourcemanager.admin.address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:8033&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&#x200B;    &lt;property&gt;
+&#x200B;        &lt;name&gt;yarn.resourcemanager.webapp.address&lt;/name&gt;
+&#x200B;        &lt;value&gt;master:8088&lt;/value&gt;
+&#x200B;    &lt;/property&gt;
+&lt;/configuration&gt;
+</code></pre><p>9.10&#x5C06;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x590D;&#x5236;&#x5230;&#x5176;&#x4ED6;&#x8282;&#x70B9;
+&#x4E0A;&#x9762;&#x914D;&#x7F6E;&#x5B8C;&#x6BD5;&#xFF0C;&#x6211;&#x4EEC;&#x57FA;&#x672C;&#x4E0A;&#x5B8C;&#x6210;&#x4E86;90%&#x4E86;&#x5269;&#x4E0B;&#x5C31;&#x662F;&#x590D;&#x5236;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x628A;&#x6574;&#x4E2A;hadoop&#x590D;&#x5236;&#x8FC7;&#x53BB;&#xFF08;&#x6CE8;&#x610F;slaves&#x6587;&#x4EF6;&#x4E0D;&#x4E00;&#x6837;&#xFF09;
+&#x3010;&#x6CE8;&#x610F;&#x3011;&#x62F7;&#x8D1D;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x6240;&#x6709;&#x8005;
+sudo chown hadoop mapred-site.xml
+&#x3010;&#x8BB0;&#x5F97;&#x3011;&#x6700;&#x540E;&#x68C0;&#x67E5;&#x4E00;&#x4E0B;
+cat hadoop-env.sh
+cat yarn-env.sh
+cat slaves
+cat core-site.xml
+cat hdfs-site.xml
+cat mapred-site.xml
+cat yarn-site.xml
+9.11&#x5728;&#x6BCF;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x5185;&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;/etc/profile
+export PATH=$PATH:/usr/local/hadoop/bin/
+export PATH=$PATH:/usr/local/hadoop/sbin/
+<strong>&#x5341;&#x3001;&#x542F;&#x52A8;Hadoop</strong>
+10.1&#x683C;&#x5F0F;&#x5316;namenode
+hdfs namenode &#x2013;format
+&#x6216;&#x5219;
+hadoop namenode format
+10.2&#x542F;&#x52A8;hdfs
+start-dfs.sh
+&#x6B64;&#x65F6;&#x5728;master&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#x6709;&#xFF1A;
+namenode
+secondarynamenode
+slave&#x8282;&#x70B9;&#x4E0A;&#x9762;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;&#x6709;&#xFF1A;datanode
+10.3&#x542F;&#x52A8;yarn
+start-yarn.sh
+&#x6211;&#x4EEC;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x6548;&#x679C;&#xFF1A;
+master&#x6709;&#x5982;&#x4E0B;&#x8FDB;&#x7A0B;&#xFF1A;
+<img src="../pic/hadoop/wps317c.tmp.png" alt="img"></p>
+<p>slave1&#x6709;&#x5982;&#x4E0B;&#x8FDB;&#x7A0B;
+<img src="../pic/hadoop/wps317d.tmp.png" alt="img"></p>
+<p>&#x6B64;&#x65F6;hadoop&#x96C6;&#x7FA4;&#x5DF2;&#x5168;&#x90E8;&#x914D;&#x7F6E;&#x5B8C;&#x6210;&#xFF01;&#xFF01;&#xFF01;
+<strong>&#x5341;&#x4E00;&#x3001;&#x67E5;&#x770B;Hadoop&#x7684;Web&#x7BA1;&#x7406;&#x7A97;&#x53E3;</strong>
+11.1 ResourceManager
+&#x4ECB;&#x7ECD;&#xFF1A;&#x8FD0;&#x884C;&#x5728;&#x4E3B;&#x8282;&#x70B9;master&#x4E0A;
+&#x7F51;&#x5740;&#xFF1A;<a href="http://master:8088/" target="_blank">http://master:8088/</a>
+&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF1A;yarn-site.xml</p>
+<p><property>
+  <name>yarn.resourcemanager.webapp.address</name>
+  <value>master:8088</value>
+</property>
+&#x3010;&#x6CE8;&#x3011;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x914D;&#x7F6E;hosts&#xFF0C;master&#x5C06;&#x65E0;&#x6CD5;&#x89E3;&#x6790;
+&#x8981;&#x4E48;&#x4F60;&#x76F4;&#x63A5;&#x8F93;&#x5165;IP&#x66FF;&#x4EE3;master&#xFF0C;&#x8981;&#x4E48;&#x4F60;&#x5C31;&#x914D;&#x7F6E;&#x4E00;&#x4E0B;hosts&#xFF0C;&#x90FD;&#x5F88;&#x7B80;&#x5355;
+Hosts&#x6587;&#x4EF6;&#x5730;&#x5740;C:\Windows\System32\drivers\etc
+<img src="../pic/hadoop/wps317e.tmp.png" alt="img">
+<img src="../pic/hadoop/wps318e.tmp.png" alt="img">
+&#x4FEE;&#x6539;&#x5B8C;&#x540E;&#xFF0C;&#x6B63;&#x5E38;&#x7684;&#x65F6;&#x5019;&#x4F60;&#x4F1A;&#x5728;&#x6D4F;&#x89C8;&#x5668;&#x91CC;&#x770B;&#x5230;&#x5982;&#x4E0B;&#x56FE;
+<img src="../pic/hadoop/wps318f.tmp.png" alt="img">
+11.2 HDFS&#x96C6;&#x7FA4;&#x72B6;&#x6001;
+&#x7F51;&#x5740;&#xFF1A;<a href="http://master:50070/" target="_blank">http://master:50070/</a>
+<img src="../pic/hadoop/wps31a0.tmp.png" alt="img">
+11.3 NodeManager
+&#x4ECB;&#x7ECD;&#xFF1A;&#x8FD0;&#x884C;&#x5728;&#x4ECE;&#x8282;&#x70B9;&#x4E0A;
+&#x7F51;&#x5740;&#xFF1A;<a href="http://slave1:8042/" target="_blank">http://slave1:8042/</a>
+<img src="../pic/hadoop/wps31b0.tmp.png" alt="img">
+11.4 JobHistory Server
+&#x542F;&#x52A8;&#xFF1A;mr-jobhistory-daemon.sh start historyserver
+&#x7F51;&#x5740;&#xFF1A;<a href="http://master:19888/" target="_blank">http://master:19888/</a>
+&#x914D;&#x7F6E;&#xFF1A;mapreduce.jobhistory.webapp.address<br><img src="../pic/hadoop/wps31b1.tmp.png" alt="img">
+<strong>&#x5341;&#x4E8C;&#x3001;&#x8FD0;&#x884C;&#x5B9E;&#x4F8B;WordCount</strong>
+12.1 &#x627E;&#x5230;examples&#x4F8B;&#x5B50;
+<img src="../pic/hadoop/wps31c2.tmp.png" alt="img">
+&#x5728; /hadoop/share/hadoop/mapreduce&#x4E0B;&#x627E;&#x5230;hadoop-mapreduce-examples-2.2.0.jar
+12.2 &#x8FD0;&#x884C;&#x524D;&#x7684;&#x51C6;&#x5907;&#x5DE5;&#x4F5C;
+&#x6211;&#x4EEC;&#x9700;&#x8981;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E0B;&#x8FD0;&#x884C;&#x9700;&#x8981;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6BD4;&#x5982;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x8DEF;&#x5F84;&#xFF0C;&#x4E0A;&#x4F20;&#x4EC0;&#x4E48;&#x6587;&#x4EF6;&#x7B49;&#x3002;
+&#x2460;&#x5148;&#x5728;HDFS&#x521B;&#x5EFA;&#x51E0;&#x4E2A;&#x6570;&#x636E;&#x76EE;&#x5F55;&#xFF1A;
+hadoop fs -mkdir -p /data/wordcount
+hadoop fs -mkdir -p /output/
+<img src="../pic/hadoop/wps31d3.tmp.png" alt="img">
+&#x65B0;&#x5EFA;&#x6587;&#x4EF6;inputWord
+vi /usr/inputWord
+&#x65B0;&#x5EFA;&#x5B8C;&#x6BD5;&#xFF0C;&#x67E5;&#x770B;&#x5185;&#x5BB9;&#xFF1A;
+cat /usr/inputWord
+<img src="../pic/hadoop/wps31d4.tmp.png" alt="img"></p>
+<p>&#x76EE;&#x5F55;/data/wordcount&#x7528;&#x6765;&#x5B58;&#x653E;Hadoop&#x81EA;&#x5E26;&#x7684;WordCount&#x4F8B;&#x5B50;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;&#xFF0C;
+&#x4EFB;&#x52A1;&#x7684;&#x7ED3;&#x679C;&#x8F93;&#x51FA;&#x5230;/output/wordcount&#x76EE;&#x5F55;&#x4E2D;&#x3002;
+&#x2461;&#x5C06;&#x672C;&#x5730;&#x6587;&#x4EF6;&#x4E0A;&#x4F20;&#x5230;HDFS&#x4E2D;&#xFF1A;
+hadoop fs -put /usr/inputWord /data/wordcount/
+&#x67E5;&#x770B;&#x4E0A;&#x4F20;&#x540E;&#x7684;&#x6587;&#x4EF6;&#x60C5;&#x51B5;
+hadoop fs -ls /data/wordcount
+<img src="../pic/hadoop/wps31d5.tmp.png" alt="img">
+&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x7684;&#x5185;&#x5BB9;
+hadoop fs -text /data/wordcount/inputWord
+<img src="../pic/hadoop/wps31e5.tmp.png" alt="img">
+12.3 &#x8FD0;&#x884C;WordCount&#x4F8B;&#x5B50;
+hadoop jar /usr/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar wordcount /data/wordcount /output/wordcount
+<img src="../pic/hadoop/wps31e6.tmp.png" alt="img">
+&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x63A7;&#x5236;&#x53F0;&#x8F93;&#x51FA;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x7684;&#x4FE1;&#x606F;&#xFF1A;
+aboutyun@master:~$ hadoop jar /usr/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.2.0.jar wordcount /data/wordcount /output/wordcount
+14/05/14 10:33:33 INFO client.RMProxy: Connecting to ResourceManager at master/172.16.77.15:8032
+14/05/14 10:33:34 INFO input.FileInputFormat: Total input paths to process : 1
+14/05/14 10:33:34 INFO mapreduce.JobSubmitter: number of splits:1
+14/05/14 10:33:34 INFO Configuration.deprecation: user.name is deprecated. Instead, use mapreduce.job.user.name
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.jar is deprecated. Instead, use mapreduce.job.jar
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.output.value.class is deprecated. Instead, use mapreduce.job.output.value.class
+14/05/14 10:33:34 INFO Configuration.deprecation: mapreduce.combine.class is deprecated. Instead, use mapreduce.job.combine.class
+14/05/14 10:33:34 INFO Configuration.deprecation: mapreduce.map.class is deprecated. Instead, use mapreduce.job.map.class
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.job.name is deprecated. Instead, use mapreduce.job.name
+14/05/14 10:33:34 INFO Configuration.deprecation: mapreduce.reduce.class is deprecated. Instead, use mapreduce.job.reduce.class
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.input.dir is deprecated. Instead, use mapreduce.input.fileinputformat.inputdir
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.output.dir is deprecated. Instead, use mapreduce.output.fileoutputformat.outputdir
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.map.tasks is deprecated. Instead, use mapreduce.job.maps
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.output.key.class is deprecated. Instead, use mapreduce.job.output.key.class
+14/05/14 10:33:34 INFO Configuration.deprecation: mapred.working.dir is deprecated. Instead, use mapreduce.job.working.dir
+14/05/14 10:33:35 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1400084979891_0004
+14/05/14 10:33:36 INFO impl.YarnClientImpl: Submitted application application_1400084979891_0004 to ResourceManager at master/172.16.77.15:8032
+14/05/14 10:33:36 INFO mapreduce.Job: The url to track the job: <a href="http://master:8088/proxy/application_1400084979891_0004/" target="_blank">http://master:8088/proxy/application_1400084979891_0004/</a>
+14/05/14 10:33:36 INFO mapreduce.Job: Running job: job_1400084979891_0004
+14/05/14 10:33:45 INFO mapreduce.Job: Job job_1400084979891_0004 running in uber mode : false
+14/05/14 10:33:45 INFO mapreduce.Job: map 0% reduce 0%
+14/05/14 10:34:10 INFO mapreduce.Job: map 100% reduce 0%
+14/05/14 10:34:19 INFO mapreduce.Job: map 100% reduce 100%
+14/05/14 10:34:19 INFO mapreduce.Job: Job job_1400084979891_0004 completed successfully
+14/05/14 10:34:20 INFO mapreduce.Job: Counters: 43
+    File System Counters
+        FILE: Number of bytes read=81
+        FILE: Number of bytes written=158693
+        FILE: Number of read operations=0
+        FILE: Number of large read operations=0
+        FILE: Number of write operations=0
+        HDFS: Number of bytes read=175
+        HDFS: Number of bytes written=51
+        HDFS: Number of read operations=6
+        HDFS: Number of large read operations=0
+        HDFS: Number of write operations=2
+    Job Counters 
+        Launched map tasks=1
+        Launched reduce tasks=1
+        Data-local map tasks=1
+        Total time spent by all maps in occupied slots (ms)=23099
+        Total time spent by all reduces in occupied slots (ms)=6768
+    Map-Reduce Framework
+        Map input records=5
+        Map output records=10
+        Map output bytes=106
+        Map output materialized bytes=81
+        Input split bytes=108
+        Combine input records=10
+        Combine output records=6
+        Reduce input groups=6
+        Reduce shuffle bytes=81
+        Reduce input records=6
+        Reduce output records=6
+        Spilled Records=12
+        Shuffled Maps =1
+        Failed Shuffles=0
+        Merged Map outputs=1
+        GC time elapsed (ms)=377
+        CPU time spent (ms)=11190
+        Physical memory (bytes) snapshot=284524544
+        Virtual memory (bytes) snapshot=2000748544
+        Total committed heap usage (bytes)=136450048
+    Shuffle Errors
+        BAD_ID=0
+        CONNECTION=0
+        IO_ERROR=0
+        WRONG_LENGTH=0
+        WRONG_MAP=0
+        WRONG_REDUCE=0
+    File Input Format Counters 
+        Bytes Read=67
+    File Output Format Counters 
+        Bytes Written=51
+12.4&#x67E5;&#x770B;&#x7ED3;&#x679C;
+hadoop fs -text /output/wordcount/part-r-00000
+&#x7ED3;&#x679C;&#x6570;&#x636E;&#x793A;&#x4F8B;&#x5982;&#x4E0B;&#xFF1A;
+aboutyun@master:~$ hadoop fs -text /output/wordcount/part-r-00000
+aboutyun    2
+first    1
+hello    3
+master    1
+slave    2
+what    1
+<img src="../pic/hadoop/wps31e7.tmp.png" alt="img">
+&#x767B;&#x5F55;&#x5230;Web&#x63A7;&#x5236;&#x53F0;&#xFF0C;&#x8BBF;&#x95EE;&#x94FE;&#x63A5;<a href="http://master:8088/&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EFB;&#x52A1;&#x8BB0;&#x5F55;&#x60C5;&#x51B5;&#x3002;" target="_blank">http://master:8088/&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x4EFB;&#x52A1;&#x8BB0;&#x5F55;&#x60C5;&#x51B5;&#x3002;</a> 
+<img src="../pic/hadoop/wps31e8.tmp.png" alt="img">   </p>
+<p><img src="../pic/hadoop/wps31e9.tmp.png" alt="img">  </p>
+<p><strong>&#x3010;&#x8F6C;&#x8F7D;&#x535A;&#x5BA2;&#x3011;</strong>
+&#x4E3A;&#x865A;&#x62DF;&#x673A;&#x8BBE;&#x7F6E;&#x9759;&#x6001;IP
+<a href="http://java--hhf.iteye.com/admin/blogs/2100128" target="_blank">http://java--hhf.iteye.com/admin/blogs/2100128</a>
+&#x8D85;&#x8BE6;&#x7EC6;&#x5355;&#x673A;&#x7248;&#x642D;&#x5EFA;hadoop&#x73AF;&#x5883;&#x56FE;&#x6587;&#x89E3;&#x6790; 
+<a href="http://weixiaolu.iteye.com/blog/1401931" target="_blank">http://weixiaolu.iteye.com/blog/1401931</a>
+&#x8D85;&#x8BE6;&#x7EC6;&#x5728;Ubuntu&#x4E0B;&#x5B89;&#x88C5;JDK&#x56FE;&#x6587;&#x89E3;&#x6790;
+<a href="http://weixiaolu.iteye.com/blog/1401786" target="_blank">http://weixiaolu.iteye.com/blog/1401786</a>
+hadoop2.2&#x5B8C;&#x5168;&#x5206;&#x5E03;&#x5F0F;&#x6700;&#x65B0;&#x9AD8;&#x53EF;&#x9760;&#x5B89;&#x88C5;&#x6587;&#x6863;
+<a href="http://www.aboutyun.com/thread-7684-1-1.html" target="_blank">http://www.aboutyun.com/thread-7684-1-1.html</a>
+hadoop2.X&#x4F7F;&#x7528;&#x624B;&#x518C;1&#xFF1A;&#x901A;&#x8FC7;web&#x7AEF;&#x53E3;&#x67E5;&#x770B;&#x4E3B;&#x8282;&#x70B9;&#x3001;slave1&#x8282;&#x70B9;&#x53CA;&#x96C6;&#x7FA4;&#x8FD0;&#x884C;&#x72B6;&#x6001;
+<a href="http://www.aboutyun.com/thread-7712-1-1.html" target="_blank">http://www.aboutyun.com/thread-7712-1-1.html</a>
+hadoop2.2&#x4F7F;&#x7528;&#x624B;&#x518C;2&#xFF1A;&#x5982;&#x4F55;&#x8FD0;&#x884C;&#x81EA;&#x5E26;wordcount
+<a href="http://www.aboutyun.com/thread-7713-1-1.html" target="_blank">http://www.aboutyun.com/thread-7713-1-1.html</a>
+&#x3010;&#x95EE;&#x9898;&#x96C6;&#x9526;&#x3011;
+&#x95EE;&#x9898;&#x4E00;&#xFF1A;
+master: Error: JAVA_HOME is not set and could not be found.
+slave1: Error: JAVA_HOME is not set and could not be found.
+slave2: Error: JAVA_HOME is not set and could not be found.<br><img src="../pic/hadoop/wps31fa.tmp.png" alt="img"></p>
+<p>[hadoop@master hadoop]$ start-dfs.sh 
+14/08/18 08:51:05 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Starting namenodes on [master]
+master: Error: JAVA_HOME is not set and could not be found.
+slave1: Error: JAVA_HOME is not set and could not be found.
+slave2: Error: JAVA_HOME is not set and could not be found.
+Starting secondary namenodes [master]
+master: Error: JAVA_HOME is not set and could not be found.
+14/08/18 08:51:10 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[hadoop@master hadoop]$ $JAVA_HOME
+bash: /usr/local/java/jdk1.6.0_43: is a directory
+[hadoop@master hadoop]$ start-yarn.sh 
+starting yarn daemons
+starting resourcemanager, logging to /usr/local/hadoop/logs/yarn-hadoop-resourcemanager-master.out
+slave1: Error: JAVA_HOME is not set and could not be found.
+slave2: Error: JAVA_HOME is not set and could not be found.
+[hadoop@master hadoop]$ jps
+2158 ResourceManager
+2415 Jps
+[hadoop@master hadoop]$</p>
+<p>&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF1A;<br><img src="../pic/hadoop/wps31fb.tmp.png" alt="img">  </p>
+<p><img src="../pic/hadoop/wps31fc.tmp.png" alt="img">  </p>
+<p>&#x6539;&#x4E3A;
+<img src="../pic/hadoop/wps31fd.tmp.png" alt="img">  </p>
+<p><img src="../pic/hadoop/wps31fe.tmp.png" alt="img">  </p>
+<p>&#x95EE;&#x9898;&#x4E8C;&#xFF1A;&#x65E0;&#x6CD5;&#x542F;&#x52A8;NodeManager
+NodeManager&#x542F;&#x52A8;&#x5931;&#x8D25;&#x3002;&#x67E5;&#x770B;&#x65E5;&#x5FD7;&#xFF0C;&#x8BB0;&#x5F55;&#x9519;&#x8BEF;&#x5982;&#x4E0B;&#xFF1A;
+2014-02-10 18:24:07,635 FATAL org.apache.hadoop.yarn.server.nodemanager.NodeManager: Error starting NodeManager
+org.apache.hadoop.yarn.YarnException: Failed to Start 
+org.apache.hadoop.yarn.server.nodemanager.NodeManager
+at org.apache.hadoop.yarn.service.CompositeService.start(CompositeService.java:78)
+at org.apache.hadoop.yarn.server.nodemanager.NodeManager.start(NodeManager.java:196)
+at org.apache.hadoop.yarn.server.nodemanager.NodeManager.initAndStartNodeManager
+(NodeManager.java:329)
+at org.apache.hadoop.yarn.server.nodemanager.NodeManager.main(NodeManager.java:351)
+Caused by: org.apache.hadoop.yarn.YarnException: Failed to Start org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl
+at org.apache.hadoop.yarn.service.CompositeService.start(CompositeService.java:78)
+at org.apache.hadoop.yarn.server.nodemanager.containermanager.ContainerManagerImpl.start(ContainerManagerImpl.java:248)
+&#x200B;    at org.apache.hadoop.yarn.service.CompositeService.start(CompositeService.java:68)
+&#x200B;    ... 3 more
+Caused by: org.apache.hadoop.yarn.YarnException: Failed to check for existence of remoteLogDir [/var/log/hadoop-yarn/apps]
+&#x200B;    at org.apache.hadoop.yarn.server.nodemanager.containermanager.logaggregation.LogAggregationService.verifyAndCreateRemoteLogDir(LogAggregationService.java:179)
+&#x200B;    at org.apache.hadoop.yarn.server.nodemanager.containermanager.logaggregation.LogAggregationService.start(LogAggregationService.java:132)
+at org.apache.hadoop.yarn.service.CompositeService.start(CompositeService.java:68)
+&#x200B;    ... 5 more
+2014-02-10 18:24:07,647 INFO org.apache.hadoop.ipc.Server: Stopping server on 52154
+&#x65E5;&#x5FD7;&#x663E;&#x793A;&#xFF1A;&#x65E0;&#x6CD5;&#x542F;&#x52A8;NodeManager&#xFF0C;&#x65E0;&#x6CD5;&#x542F;&#x52A8;ContainerManager&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x6CA1;&#x6709;&#x5206;&#x914D;&#x8D44;&#x6E90;&#x5BB9;&#x5668;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;&#xFF09;&#xFF0C;&#x4E5F;&#x65E0;&#x6CD5;&#x68C0;&#x67E5;&#x8FDC;&#x7A0B;&#x65E5;&#x5FD7;&#x76EE;&#x5F55;&#xFF08;&#x5728;HDFS&#x4E0A;&#xFF09;&#xFF0C;&#x539F;&#x56E0;&#x9501;&#x5B9A;&#xFF0C;&#x65E0;&#x6CD5;&#x4E0E;Master&#xFF08;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#x662F;ResourceManager&#xFF09;&#x901A;&#x4FE1;&#xFF0C;&#x7136;&#x540E;&#x5230;master&#x4E0A;&#x67E5;&#x770B;&#x9632;&#x706B;&#x5899;&#x662F;&#x5426;&#x5173;&#x95ED;&#xFF0C;&#x5C06;Master&#x4E0A;&#x7684;&#x9632;&#x706B;&#x5899;&#x5173;&#x95ED;&#xFF0C;&#x5E76;&#x4E14;chkconfig iptables off&#x8FDB;&#x884C;&#x6C38;&#x4E45;&#x5173;&#x95ED;&#xFF08;&#x91CD;&#x542F;&#x540E;&#x4E0D;&#x4F1A;&#x81EA;&#x52A8;&#x5F00;&#x542F;&#xFF09;&#xFF0C;&#x518D;&#x53BB;Slave&#x8282;&#x70B9;&#x4E0A;&#x542F;&#x52A8;NodeManager</p>
+<p>&#x95EE;&#x9898;&#x4E09;&#xFF1A;No route to host
+<img src="../pic/hadoop/wps320e.tmp.png" alt="img"></p>
+<p><a href="http://flychao88.iteye.com/blog/1950081" target="_blank">&#x914D;&#x7F6E;Hadoop&#x96C6;&#x7FA4;&#xFF1A;java.net.NoRouteToHostException: </a>
+<span style="font-size: 14px;">2012-07-04 18:43:31,479 ERROR org.apache.hadoop.hdfs.server.datanode.DataNode: java.io.IOException: Call to /192.168.18.218:9000 failed on local exception: java.net.NoRouteToHostException: &#x6CA1;&#x6709;&#x5230;&#x4E3B;&#x673A;&#x7684;&#x8DEF;&#x7531; 
+</span> 
+&#x5728;&#x914D;&#x7F6E;hadoop&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5F88;&#x5BB9;&#x6613;&#x9047;&#x5230;&#x4EE5;&#x4E0A;&#x9519;&#x8BEF;&#xFF0C;&#x9047;&#x5230;&#x4EE5;&#x4E0A;&#x95EE;&#x9898;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E00;&#x822C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x51E0;&#x79CD;&#x65B9;&#x6CD5;&#x89E3;&#x51B3;&#x3002; 
+1&#x3001;&#x4ECE;namenode&#x4E3B;&#x673A;ping&#x5176;&#x5B83;&#x4E3B;&#x673A;&#x540D;&#xFF08;&#x5982;&#xFF1A;ping slave1&#xFF09;&#xFF0C;&#x5982;&#x679C;ping&#x4E0D;&#x901A;,&#x539F;&#x56E0;&#x53EF;&#x80FD;&#x662F;namenode&#x8282;&#x70B9;&#x7684;/etc/hosts&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#x3002;
+2&#x3001;&#x4ECE;datanode&#x4E3B;&#x673A;ping namenode&#x4E3B;&#x673A;&#x540D;&#xFF0C;&#x5982;&#x679C;ping&#x4E0D;&#x901A;,&#x539F;&#x56E0;&#x53EF;&#x80FD;&#x662F;datenode&#x8282;&#x70B9;&#x7684;/etc/hosts&#x914D;&#x7F6E;&#x7684;&#x914D;&#x7F6E;&#x9519;&#x8BEF;&#x3002;
+3&#x3001;&#x67E5;&#x770B;namenode&#x4E3B;&#x673A;&#x7684;9000&#xFF08;&#x5177;&#x4F53;&#x6839;&#x636E;core-site.xml&#x4E2D;&#x7684;fs.default.name&#x8282;&#x70B9;&#x914D;&#x7F6E;&#xFF09;&#x7AEF;&#x53E3;&#xFF0C;&#x662F;&#x5426;&#x6253;&#x5F00;.
+vi /etc/sysconfig/iptables &#x6253;&#x5F00;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x52A0;&#x5165;&#x5982;&#x4E0B;&#x8BED;&#x53E5;:
+-A INPUT -p tcp -m state --state NEW -m tcp --dport 8080 -j ACCEPT<br>&#x91CD;&#x542F;&#x9632;&#x706B;&#x5899;
+/etc/init.d/iptables restart 
+&#x67E5;&#x770B;&#x7AEF;&#x53E3;&#x72B6;&#x6001;
+/etc/init.d/iptables status
+4&#x3001;&#x5173;&#x95ED;&#x7CFB;&#x7EDF;&#x9632;&#x706B;&#x5899;&#x3002;&#x8FD9;&#x662F;&#x6700;&#x5BB9;&#x6613;&#x51FA;&#x73B0;&#x7684;&#x95EE;&#x9898;&#x3002;&#x7528;&#x6B64;&#x547D;&#x4EE4;service iptables stop&#x5173;&#x95ED;&#x540E;&#xFF0C;&#x4E00;&#x5207;&#x6B63;&#x5E38;&#x96C6;&#x7FA4;&#x6B63;&#x5E38;&#x4F7F;&#x7528;</p>
+<blockquote>
+<p>@ &#x5B66;&#x5FC5;&#x6C42;&#x5176;&#x5FC3;&#x5F97;&#xFF0C;&#x4E1A;&#x5FC5;&#x8D35;&#x5176;&#x4E13;&#x7CBE;
+@ WHAT - HOW - WHY
+@ &#x4E0D;&#x79EF;&#x8DEC;&#x6B65; - &#x65E0;&#x4EE5;&#x81F3;&#x5343;&#x91CC;</p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright (c) 2019 Tencent PRUCE &amp; KB. all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">time&#xFF1A;
+2019-12-01 16:36:53
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../spark/spark_important.html" class="navigation navigation-prev " aria-label="Previous page: Spark划重点">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="hadoop_deploy_mac.html" class="navigation navigation-next " aria-label="Next page: 在Mac OS上部署Hadoop">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"在Ubuntu_Centos上部署Hadoop","level":"3.1","depth":1,"next":{"title":"在Mac OS上部署Hadoop","level":"3.2","depth":1,"path":"hadoop/hadoop_deploy_mac.md","ref":"hadoop/hadoop_deploy_mac.md","articles":[]},"previous":{"title":"Spark划重点","level":"2.4","depth":1,"path":"spark/spark_important.md","ref":"spark/spark_important.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","splitter","expandable-chapters-small","-sharing","search-pro","tbfed-pagefooter","github","donate","multipart","mathjax","echarts"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright (c) 2019 Tencent PRUCE & KB.","modify_label":"time：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/prucehuang/bigdata-introduction.git"},"splitter":{},"search-pro":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"https://github.com/prucehuang/common-resources/blob/master/pictures/zhifubao_pay.jpg?raw=true","alipayText":"支付宝","button":"赏","title":"","wechat":"https://github.com/prucehuang/common-resources/blob/master/pictures/wechat_pay.jpg?raw=true","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"echarts":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"chart":{}},"theme":"default","author":"pruce","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"bigdata-introduction","language":"zh-hans","gitbook":"3.2.3","description":"bigdata notes"},"file":{"path":"hadoop/hadoop_deploy_linux.md","mtime":"2019-12-01T08:36:53.217Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-01T09:30:28.029Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

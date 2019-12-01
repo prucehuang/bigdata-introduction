@@ -1,0 +1,675 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Spark Streaming Quick Start · bigdata-introduction</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="pruce">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="spark_important.html" />
+    
+    
+    <link rel="prev" href="spark_running.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Spark</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="spark_quick_start.html">
+            
+                <a href="spark_quick_start.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Spark Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="spark_running.html">
+            
+                <a href="spark_running.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Spark Running
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="spark_streaming_quick_start.html">
+            
+                <a href="spark_streaming_quick_start.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Spark Streaming Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="spark_important.html">
+            
+                <a href="spark_important.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    Spark划重点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hadoop</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../hadoop/hadoop_deploy_linux.html">
+            
+                <a href="../hadoop/hadoop_deploy_linux.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    在Ubuntu_Centos上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../hadoop/hadoop_deploy_mac.html">
+            
+                <a href="../hadoop/hadoop_deploy_mac.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    在Mac OS上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hive</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../hive/hive_quick_start.html">
+            
+                <a href="../hive/hive_quick_start.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Hive Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../hive/hive_join.html">
+            
+                <a href="../hive/hive_join.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Join解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../hive/hive_window_function.html">
+            
+                <a href="../hive/hive_window_function.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    分析窗口函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../hive/hive_optimize.html">
+            
+                <a href="../hive/hive_optimize.html">
+            
+                    
+                        <b>4.4.</b>
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Kafka</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../kafka/kafka_quick_start.html">
+            
+                <a href="../kafka/kafka_quick_start.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Kafka Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flume</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../flume/flume_quick_start.html">
+            
+                <a href="../flume/flume_quick_start.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Flume Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Zookeeper</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../zookeeper/zookeeper_quick_start.html">
+            
+                <a href="../zookeeper/zookeeper_quick_start.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    Zookeeper Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Thanks</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../thanks.html">
+            
+                <a href="../thanks.html">
+            
+                    
+                        <b>8.1.</b>
+                    
+                    感谢&参考文章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Spark Streaming Quick Start</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="spark-streaming-quick-start">Spark Streaming Quick Start</h1>
+<p>Spark Streaming&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x662F;DRDD&#xFF08;discretized stream&#xFF09;&#xFF0C;DRDD&#x548C;RDD&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x662F;&#x5F15;&#x5165;&#x4E86;&#x65F6;&#x95F4;&#x7684;&#x6982;&#x5FF5;&#x3002;DRDD&#x4E2D;&#x4E09;&#x4E2A;&#x6700;&#x91CD;&#x8981;&#x7684;&#x65F6;&#x95F4;&#x53D8;&#x91CF;</p>
+<ul>
+<li>windowDuration&#xFF0C;&#x6BCF;&#x6B21;&#x5904;&#x7406;&#x7684;&#x65F6;&#x95F4;&#x7A97;&#x53E3;&#x5927;&#x5C0F;</li>
+<li>slideDuration&#xFF0C;&#x672C;&#x6B21;&#x5904;&#x7406;&#x548C;&#x4E0B;&#x4E00;&#x6B21;&#x5904;&#x7406;&#x4E4B;&#x95F4;&#x7684;&#x6ED1;&#x52A8;&#x65F6;&#x95F4;&#x95F4;&#x9694;</li>
+<li>batchInterval&#xFF0C;DRDD&#x91CC;&#x9762;&#x6BCF;&#x4E00;&#x4E2A;RDD&#x7F13;&#x5B58;&#x7684;&#x6570;&#x636E;&#x65F6;&#x95F4;  </li>
+</ul>
+<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x6570;&#x636E;&#x7684;&#x53EF;&#x5BB9;&#x707E;&#x6027;&#xFF0C;DRDD&#x91CC;&#x9762;&#x65B0;&#x52A0;&#x4E86;<strong>checkpoint</strong>&#x7684;&#x673A;&#x5236;&#xFF0C;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x4ECE;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;checkpoint&#x6062;&#x590D;&#xFF0C;&#x4EE5;&#x786E;&#x4FDD;&#x4EFB;&#x52A1;&#x80FD;&#x591F;7*24&#x5C0F;&#x65F6;&#x6267;&#x884C;  </p>
+<p>Spark Streaming&#x7684;&#x64CD;&#x4F5C;&#x5206;&#x4E3A;&#x8F6C;&#x5316;&#x548C;&#x8F93;&#x51FA;&#xFF0C;&#x4E0D;&#x540C;&#x4E8E;RDD&#x7684;&#x8F6C;&#x5316;&#x548C;&#x884C;&#x52A8; 
+<a href="https://spark.apache.org/docs/latest/streaming-programming-guide.html" target="_blank">&#x5B98;&#x7F51;</a></p>
+<h3 id="&#x4E00;&#x3001;demo">&#x4E00;&#x3001;Demo</h3>
+<pre><code class="lang-scala"><span class="hljs-comment">/**
+  * @description
+  * &#x76D1;&#x542C;localhost&#x7684;7777&#x7AEF;&#x53E3;&#xFF0C;&#x5904;&#x7406;&#x6BCF;&#x4E00;&#x884C;&#x7684;&#x8F93;&#x5165;
+  * nc -lk 7777 &#x5F00;&#x542F;&#x7AEF;&#x53E3; &#x53D1;&#x9001;&#x6570;&#x636E;
+  * &#x8FD0;&#x884C;&#x4EE3;&#x7801;
+  * spark-submit --class com.hhf.spark.streaming.StreamingSocket ./sparkStreamingExample.jar 192.168.9.223 7777
+  * @version V1.0
+  * @author HHF
+  * @time 2016-5-24
+  */</span>
+
+<span class="hljs-keyword">import</span> org.apache.spark.streaming.dstream.<span class="hljs-type">DStream</span>
+<span class="hljs-keyword">import</span> org.apache.spark.<span class="hljs-type">SparkConf</span>
+<span class="hljs-keyword">import</span> org.apache.spark.streaming.<span class="hljs-type">Seconds</span>
+<span class="hljs-keyword">import</span> org.apache.spark.streaming.<span class="hljs-type">StreamingContext</span>
+
+<span class="hljs-class"><span class="hljs-keyword">object</span> <span class="hljs-title">StreamingSocket</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">main</span></span>(args: <span class="hljs-type">Array</span>[<span class="hljs-type">String</span>]) {
+        <span class="hljs-keyword">if</span> (args.length &lt; <span class="hljs-number">2</span>) {
+            <span class="hljs-type">System</span>.err.println(<span class="hljs-string">&quot;Usage: NetworkWordCount &lt;hostname&gt; &lt;port&gt;&quot;</span>)
+            <span class="hljs-type">System</span>.exit(<span class="hljs-number">1</span>)
+        }
+
+        <span class="hljs-keyword">val</span> conf = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>()
+        conf.setAppName(<span class="hljs-string">&quot;StreamingSocket&quot;</span>)
+        conf.setMaster(<span class="hljs-string">&quot;local&quot;</span>)
+        <span class="hljs-comment">// Create a StreamingContext with a 1 second batch size</span>
+        <span class="hljs-keyword">val</span> ssc = <span class="hljs-keyword">new</span> <span class="hljs-type">StreamingContext</span>(conf, <span class="hljs-type">Seconds</span>(<span class="hljs-number">10</span>))
+        <span class="hljs-comment">// Create a DStream from all the input on port 7777</span>
+        <span class="hljs-keyword">val</span> lines = ssc.socketTextStream(args(<span class="hljs-number">0</span>), args(<span class="hljs-number">1</span>).toInt)
+        <span class="hljs-keyword">val</span> errorLines = processLines(lines)
+        <span class="hljs-comment">// Print out the lines with errors, which causes this DStream to be evaluated</span>
+        errorLines.print()
+        <span class="hljs-comment">// start our streaming context and wait for it to &quot;finish&quot;</span>
+        ssc.start()
+        <span class="hljs-comment">// Wait for 10 seconds then exit. To run forever call without a timeout</span>
+        ssc.awaitTermination()
+        ssc.stop()
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">processLines</span></span>(lines: <span class="hljs-type">DStream</span>[<span class="hljs-type">String</span>]) = {
+        <span class="hljs-comment">// Filter our DStream for lines with &quot;error&quot;</span>
+        lines.filter(_.contains(<span class="hljs-string">&quot;error&quot;</span>))
+    }
+}
+
+## &#x5EFA;&#x8BAE;&#x76F4;&#x63A5;&#x8D70;&#x5B98;&#x7F51;&#x7684;&#x8BE6;&#x7EC6;demo
+</code></pre>
+<h3 id="&#x4E8C;&#x3001;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;">&#x4E8C;&#x3001;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</h3>
+<p><img src="../pic/spark/spark_streaming.png" alt="spark_streaming">
+&#x53C2;&#x8003;&#x6765;&#x81EA;&#x300A;Saprk&#x5FEB;&#x901F;&#x5927;&#x6570;&#x636E;&#x5206;&#x6790;&#x300B;&#xFF0C;&#x5F88;&#x8BE6;&#x7EC6;&#x6E05;&#x695A;&#x7684;&#x8BF4;&#x660E;&#x4E86;spark streaning&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;&#x9488;&#x5BF9;&#x6BCF;&#x4E00;&#x79CD;&#x6570;&#x636E;&#x6E90;&#xFF0C;&#x90FD;&#x5C06;&#x6709;&#x4E00;&#x4E2A;&#x4E0E;&#x4E4B;&#x5BF9;&#x5E94;&#x7684;&#x957F;&#x671F;&#x8FD0;&#x884C;&#x7684;&#x63A5;&#x6536;&#x5668;&#xFF0C;&#x6240;&#x4EE5;&#x6536;&#x5230;&#x7684;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x5907;&#x4EFD;&#xFF0C;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x90FD;&#x5C06;&#x53D1;&#x751F;&#x5728;&#x526F;&#x672C;&#x4E0A;&#xFF0C;&#x4E07;&#x4E00;&#x6570;&#x636E;&#x4E22;&#x5931;&#xFF0C;&#x5C06;&#x76F4;&#x63A5;&#x4ECE;&#x63A5;&#x6536;&#x5668;&#x4E0A;&#x91CD;&#x65B0;&#x5C06;&#x6570;&#x636E;copy&#x8FC7;&#x6765;&#x3002;</p>
+<p>Spark Streaming&#x7684;&#x8FD0;&#x884C;&#x6A21;&#x5F0F;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5E26;&#x4E0D;&#x5E26;window&#x5206;&#x4E3A;&#x4EE5;&#x4E0B;&#x4E24;&#x79CD;</p>
+<h4 id="21-&#x6BCF;&#x4E2A;batchinterval&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x8FD0;&#x884C;">2.1 &#x6BCF;&#x4E2A;batchInterval&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x65E0;&#x72B6;&#x6001;&#x7684;&#x8FD0;&#x884C;</h4>
+<p><img src="../pic/spark/streaming-dstream-ops.png" alt="streaming-dstream-ops"></p>
+<h4 id="22-&#x6307;&#x5B9A;windowduration&#x3001;slideduration&#x7684;&#x8FD0;&#x884C;&#xFF0C;&#x6BCF;&#x6B21;&#x79FB;&#x52A8;&#x7279;&#x5B9A;&#x7684;&#x6B65;&#x4F10;&#xFF0C;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;window&#x91CC;&#x9762;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;">2.2 &#x6307;&#x5B9A;windowDuration&#x3001;slideDuration&#x7684;&#x8FD0;&#x884C;&#xFF0C;&#x6BCF;&#x6B21;&#x79FB;&#x52A8;&#x7279;&#x5B9A;&#x7684;&#x6B65;&#x4F10;&#xFF0C;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;window&#x91CC;&#x9762;&#x7684;&#x6240;&#x6709;&#x6570;&#x636E;</h4>
+<p><img src="../pic/spark/streaming-dstream-window.png" alt="streaming-dstream-window"></p>
+<h3 id="&#x4E09;&#x3001;&#x8F6C;&#x5316;">&#x4E09;&#x3001;&#x8F6C;&#x5316;</h3>
+<h4 id="31-&#x65E0;&#x72B6;&#x6001;&#x8F6C;&#x5316;">3.1 &#x65E0;&#x72B6;&#x6001;&#x8F6C;&#x5316;</h4>
+<p>&#x6BCF;&#x6279;&#x6B21;&#x7684;&#x4EFB;&#x52A1;&#x6570;&#x636E;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x6279;&#x6B21;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x5173;&#x7CFB;&#xFF0C;&#x65E0;&#x72B6;&#x6001;&#x8F6C;&#x5316;&#x7684;&#x64CD;&#x4F5C;&#x548C;&#x666E;&#x901A;RDD&#x7684;&#x8F6C;&#x5316;&#x5341;&#x5206;&#x7C7B;&#x4F3C;&#xFF0C;&#x5F3A;&#x8C03;transform&#x51FD;&#x6570;&#xFF0C;transform()&#x7684;&#x5E38;&#x89C1;&#x5E94;&#x7528;&#x573A;&#x666F;&#x5C31;&#x662F;&#x91CD;&#x7528;RDD&#x7684;&#x5904;&#x7406;&#x51FD;&#x6570; </p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> outlierDStream = accessLogsDStream.transform { rdd =&gt;
+       extractOutliers(rdd)
+}
+</code></pre>
+<h4 id="32-&#x6709;&#x72B6;&#x6001;&#x8F6C;&#x5316;">3.2 &#x6709;&#x72B6;&#x6001;&#x8F6C;&#x5316;</h4>
+<p>&#x6BCF;&#x6279;&#x6B21;&#x7684;&#x4EFB;&#x52A1;&#x6570;&#x636E;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x6279;&#x6B21;&#x6570;&#x636E;&#x6709;&#x4EA4;&#x96C6;&#xFF0C;&#x6709;&#x4EA4;&#x96C6;&#x5C31;&#x53EF;&#x4EE5;&#x6709;&#x4F18;&#x5316;&#xFF0C;&#x5C3D;&#x91CF;&#x4F7F;&#x5F97;&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#x53EA;&#x9700;&#x8981;&#x88AB;&#x5904;&#x7406;&#x4E00;&#x6B21;</p>
+<h5 id="321-&#x57FA;&#x4E8E;&#x4E8E;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;">3.2.1 &#x57FA;&#x4E8E;&#x4E8E;&#x6ED1;&#x52A8;&#x7A97;&#x53E3;</h5>
+<p><img src="../pic/spark/reduce_by_window.png" alt="reduce_by_window"></p>
+<pre><code class="lang-scala"><span class="hljs-keyword">val</span> ipDStream = accessLogsDStream.map(logEntry =&gt; (logEntry.getIpAddress(), <span class="hljs-number">1</span>))
+<span class="hljs-keyword">val</span> ipCountDStream = ipDStream.reduceByKeyAndWindow(
+    {(x, y) =&gt; x + y}, <span class="hljs-comment">// for new</span>
+    {(x, y) =&gt; x - y}, <span class="hljs-comment">// for old</span>
+    <span class="hljs-type">Seconds</span>(<span class="hljs-number">30</span>), <span class="hljs-comment">// windowDuration</span>
+    <span class="hljs-type">Seconds</span>(<span class="hljs-number">10</span>)  <span class="hljs-comment">// slideDuration</span>
+)
+</code></pre>
+<h5 id="322-&#x72B6;&#x6001;&#x66F4;&#x65B0;-updatestatebykey">3.2.2 &#x72B6;&#x6001;&#x66F4;&#x65B0; updateStateByKey</h5>
+<p>&#x7528;&#x6765;&#x4E00;&#x76F4;&#x8FFD;&#x8E2A;&#x4E00;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x72B6;&#x6001;</p>
+<pre><code class="lang-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">updateRunningSum</span></span>(values: <span class="hljs-type">Seq</span>[<span class="hljs-type">Long</span>], state: <span class="hljs-type">Option</span>[<span class="hljs-type">Long</span>]) = {
+       <span class="hljs-type">Some</span>(state.getOrElse(<span class="hljs-number">0</span>L) + values.size)
+}
+<span class="hljs-keyword">val</span> responseCodeDStream = accessLogsDStream.map(log =&gt; (log.getResponseCode(), <span class="hljs-number">1</span>L)) 
+<span class="hljs-keyword">val</span> responseCodeCountDStream = responseCodeDStream.updateStateByKey(updateRunningSum _)
+</code></pre>
+<h3 id="&#x56DB;&#x3001;&#x8F93;&#x51FA;">&#x56DB;&#x3001;&#x8F93;&#x51FA;</h3>
+<p><img src="../pic/spark/output_operations.png" alt="output_operations"></p>
+<h3 id="&#x4E94;&#x3001;&#x5BB9;&#x707E;">&#x4E94;&#x3001;&#x5BB9;&#x707E;</h3>
+<h4 id="51-checkpoint">5.1 checkpoint</h4>
+<pre><code class="lang-scala">ssc.checkpoint(<span class="hljs-string">&quot;hdfs://...&quot;</span>)
+</code></pre>
+<h4 id="52-driver&#x7A0B;&#x5E8F;&#x5BB9;&#x707E;">5.2 driver&#x7A0B;&#x5E8F;&#x5BB9;&#x707E;</h4>
+<p>&#x4F7F;&#x7528;StreamingContext.getOrCreate()&#x51FD;&#x6570;&#xFF0C;&#x53EF;&#x4EE5;&#x91CD;&#x65B0;&#x4ECE;&#x68C0;&#x67E5;&#x70B9;&#x76EE;&#x5F55;&#x4E2D;&#x521D;&#x59CB;&#x5316;&#x51FA;streamingContext&#x7136;&#x540E;&#x7EE7;&#x7EED;&#x5904;&#x7406;</p>
+<pre><code class="lang-scala"><span class="hljs-type">StreamingContext</span>.getOrCreate()
+</code></pre>
+<p>spark&#x72EC;&#x7ACB;&#x7BA1;&#x7406;&#x5668;&#x8FD8;&#x53EF;&#x4EE5;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x6765;&#x76D1;&#x63A7;&#x7A0B;&#x5E8F;&#xFF0C;&#x81EA;&#x52A8;&#x62C9;&#x8D77;&#x4EFB;&#x52A1;</p>
+<h4 id="53-executor&#x8282;&#x70B9;&#x5BB9;&#x707E;">5.3 executor&#x8282;&#x70B9;&#x5BB9;&#x707E;</h4>
+<p>&#x6570;&#x636E;&#x5728;&#x591A;&#x4E2A;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x4E0A;&#x5907;&#x4EFD;</p>
+<h4 id="54-&#x63A5;&#x6536;&#x5668;&#x5BB9;&#x707E;">5.4 &#x63A5;&#x6536;&#x5668;&#x5BB9;&#x707E;</h4>
+<p>&#x5C06;&#x6570;&#x636E;&#x5907;&#x4EFD;&#xFF0C;&#x5141;&#x8BB8;&#x4E00;&#x53F0;&#x5DE5;&#x4F5C;&#x8282;&#x70B9;&#x6570;&#x636E;&#x4E22;&#x5931;</p>
+<blockquote>
+<p>@ &#x5B66;&#x5FC5;&#x6C42;&#x5176;&#x5FC3;&#x5F97;&#xFF0C;&#x4E1A;&#x5FC5;&#x8D35;&#x5176;&#x4E13;&#x7CBE;
+@ WHAT - HOW - WHY
+@ &#x4E0D;&#x79EF;&#x8DEC;&#x6B65; - &#x65E0;&#x4EE5;&#x81F3;&#x5343;&#x91CC; </p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright (c) 2019 Tencent PRUCE &amp; KB. all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">time&#xFF1A;
+2019-11-27 15:53:43
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="spark_running.html" class="navigation navigation-prev " aria-label="Previous page: Spark Running">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="spark_important.html" class="navigation navigation-next " aria-label="Next page: Spark划重点">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Spark Streaming Quick Start","level":"2.3","depth":1,"next":{"title":"Spark划重点","level":"2.4","depth":1,"path":"spark/spark_important.md","ref":"spark/spark_important.md","articles":[]},"previous":{"title":"Spark Running","level":"2.2","depth":1,"path":"spark/spark_running.md","ref":"spark/spark_running.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","splitter","expandable-chapters-small","-sharing","search-pro","tbfed-pagefooter","github","donate","multipart","mathjax","echarts"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright (c) 2019 Tencent PRUCE & KB.","modify_label":"time：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/prucehuang/bigdata-introduction.git"},"splitter":{},"search-pro":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"https://github.com/prucehuang/common-resources/blob/master/pictures/zhifubao_pay.jpg?raw=true","alipayText":"支付宝","button":"赏","title":"","wechat":"https://github.com/prucehuang/common-resources/blob/master/pictures/wechat_pay.jpg?raw=true","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"echarts":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"chart":{}},"theme":"default","author":"pruce","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"bigdata-introduction","language":"zh-hans","gitbook":"3.2.3","description":"bigdata notes"},"file":{"path":"spark/spark_streaming_quick_start.md","mtime":"2019-11-27T07:53:43.985Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-01T09:30:28.029Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

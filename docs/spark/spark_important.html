@@ -1,0 +1,971 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Spark划重点 · bigdata-introduction</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="pruce">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-donate/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-multipart/multipart.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../hadoop/hadoop_deploy_linux.html" />
+    
+    
+    <link rel="prev" href="spark_streaming_quick_start.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                        <b>1.1.</b>
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Spark</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="spark_quick_start.html">
+            
+                <a href="spark_quick_start.html">
+            
+                    
+                        <b>2.1.</b>
+                    
+                    Spark Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="spark_running.html">
+            
+                <a href="spark_running.html">
+            
+                    
+                        <b>2.2.</b>
+                    
+                    Spark Running
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="spark_streaming_quick_start.html">
+            
+                <a href="spark_streaming_quick_start.html">
+            
+                    
+                        <b>2.3.</b>
+                    
+                    Spark Streaming Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.4" data-path="spark_important.html">
+            
+                <a href="spark_important.html">
+            
+                    
+                        <b>2.4.</b>
+                    
+                    Spark划重点
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hadoop</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../hadoop/hadoop_deploy_linux.html">
+            
+                <a href="../hadoop/hadoop_deploy_linux.html">
+            
+                    
+                        <b>3.1.</b>
+                    
+                    在Ubuntu_Centos上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../hadoop/hadoop_deploy_mac.html">
+            
+                <a href="../hadoop/hadoop_deploy_mac.html">
+            
+                    
+                        <b>3.2.</b>
+                    
+                    在Mac OS上部署Hadoop
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Hive</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../hive/hive_quick_start.html">
+            
+                <a href="../hive/hive_quick_start.html">
+            
+                    
+                        <b>4.1.</b>
+                    
+                    Hive Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../hive/hive_join.html">
+            
+                <a href="../hive/hive_join.html">
+            
+                    
+                        <b>4.2.</b>
+                    
+                    Join解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.3" data-path="../hive/hive_window_function.html">
+            
+                <a href="../hive/hive_window_function.html">
+            
+                    
+                        <b>4.3.</b>
+                    
+                    分析窗口函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.4" data-path="../hive/hive_optimize.html">
+            
+                <a href="../hive/hive_optimize.html">
+            
+                    
+                        <b>4.4.</b>
+                    
+                    SQL优化
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Kafka</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../kafka/kafka_quick_start.html">
+            
+                <a href="../kafka/kafka_quick_start.html">
+            
+                    
+                        <b>5.1.</b>
+                    
+                    Kafka Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Flume</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../flume/flume_quick_start.html">
+            
+                <a href="../flume/flume_quick_start.html">
+            
+                    
+                        <b>6.1.</b>
+                    
+                    Flume Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Zookeeper</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../zookeeper/zookeeper_quick_start.html">
+            
+                <a href="../zookeeper/zookeeper_quick_start.html">
+            
+                    
+                        <b>7.1.</b>
+                    
+                    Zookeeper Quick Start
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Thanks</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../thanks.html">
+            
+                <a href="../thanks.html">
+            
+                    
+                        <b>8.1.</b>
+                    
+                    感谢&参考文章
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Spark划重点</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="spark&#x5212;&#x91CD;&#x70B9;">Spark&#x5212;&#x91CD;&#x70B9;</h1>
+<h3 id="&#x4E00;&#x3001;application-&#x3010;&#x91CD;&#x70B9;&#xFF0C;stage&#x5212;&#x5206;&#x7B56;&#x7565;&#x3011;">&#x4E00;&#x3001;Application &#x3010;&#x91CD;&#x70B9;&#xFF0C;stage&#x5212;&#x5206;&#x7B56;&#x7565;&#x3011;</h3>
+<h4 id="11-&#x4EFB;&#x52A1;&#x63D0;&#x4EA4;---spark-conf">1.1 &#x4EFB;&#x52A1;&#x63D0;&#x4EA4; - spark conf</h4>
+<p>&#x4EFB;&#x52A1;&#x4ECE;&#x672C;&#x5730;&#x673A;&#x5668;&#x6267;&#x884C;spark-submit&#x547D;&#x4EE4;&#x5C06;&#x4EFB;&#x52A1;&#x63D0;&#x4EA4;&#x5230;&#x96C6;&#x7FA4;</p>
+<ul>
+<li>--master yarn | local[*] &#x6307;&#x5B9A;&#x96C6;&#x7FA4;&#x7BA1;&#x7406;&#x5668;</li>
+<li>--deploy-mode cluster &#x6307;&#x5B9A;driver&#x8282;&#x70B9;&#x662F;&#x672C;&#x673A;&#x8FD8;&#x662F;&#x96C6;&#x7FA4;&#x4E0A;&#x7684;&#x4EFB;&#x610F;&#x8282;&#x70B9;</li>
+</ul>
+<pre><code>val conf = new SparkConf()
+val sc = new SparkContext(conf)
+</code></pre><p>&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#x7684;&#x5730;&#x65B9;&#x6709;&#x56DB;&#xFF0C;&#x4F18;&#x5148;&#x7EA7;&#x4ECE;&#x9AD8;&#x5230;&#x4F4E;&#x5206;&#x522B;&#x662F;:&#x7A0B;&#x5E8F;set&#x8BBE;&#x5B9A; -&gt; spark summit &#x63D0;&#x4EA4;&#x53C2;&#x6570;&#x6307;&#x5B9A; -&gt; &#x4F20;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8BBE;&#x7F6E;(--properties-file) -&gt; spark&#x5B89;&#x88C5;&#x76EE;&#x5F55;&#x4E2D;&#x8BBE;&#x7F6E;conf/spark-defaults.conf</p>
+<h4 id="12-&#x4EFB;&#x52A1;&#x63D0;&#x4EA4;---dag">1.2 &#x4EFB;&#x52A1;&#x63D0;&#x4EA4; - DAG</h4>
+<p>&#x4EFB;&#x52A1;&#x9996;&#x5148;&#x5230;driver&#x8282;&#x70B9;&#x4E0A;&#xFF0C;driver&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x4EFB;&#x52A1;&#x7684;&#x5212;&#x5206;&#x548C;&#x8C03;&#x5EA6;&#xFF0C;executor&#x8282;&#x70B9;&#x8D1F;&#x8D23;&#x4EFB;&#x52A1;&#x7684;&#x6267;&#x884C;&#x548C;&#x5FC5;&#x8981;&#x6570;&#x636E;&#x7684;&#x7F13;&#x5B58;&#x3002;&#x7A0B;&#x5E8F;RDD&#x4E4B;&#x95F4;&#x7684;&#x8F6C;&#x5316;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x5F20;DAG&#x6709;&#x5411;&#x65E0;&#x73AF;&#x56FE;&#xFF0C;driver&#x8282;&#x70B9;&#x5C06;DAG&#x8F6C;&#x6362;&#x6210;&#x7269;&#x7406;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#xFF0C;&#x5212;&#x5206;&#x6210;job&#x3001;stage&#x5206;&#x53D1;&#x5230;&#x5404;&#x4E2A;executor&#x8282;&#x70B9;&#x4E0A;&#x6267;&#x884C;&#x3002;</p>
+<ul>
+<li>job&#xFF0C; &#x6BCF;&#x4E00;&#x4E2A;&#x884C;&#x52A8;&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;job&#xFF0C;&#x6BD4;&#x5982;take&#x3001;first&#x3001;foreach</li>
+<li>stage&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;&#x5BBD;&#x4F9D;&#x8D56;&#x7684;&#x8F6C;&#x5316;(&#x6709;shuffle)&#x90FD;&#x4F1A;&#x4EA7;&#x751F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;stage</li>
+<li>task&#xFF0C;stage&#x5728;executor&#x4E0A;&#x5E76;&#x884C;&#x6267;&#x884C;&#xFF0C;&#x5206;&#x6210;&#x7684;&#x5C0F;&#x4EFB;&#x52A1;&#x5C31;&#x662F;task&#xFF0C;task&#x5BF9;&#x5E94;&#x4E8E;&#x4E00;&#x4E2A;partition&#x6570;&#x636E;</li>
+<li><p>&#x3010;&#x91CD;&#x70B9;&#xFF0C;stage&#x5982;&#x4F55;&#x5212;&#x5206;&#x3011; 
+1&#x3001;&#x5F53;&#x89E6;&#x53D1;rdd&#x7684;action&#x65F6;: &#x6BD4;&#x5982;collect&#xFF0C;count&#x3001;take&#x3001;first&#x3001;reduce&#x3001;foreach<br>2&#x3001;&#x5F53;&#x89E6;&#x53D1;rdd&#x7684;shuffle&#x64CD;&#x4F5C;&#x65F6;: &#x6BD4;&#x5982;repartition&#x3001;coalesce&#x3001;ByKey operations (except for counting) like groupByKey and reduceByKey, sortByKey and join operations like cogroup and join.</p>
+</li>
+<li><p>Application --&gt; Driver Program --&gt; DAG --&gt; Jobs --&gt; Stages --&gt; Taskset --&gt; TaskScheduler --&gt; Executors --&gt; Tasks</p>
+</li>
+</ul>
+<h4 id="13-partition&#x5212;&#x5206;">1.3 partition&#x5212;&#x5206;</h4>
+<pre><code class="lang-java">## step1&#xFF1A;&#x8BFB;&#x6587;&#x4EF6;
+val textFile = sc.textFile(&quot;/hhf/LICENSE&quot;)
+
+## step2: &#x521B;&#x5EFA;hadoopFile
+def textFile(
+  path: String,
+  minPartitions: Int = defaultMinPartitions): RDD[String] = withScope {
+    assertNotStopped()
+    hadoopFile(path, classOf[TextInputFormat],classOf[LongWritable], classOf[Text],minPartitions).map(pair =&gt; pair._2.toString)
+}
+
+## step3: &#x83B7;&#x5F97;getPartitions&#xFF0C;
+override def getPartitions: Array[Partition] = {
+    val jobConf = getJobConf()
+    // add the credentials here as this can be called before SparkContext initialized
+    SparkHadoopUtil.get.addCredentials(jobConf)
+    val inputFormat = getInputFormat(jobConf)
+    if (inputFormat.isInstanceOf[Configurable]) {
+      inputFormat.asInstanceOf[Configurable].setConf(jobConf)
+    }
+    val inputSplits = inputFormat.getSplits(jobConf, minPartitions)
+    val array = new Array[Partition](inputSplits.size)
+    for (i &lt;- 0 until inputSplits.size) {
+      array(i) = new HadoopPartition(id, i, inputSplits(i))
+    }
+    array
+}
+
+## step4: getSplits &#x9ED8;&#x8BA4;&#x6700;&#x5C0F;&#x5206;&#x533A;&#x6570;2
+/** Splits files returned by {@link #listStatus(JobConf)} when
+* they&apos;re too big.*/ 
+public InputSplit[] getSplits(JobConf job, int numSplits)
+throws IOException {
+    FileStatus[] files = listStatus(job);
+
+    // Save the number of input files for metrics/loadgen
+    job.setLong(NUM_INPUT_FILES, files.length);
+    long totalSize = 0;                           // compute total size
+    for (FileStatus file: files) {                // check we have valid files
+      if (file.isDirectory()) {
+        throw new IOException(&quot;Not a file: &quot;+ file.getPath());
+      }
+      totalSize += file.getLen();
+    }
+
+    long goalSize = totalSize / (numSplits == 0 ? 1 : numSplits);
+    long minSize = Math.max(job.getLong(org.apache.hadoop.mapreduce.lib.input.
+      FileInputFormat.SPLIT_MINSIZE, 1), minSplitSize);
+
+    // generate splits
+    ArrayList&lt;FileSplit&gt; splits = new ArrayList&lt;FileSplit&gt;(numSplits);
+    NetworkTopology clusterMap = new NetworkTopology();
+    for (FileStatus file: files) {
+      Path path = file.getPath();
+      long length = file.getLen();
+      if (length != 0) {
+        FileSystem fs = path.getFileSystem(job);
+        BlockLocation[] blkLocations;
+        if (file instanceof LocatedFileStatus) {
+          blkLocations = ((LocatedFileStatus) file).getBlockLocations();
+        } else {
+          blkLocations = fs.getFileBlockLocations(file, 0, length);
+        }
+        if (isSplitable(fs, path)) {
+          long blockSize = file.getBlockSize();
+          long splitSize = computeSplitSize(goalSize, minSize, blockSize);
+
+          long bytesRemaining = length;
+          while (((double) bytesRemaining)/splitSize &gt; SPLIT_SLOP) {
+            String[] splitHosts = getSplitHosts(blkLocations,
+                length-bytesRemaining, splitSize, clusterMap);
+            splits.add(makeSplit(path, length-bytesRemaining, splitSize,
+                splitHosts));
+            bytesRemaining -= splitSize;
+          }
+
+          if (bytesRemaining != 0) {
+            String[] splitHosts = getSplitHosts(blkLocations, length
+                - bytesRemaining, bytesRemaining, clusterMap);
+            splits.add(makeSplit(path, length - bytesRemaining, bytesRemaining,
+                splitHosts));
+          }
+        } else {
+          String[] splitHosts = getSplitHosts(blkLocations,0,length,clusterMap);
+          splits.add(makeSplit(path, 0, length, splitHosts));
+        }
+      } else { 
+        //Create empty hosts array for zero length files
+        splits.add(makeSplit(path, 0, length, new String[0]));
+      }
+    }
+    LOG.debug(&quot;Total # of splits: &quot; + splits.size());
+    return splits.toArray(new FileSplit[splits.size()]);
+}
+
+## step5: 
+protected long computeSplitSize(long goalSize, long minSize, long blockSize) {
+    return Math.max(minSize, Math.min(goalSize, blockSize));
+}
+
+
+## &#x89E3;&#x6790;
+1&#x3001;&#x6839;&#x636E;&#x76EE;&#x6807;&#x5206;&#x533A;&#x6570;&#x3001;&#x6587;&#x4EF6;&#x7684;&#x603B;size&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x7B2C;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x5206;&#x533A;&#x5927;&#x5C0F; &#x2014;&#x2014; goalSize
+long goalSize = totalSize / (numSplits == 0 ? 1 : numSplits);
+numSplits &#x9ED8;&#x8BA4;&#x4F20;&#x53C2;2
+
+2&#x3001;&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x53C2;&#x6570;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x7B2C;&#x4E8C;&#x4E2A;&#x6700;&#x5C0F;&#x5206;&#x533A;&#x5927;&#x5C0F; &#x2014;&#x2014; minSize
+long minSize = Math.max(job.getLong(org.apache.hadoop.mapreduce.lib.input.FileInputFormat.SPLIT_MINSIZE, 1),minSplitSize)
+minSplitSize &#x9ED8;&#x8BA4;&#x662F;1
+private long minSplitSize = 1;
+
+3&#x3001;&#x6839;&#x636E;&#x6587;&#x4EF6;&#x7684;&#x5757;&#x5927;&#x5C0F;&#xFF0C;&#x8BA1;&#x7B97;&#x51FA;&#x7B2C;&#x4E09;&#x4E2A;&#x5206;&#x533A;&#x5927;&#x5C0F; -- blockSize
+long blockSize = file.getBlockSize();
+
+4&#x3001;&#x786E;&#x5B9A;&#x6700;&#x540E;&#x7684;&#x6BCF;&#x4E2A;&#x5206;&#x533A;&#x5927;&#x5C0F;
+return Math.max(minSize, Math.min(goalSize, blockSize));
+
+## &#x6240;&#x4EE5;
+1&#x3001;&#x521B;&#x5EFA;HadoopRDD&#x7684;&#x65F6;&#x5019;&#x4F20;&#x5165;&#x7684;&#x53C2;&#x6570;&#x53EA;&#x80FD;&#x8C03;&#x5C0F;&#x6BCF;&#x4E2A;&#x5206;&#x533A;&#x7684;&#x5927;&#x5C0F;
+&#x5982;&#xFF0C;HadoopRDD&#x4E00;&#x4E2A;blocksize&#x662F;128M&#xFF0C;&#x5047;&#x8BBE;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x662F;1G+10M&#xFF0C;&#x4F46;&#x662F;&#x8BBE;&#x7F6E;4&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x90A3;&#x4E48;&#x5B9E;&#x9645;&#x5728;&#x8BA1;&#x7B97;&#x5206;&#x533A;&#x4E2A;&#x6570;&#x7684;&#x65F6;&#x5019;&#x7ED3;&#x679C;&#x4E3A;9&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x5927;&#x5C0F;&#x4E3A;10M
+2&#x3001;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x6700;&#x5927;&#x7684;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x662F;&#x4E00;&#x4E2A;&#x5757;&#x7684;&#x5927;&#x5C0F;
+</code></pre>
+<h4 id="14-partition&#x548C;block&#x7684;&#x5173;&#x7CFB;">1.4 partition&#x548C;block&#x7684;&#x5173;&#x7CFB;</h4>
+<ul>
+<li>&#x4E00;&#x4E2A;partition &#x5BF9;&#x5E94;&#x4E00;&#x4E2A;task</li>
+<li>block&#x4F4D;&#x4E8E;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3001;partition&#x4F4D;&#x4E8E;&#x8BA1;&#x7B97;&#x7A7A;&#x95F4;</li>
+<li>block&#x7684;&#x5927;&#x5C0F;&#x662F;&#x56FA;&#x5B9A;&#x7684;&#x3001;partition&#x5927;&#x5C0F;&#x662F;&#x4E0D;&#x56FA;&#x5B9A;&#x7684;</li>
+</ul>
+<h3 id="&#x4E8C;&#x3001;shuffle&#x3010;&#x91CD;&#x70B9;&#xFF0C;shuffle&#x7684;&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#x3001;shuffle&#x7684;&#x8C03;&#x53C2;&#x3011;">&#x4E8C;&#x3001;Shuffle&#x3010;&#x91CD;&#x70B9;&#xFF0C;shuffle&#x7684;&#x8BE6;&#x7EC6;&#x8FC7;&#x7A0B;&#x3001;shuffle&#x7684;&#x8C03;&#x53C2;&#x3011;</h3>
+<h4 id="21-hadoop-shuffle&#x7684;&#x8FC7;&#x7A0B;&#xFF08;sortshufflemanager&#xFF09;">2.1 Hadoop Shuffle&#x7684;&#x8FC7;&#x7A0B;&#xFF08;SortShuffleManager&#xFF09;</h4>
+<p>&#x3010;&#x8FC7;&#x7A0B;&#x603B;&#x8BF4;&#x3011;<br>shuffle&#x662F;map&#x5230;reduce&#x4E2D;&#x95F4;&#x7684;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x4F20;&#x8F93;&#x548C;&#x5206;&#x914D;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x5373;&#xFF0C;&#x5982;&#x4F55;&#x5C06;map&#x7684;&#x6570;&#x636E;&#x4EA7;&#x51FA;&#xFF0C;&#x4F20;&#x8F93;&#x5230;reduce&#x7684;&#x8F93;&#x5165;&#x3002;<br>&#x5E38;&#x7528;&#x7684;shuffle&#x7B56;&#x7565;&#x6BD4;&#x5982;hash&#xFF0C;(a,1)(b,2)(c,3)&#x5206;&#x522B;&#x4F20;&#x5230;reduce&#x5404;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF0C;hash&#xFF08;a&#xFF09; &#x7136;&#x540E;&#x5BF9;reduce&#x7684;&#x4E2A;&#x6570;&#x53D6;&#x4F59;&#x6570;&#xFF0C;&#x5206;&#x914D;&#x4E0D;&#x540C;&#x7684;reduce&#x5E76;&#x884C;&#x6267;&#x884C;&#x540E;&#x9762;&#x7684;&#x8FC7;&#x7A0B;&#x3002;<br><img src="../pic/spark/shuffle.png" alt="shuffle"></p>
+<p>&#x3010;&#x8FC7;&#x7A0B;&#x8BE6;&#x89E3;&#x3011;</p>
+<ul>
+<li>Map&#x7AEF;: DataNode --&gt; InputSplit --&gt; &#x73AF;&#x5F62;&#x5185;&#x5B58;&#x7F13;&#x51B2;&#x533A; --&gt; partition&#x3001;sort&#x548C;combine --&gt; &#x903E;&#x51FA;&#x5230;&#x672C;&#x5730;&#x78C1;&#x76D8; --&gt; Merge</li>
+<li>&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;Collect&#x9636;&#x6BB5;<br>&#x6BCF;&#x4E2A;map&#x6709;&#x4E00;&#x4E2A;&#x73AF;&#x5F62;&#x5185;&#x5B58;&#x7F13;&#x51B2;&#x533A;&#xFF0C;&#x7528;&#x4E8E;&#x5B58;&#x50A8;&#x4EFB;&#x52A1;&#x7684;&#x8F93;&#x51FA;&#x3002;&#x9ED8;&#x8BA4;&#x5927;&#x5C0F;100MB&#xFF08;io.sort.mb&#x5C5E;&#x6027;&#xFF09;&#xFF0C;&#x4E00;&#x65E6;&#x8FBE;&#x5230;&#x9600;&#x503C;0.8(io.sort.spill.percent)&#xFF0C;&#x8FDB;&#x5165;Spill&#x9636;&#x6BB5;</li>
+<li>&#x7B2C;&#x4E8C;&#x6B65;&#xFF0C;Spill&#x9636;&#x6BB5;<br>&#x4E00;&#x4E2A;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x628A;&#x5185;&#x5BB9;&#x5199;&#x5230;(spill)Linux&#x672C;&#x5730;&#x78C1;&#x76D8;&#x4E2D;&#x7684;&#x6307;&#x5B9A;&#x76EE;&#x5F55;&#xFF08;mapred.local.dir&#xFF09;&#x4E0B;&#x7684;&#x65B0;&#x5EFA;&#x7684;&#x4E00;&#x4E2A;&#x6EA2;&#x51FA;&#x5199;&#x6587;&#x4EF6;&#x3002;&#x5199;&#x78C1;&#x76D8;&#x524D;&#xFF0C;&#x7EBF;&#x7A0B;&#x9996;&#x5148;&#x6839;&#x636E;reducer&#x628A;&#x6570;&#x636E;&#x8FDB;&#x884C;partition&#xFF0C;&#x5728;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x5185;&#x90E8;sort&#xFF0C;&#x5982;&#x679C;&#x6709;combiner&#xFF0C;&#x5219;&#x4F1A;&#x5728;sort&#x540E;&#x8FD0;&#x884C;&#xFF0C;&#x4F7F;&#x5F97;map&#x7684;&#x8F93;&#x51FA;&#x66F4;&#x52A0;&#x7D27;&#x51D1;&#x3002;&#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;&#x8FD8;&#x9700;&#x8981;&#x5C31;&#x884C;&#x538B;&#x7F29;</li>
+<li><p>&#x7B2C;&#x4E09;&#x6B65;&#xFF0C;Merge&#x9636;&#x6BB5;
+map&#x7ED3;&#x675F;&#x540E;&#x6240;&#x6709;&#x7684;&#x5C0F;&#x6587;&#x4EF6;&#x4F1A;merge&#x6210;&#x4E00;&#x4E2A;&#x5927;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x8BB0;&#x5F55;&#x4E0D;&#x540C;&#x5206;&#x533A;&#x8D77;&#x59CB;&#x7ED3;&#x675F;&#x4F4D;&#x7F6E;&#x7684;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x3002;&#x9ED8;&#x8BA4;&#x6700;&#x5927;&#x7684;&#x6BCF;&#x6B21;&#x5408;&#x5E76;&#x6587;&#x4EF6;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;10&#x4E2A;&#xFF08;io.sort.factor&#xFF09;&#xFF0C;&#x4E4B;&#x524D;&#x7248;&#x672C;&#x4F1A;&#x5C06;&#x6BCF;&#x4E2A;&#x5206;&#x533A;&#x7684;&#x6570;&#x636E;&#x5B58;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#xFF0C;&#x4EA7;&#x751F;&#x5927;&#x91CF;&#x7684;&#x5C0F;&#x6587;&#x4EF6;&#xFF0C;&#x78C1;&#x76D8;&#x5BFB;&#x9053;&#x975E;&#x5E38;&#x8017;&#x65F6;&#x3002;  </p>
+</li>
+<li><p>Reduce&#x7AEF;: TaskTracker --&gt; JobTracker --&gt; Http Copy --&gt; Merge --&gt; Reducer    </p>
+</li>
+<li>&#x7B2C;&#x56DB;&#x6B65;&#xFF0C;Copy&#x9636;&#x6BB5;<br>&#x6BCF;&#x4E00;&#x4E2A;map&#x8FD0;&#x884C;&#x7ED3;&#x675F;&#x540E;TaskTracker&#x4F1A;&#x5F97;&#x5230;&#x6D88;&#x606F;&#xFF0C;&#x8FDB;&#x800C;&#x5C06;&#x6D88;&#x606F;&#x6C47;&#x62A5;&#x7ED9;JobTracker&#xFF08;MR2&#x4E2D;&#xFF0C;&#x4EFB;&#x52A1;&#x76F4;&#x63A5;&#x901A;&#x77E5;master&#xFF09;&#xFF0C;reduce&#x5B9A;&#x65F6;&#x4ECE;JobTracker&#x83B7;&#x53D6;&#x8BE5;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x5C31;&#x5F00;&#x59CB;&#x4E86;&#x6570;&#x636E;&#x7684;copy&#x8FC7;&#x7A0B;&#xFF0C;copy&#x5E76;&#x4E0D;&#x9700;&#x8981;&#x7B49;&#x5F85;&#x5168;&#x90E8;&#x7684;map&#x8FD0;&#x884C;&#x7ED3;&#x675F;&#x3002;reduce&#x7AEF;&#x53EF;&#x80FD;&#x4ECE;n&#x4E2A;map&#x7684;&#x7ED3;&#x679C;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x4E8E;&#x662F;reduce&#x7AEF;&#x9ED8;&#x8BA4;&#x6709;5&#xFF08;mapred.reduce.parallel.copies&#xFF09;&#x4E2A;&#x6570;&#x636E;&#x590D;&#x5236;&#x7EBF;&#x7A0B;&#x4ECE;map&#x7AEF;&#x590D;&#x5236;&#x6570;&#x636E;&#xFF0C;&#x8D70;&#x7684;&#x662F;HTTP&#x63A5;&#x53E3;&#x3002;&#x6570;&#x636E;&#x5148;&#x5199;&#x5230;reduce&#x7AEF;&#x7684;&#x5806;&#x7F13;&#x5B58;&#x4E2D;&#xFF0C;&#x540C;&#x6837;&#x7F13;&#x5B58;&#x5360;&#x7528;&#x5230;&#x8FBE;&#x4E00;&#x5B9A;&#x9608;&#x503C;&#x540E;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x4E2D;&#xFF0C;&#x5199;&#x5165;&#x4E4B;&#x524D;&#x5982;&#x679C;&#x6709;combiner&#xFF0C;&#x5219;&#x5728;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x4E4B;&#x524D;&#x5408;&#x5E76;&#x6570;&#x636E;&#xFF0C;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x7684;&#x5199;&#x5165;&#x3002;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;&#x538B;&#x7F29;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x5C06;&#x4F1A;&#x89E3;&#x538B;&#x7F29;&#x3002;</li>
+<li>&#x7B2C;&#x4E94;&#x6B65;&#xFF0C;Merge&#x9636;&#x6BB5;<br>&#x5728;&#x8FDC;&#x7A0B;copy&#x6570;&#x636E;&#x7684;&#x540C;&#x65F6;&#xFF0C;Reduce Task&#x5728;&#x540E;&#x53F0;&#x542F;&#x52A8;&#x4E86;&#x4E24;&#x4E2A;&#x540E;&#x53F0;&#x7EBF;&#x7A0B;&#x5BF9;&#x5185;&#x5B58;&#x548C;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x6587;&#x4EF6;&#x505A;&#x5408;&#x5E76;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x9632;&#x6B62;&#x5185;&#x5B58;&#x4F7F;&#x7528;&#x8FC7;&#x591A;&#x6216;&#x78C1;&#x76D8;&#x751F;&#x7684;&#x6587;&#x4EF6;&#x8FC7;&#x591A;</li>
+<li>&#x7B2C;&#x516D;&#x6B65;&#xFF0C;Sort&#x9636;&#x6BB5;
+&#x5728;&#x5408;&#x5E76;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x505A;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#x3002;&#x7531;&#x4E8E;&#x5404;&#x4E2A;Map Task&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x5BF9;&#x6570;&#x636E;&#x505A;&#x8FC7;&#x5C40;&#x90E8;&#x6392;&#x5E8F;&#xFF0C;&#x6545;&#x6B64;Reduce Task&#x53EA;&#x9700;&#x8981;&#x505A;&#x4E00;&#x6B21;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x5373;&#x53EF;&#x4FDD;&#x8BC1;copy&#x6570;&#x636E;&#x7684;&#x6574;&#x4F53;&#x6709;&#x5E8F;&#x6027;&#xFF0C;&#x5408;&#x5E76;&#x56E0;&#x5B50;&#x9ED8;&#x8BA4;&#x4E5F;&#x662F;10&#xFF08;is.sort.factor&#xFF09;&#xFF0C;&#x6BD4;&#x5982;40&#x4E2A;map&#x7ED3;&#x679C;&#xFF0C;&#x7B2C;&#x4E00;&#x6B21;&#x5408;&#x5E76;4&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x7B2C;&#x4E8C;&#x6B21;&#x3001;&#x7B2C;&#x4E09;&#x6B21;&#x3001;&#x7B2C;&#x56DB;&#x6B21;&#x5408;&#x5E76;10&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x6700;&#x540E;&#x7684;10&#x4E2A;&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x8F93;&#x5165;&#x7ED9;reduce</li>
+</ul>
+<h4 id="22-spark-shuffle&#x7684;&#x8FC7;&#x7A0B;---120&#x4E4B;&#x524D;&#x662F;hashshuffle&#xFF0C;&#x4E4B;&#x540E;&#x662F;sortshuffle">2.2 Spark Shuffle&#x7684;&#x8FC7;&#x7A0B; - 1.2.0&#x4E4B;&#x524D;&#x662F;HashShuffle&#xFF0C;&#x4E4B;&#x540E;&#x662F;SortShuffle</h4>
+<p>&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;hash&#x548C;sort&#x6700;&#x5927;&#x7684;&#x4E0D;&#x540C;&#x5C31;&#x662F;&#x524D;&#x8005;&#x6CA1;&#x6709;&#x8D70;&#x6392;&#x5E8F;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x51CF;&#x5C11;&#x7684;&#x8FD0;&#x884C;&#x4E2D;&#x5927;&#x91CF;&#x7684;&#x65F6;&#x95F4;&#x6D88;&#x8017;&#x3002;&#x4E00;&#x5171;&#x6709;&#x56DB;&#x4E2A;&#x7248;&#x672C;&#x7684;shuffle&#x3002;<br>HashShuffle&#x4F18;&#x5316;&#x4E4B;&#x524D;&#x548C;&#x4F18;&#x5316;&#x4E4B;&#x540E;&#x7684;&#x3001;SortShuffle&#x7684;&#x666E;&#x901A;&#x6A21;&#x5F0F;&#x548C;bypass&#x6A21;&#x5F0F;&#x3002;  </p>
+<ul>
+<li>HashShuffle&#x4F18;&#x5316;&#x4E4B;&#x524D;&#x7684;&#x7248;&#x672C;&#x6BCF;&#x4E2A;map&#x4F1A;&#x4EA7;&#x51FA;reducer&#x4E2A;output&#x6587;&#x4EF6;&#xFF0C;&#x5BFC;&#x81F4;&#x8FD0;&#x884C;&#x5927;&#x4EFB;&#x52A1;&#x7684;&#x65F6;&#x5019;&#x4EA7;&#x751F;&#x8D85;&#x7EA7;&#x591A;&#xFF08;core_num <em> task_num </em> reducer_num&#xFF09;&#x7684;&#x5C0F;&#x6587;&#x4EF6;&#xFF0C;&#x6548;&#x7387;&#x5F88;&#x4F4E;&#x3002;  </li>
+<li>&#x4F18;&#x5316;&#x540E;&#xFF0C;&#x6BCF;&#x4E2A;executor&#x8282;&#x70B9;&#x7684;&#x6BCF;&#x4E2A;core&#x4F1A;&#x9488;&#x5BF9;&#x6BCF;&#x4E2A;reducer&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;FileSegment&#xFF0C;&#x6240;&#x6709;&#x8FD9;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#x7684;map&#x4EFB;&#x52A1;&#x7684;&#x8F93;&#x51FA;&#x90FD;&#x5C06;&#x5408;&#x5E76;&#x5230;&#x8FD9;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x4E0A;&#xFF0C;&#x4E00;&#x5171;&#x4F1A;&#x751F;&#x6210;&#xFF08;core_num * reducer_num&#xFF09;&#x4E2A;&#x6587;&#x4EF6;   </li>
+<li>&#x65B0;&#x7684;SortShuffle&#x7684;&#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x6570;&#x91CF;&#x4E3A;2*reduce_num&#xFF0C;&#x4E00;&#x4EFD;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x4EFD;index&#x3002;sortShuffle &#x7684;&#x8FD0;&#x884C;&#x673A;&#x5236;&#x4E3B;&#x8981;&#x5206;&#x6210;&#x4E24;&#x79CD;&#xFF0C;&#x4E00;&#x79CD;&#x662F;&#x666E;&#x901A;&#x8FD0;&#x884C;&#x673A;&#x5236;&#xFF0C;&#x53E6;&#x4E00;&#x79CD;&#x662F;bypass&#x8FD0;&#x884C;&#x673A;&#x5236;&#xFF08;&#x5F53;shuffle read task&#x7684;&#x6570;&#x91CF;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;spark.shuffle.sort.bypassMergeThreshold&#x53C2;&#x6570;&#x7684;&#x503C;&#x65F6;&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A;200&#xFF09;&#xFF0C;&#x5C31;&#x4F1A;&#x542F;&#x7528;bypass&#x673A;&#x5236;&#xFF09;</li>
+</ul>
+<pre><code>val bypassMergeThreshold: Int = conf.getInt(&quot;spark.shuffle.sort.bypassMergeThreshold&quot;, 200)
+numPartitions &lt;= bypassMergeThreshold &amp;&amp; aggregator.isEmpty &amp;&amp; keyOrdering.isEmpty
+# &#x8FD4;&#x56DE;&#x503C;&#x4E3A;true&#xFF0C;&#x5219;bypassMerge
+</code></pre><ul>
+<li>&#x672A;&#x4F18;&#x5316;&#x7684;HashShuffle</li>
+</ul>
+<p><img src="../pic/spark/shuffle_1.png" alt="shuffle_1">
+shuffle write&#x4F1A;&#x751F;&#x6210;M*R&#x4E2A;&#x5C0F;&#x6587;&#x4EF6;&#xFF0C;shuffle read&#x7684;&#x62C9;&#x53D6;&#x8FC7;&#x7A0B;&#x662F;&#x4E00;&#x8FB9;&#x62C9;&#x53D6;&#x4E00;&#x8FB9;&#x8FDB;&#x884C;&#x805A;&#x5408;&#x7684;&#x3002;&#x6BCF;&#x4E2A;shuffle read task&#x90FD;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x81EA;&#x5DF1;&#x7684;buffer&#x7F13;&#x51B2;&#xFF0C;&#x6BCF;&#x6B21;&#x90FD;&#x53EA;&#x80FD;&#x62C9;&#x53D6;&#x4E0E;buffer&#x7F13;&#x51B2;&#x76F8;&#x540C;&#x5927;&#x5C0F;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;Map&#x8FDB;&#x884C;&#x805A;&#x5408;&#x7B49;&#x64CD;&#x4F5C;&#x3002;&#x805A;&#x5408;&#x5B8C;&#x4E00;&#x6279;&#x6570;&#x636E;&#x540E;&#xFF0C;&#x518D;&#x62C9;&#x53D6;&#x4E0B;&#x4E00;&#x6279;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x653E;&#x5230;buffer&#x7F13;&#x51B2;&#x4E2D;&#x8FDB;&#x884C;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#x3002;&#x4EE5;&#x6B64;&#x7C7B;&#x63A8;&#xFF0C;&#x76F4;&#x5230;&#x6700;&#x540E;&#x5C06;&#x6240;&#x6709;&#x6570;&#x636E;&#x5230;&#x62C9;&#x53D6;&#x5B8C;&#xFF0C;&#x5E76;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<ul>
+<li>&#x4F18;&#x5316;&#x540E;&#x7684;HashShuffle</li>
+</ul>
+<p><img src="../pic/spark/shuffle_2.png" alt="shuffle_2">
+&#x8BBE;&#x7F6E;spark.shuffle.consolidateFiles&#x53C2;&#x6570;&#x4E3A;true&#xFF0C;&#x5F00;&#x542F;&#x4F18;&#x5316;&#x4E4B;&#x8DEF;&#x3002;consolidate&#x673A;&#x5236;&#x5141;&#x8BB8;&#x4E0D;&#x540C;&#x7684;task&#x590D;&#x7528;&#x540C;&#x4E00;&#x6279;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x53EF;&#x4EE5;&#x6709;&#x6548;&#x5C06;&#x591A;&#x4E2A;task&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x4E00;&#x5B9A;&#x7A0B;&#x5EA6;&#x4E0A;&#x7684;&#x5408;&#x5E76;&#xFF0C;&#x4ECE;&#x800C;&#x5927;&#x5E45;&#x5EA6;&#x51CF;&#x5C11;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x7684;&#x6570;&#x91CF;&#xFF0C;&#x8FDB;&#x800C;&#x63D0;&#x5347;shuffle write&#x7684;&#x6027;&#x80FD;&#x3002;shuffle write&#x4F1A;&#x751F;&#x6210;Core_num*R&#x4E2A;&#x5C0F;&#x6587;&#x4EF6;</p>
+<ul>
+<li>SortShuffle&#x7684;&#x666E;&#x901A;&#x8FD0;&#x884C;&#x673A;&#x5236;  </li>
+</ul>
+<p><img src="../pic/spark/sort-shuffle-common.png" alt="sort-shuffle-common">
+&#x8FC7;&#x7A0B;&#x540C;Hadoop&#x7684;shuffle&#x662F;&#x4E00;&#x6837;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;map&#x7684;&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x4E0D;&#x518D;&#x53EA;&#x662F;<k, v="">&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x6839;&#x636E;shuffle&#x7684;&#x7B97;&#x5B50;&#x6765;&#x786E;&#x5B9A;&#xFF0C;&#x5982;reduceByKey&#xFF0C;&#x5219;&#x9009;&#x7528;Map&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF1B;&#x5982;&#x662F;join&#xFF0C;&#x5219;&#x9009;&#x7528;Array&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;<br>&#x5728;&#x6EA2;&#x5199;&#x5230;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x5148;&#x6839;&#x636E;key&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E2D;&#x5DF2;&#x6709;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;&#x6392;&#x5E8F;&#x8FC7;&#x540E;&#xFF0C;&#x4F1A;&#x5206;&#x6279;&#x5C06;&#x6570;&#x636E;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x3002;&#x9ED8;&#x8BA4;&#x7684;batch&#x6570;&#x91CF;&#x662F;10000&#x6761;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x6392;&#x5E8F;&#x597D;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x4F1A;&#x4EE5;&#x6BCF;&#x6279;1&#x4E07;&#x6761;&#x6570;&#x636E;&#x7684;&#x5F62;&#x5F0F;&#x5206;&#x6279;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x3002;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x662F;&#x901A;&#x8FC7;Java&#x7684;BufferedOutputStream&#x5B9E;&#x73B0;&#x7684;&#x3002;BufferedOutputStream&#x662F;Java&#x7684;&#x7F13;&#x51B2;&#x8F93;&#x51FA;&#x6D41;&#xFF0C;&#x9996;&#x5148;&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x7F13;&#x51B2;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5F53;&#x5185;&#x5B58;&#x7F13;&#x51B2;&#x6EE1;&#x6EA2;&#x4E4B;&#x540E;&#x518D;&#x4E00;&#x6B21;&#x5199;&#x5165;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x78C1;&#x76D8;IO&#x6B21;&#x6570;&#xFF0C;&#x63D0;&#x5347;&#x6027;&#x80FD;&#x3002;<br>&#x540C;&#x6837;map&#x7684;&#x6700;&#x540E;&#x8FD8;&#x6709;&#x4E00;&#x4E2A;Merge&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x8F93;&#x51FA;&#x662F;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x548C;&#x4E00;&#x4EFD;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#xFF0C;&#x5176;&#x4E2D;&#x6807;&#x8BC6;&#x4E86;&#x4E0B;&#x6E38;&#x5404;&#x4E2A;task&#x7684;&#x6570;&#x636E;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x7684;start offset&#x4E0E;end offset&#x3002;</k,></p>
+<ul>
+<li>bypass&#x8FD0;&#x884C;&#x673A;&#x5236;</li>
+</ul>
+<p><img src="../pic/spark/sort-shuffle-bypass.png" alt="sort-shuffle-bypass">
+bypass&#x8FD0;&#x884C;&#x673A;&#x5236;&#x7684;&#x89E6;&#x53D1;&#x6761;&#x4EF6;&#x5982;&#x4E0B;&#xFF1A;<br>1&#x3001;shuffle map task&#x6570;&#x91CF;&#x5C0F;&#x4E8E;spark.shuffle.sort.bypassMergeThreshold&#x53C2;&#x6570;&#x7684;&#x503C;&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A;200&#xFF09;<br>2&#x3001;&#x4E0D;&#x662F;&#x6392;&#x5E8F;&#x7C7B;&#x7684;shuffle&#x7B97;&#x5B50;&#xFF08;&#x6BD4;&#x5982;reduceByKey&#xFF09;<br>&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x548C;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x81F4;&#xFF0C;&#x4F46;&#x662F;&#x591A;&#x4E2A;task&#x5171;&#x7528;&#x4E86;&#x540C;&#x4E00;&#x4E2A;buffer&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;buffer&#x90FD;&#x662F;&#x9488;&#x5BF9;&#x4E00;&#x4E2A;reduce&#x6765;&#x521B;&#x5EFA;&#x7684;&#x3002;&#x6570;&#x636E;&#x6309;key&#x8FDB;&#x884C;hash&#x7136;&#x540E;&#x6839;&#x636E;key&#x7684;hash&#x503C;&#xFF0C;&#x5C06;key&#x5199;&#x5165;&#x5BF9;&#x5E94;&#x7684;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x4E4B;&#x4E2D;&#x3002;&#x6700;&#x540E;&#xFF0C;&#x5C06;&#x6240;&#x6709;&#x4E34;&#x65F6;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#x90FD;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x78C1;&#x76D8;&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x5355;&#x72EC;&#x7684;&#x7D22;&#x5F15;&#x6587;&#x4EF6;&#x3002;    &#x800C;&#x8BE5;&#x673A;&#x5236;&#x4E0E;&#x666E;&#x901A;SortShuffleManager&#x8FD0;&#x884C;&#x673A;&#x5236;&#x7684;&#x4E0D;&#x540C;&#x5728;&#x4E8E;&#xFF1A;<br>&#x7B2C;&#x4E00;&#xFF0C;&#x78C1;&#x76D8;&#x5199;&#x673A;&#x5236;&#x4E0D;&#x540C;<br>&#x7B2C;&#x4E8C;&#xFF0C;&#x4E0D;&#x4F1A;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#xFF0C;&#x542F;&#x7528;&#x8BE5;&#x673A;&#x5236;&#x7684;&#x6700;&#x5927;&#x597D;&#x5904;&#x5728;&#x4E8E;&#xFF0C;shuffle write&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#xFF0C;&#x4E5F;&#x5C31;&#x8282;&#x7701;&#x6389;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x6027;&#x80FD;&#x5F00;&#x9500;</p>
+<h4 id="23-shuffle&#x4E3A;&#x4EC0;&#x4E48;&#x8017;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x4F18;&#x5316;&#xFF0C;&#x5982;&#x4F55;&#x8C03;&#x53C2;">2.3 Shuffle&#x4E3A;&#x4EC0;&#x4E48;&#x8017;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x4F18;&#x5316;&#xFF0C;&#x5982;&#x4F55;&#x8C03;&#x53C2;</h4>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x8017;&#x65F6;</p>
+<ul>
+<li>&#x6570;&#x636E;&#x5B8C;&#x5168;&#x662F;&#x8FDC;&#x7A0B;&#x62F7;&#x8D1D; </li>
+<li>&#x91C7;&#x7528;HTTP&#x534F;&#x8BAE;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x4F20;&#x8F93;  </li>
+<li>The Shuffle is an expensive operation since it involves disk I/O, data serialization, and network I/O. To organize data for the shuffle, Spark generates sets of tasks - map tasks to organize the data, and a set of reduce tasks to aggregate it. 
+&#x56E0;&#x4E3A;shuffle&#x8BBE;&#x8BA1;&#x5230;&#x78C1;&#x76D8;I/O&#x3001;&#x6570;&#x636E;&#x5E8F;&#x5217;&#x5316;&#x3001;&#x7F51;&#x7EDC;I/O&#xFF0C;&#x6BCF;&#x4E00;&#x6B21;shuffle&#x90FD;&#x5C06;&#x5206;&#x6210;&#x4E00;&#x7CFB;&#x5217;&#x7684;map&#x548C;reduce&#x64CD;&#x4F5C;</li>
+<li>Shuffle also generates a large number of intermediate files on disk. As of Spark 1.3, these files are preserved until the corresponding RDDs are no longer used and are garbage collected. shuffle&#x6237;&#x751F;&#x5F88;&#x591A;&#x5C0F;&#x6587;&#x4EF6;&#xFF0C;&#x5982;&#x679C;GC&#x4E0D;&#x5E38;&#x542F;&#x52A8;&#x3001;&#x4EFB;&#x52A1;&#x53C8;&#x4E00;&#x76F4;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4F1A;&#x6D88;&#x8017;&#x5927;&#x91CF;&#x7684;&#x78C1;&#x76D8;</li>
+</ul>
+<p>&#x8C03;&#x53C2;&#xFF08;&#x539F;&#x5219;&#xFF1A;&#x7ED9;shuffle&#x5C3D;&#x53EF;&#x80FD;&#x591A;&#x7684;&#x5185;&#x5B58;&#xFF09;<br>map&#x7AEF;&#x8C03;&#x53C2;&#xFF1A;</p>
+<ul>
+<li>io.sort.mb &#x7F13;&#x51B2;&#x961F;&#x5217; &#x9ED8;&#x8BA4;100m &#x8C03;&#x5927;&#xFF0C;&#x6700;&#x4F18;&#x7684;&#x60C5;&#x51B5;&#x5C31;&#x662F;&#x4E0D;&#x53D1;&#x751F;&#x6EA2;&#x51FA;</li>
+<li>io.sort.spill.percent &#x9ED8;&#x8BA4;0.8 &#x7F13;&#x51B2;&#x961F;&#x5217;&#x6EA2;&#x51FA;&#x6BD4;&#x4F8B; </li>
+<li>io.sort.factor &#x9ED8;&#x8BA4;&#x662F;10 merge&#x7684;&#x6700;&#x5927;&#x5408;&#x5E76;&#x6587;&#x4EF6;&#x6570;&#xFF0C;&#x8C03;&#x6210;100&#x662F;&#x5F88;&#x5E38;&#x89C1;&#x7684;&#x4E8B;&#x60C5;</li>
+<li>min.num.spills.for.combine &#x9ED8;&#x8BA4;&#x662F;3 &#x5982;&#x679C;&#x8BBE;&#x7F6E;&#x4E86;combiner&#x3002;&#x80FD;&#x89E6;&#x53D1;combine&#x7684;&#x6700;&#x5C0F;&#x6EA2;&#x51FA;&#x6587;&#x4EF6;&#x6570;</li>
+<li>mapred.compress.map.output &#x9ED8;&#x8BA4;false&#xFF0C;map&#x7684;output&#x662F;&#x5426;&#x9700;&#x8981;&#x538B;&#x7F29;</li>
+<li>spark.shuffle.memoryFraction &#x6267;&#x884C;&#x5668;&#x8282;&#x70B9;&#x5206;&#x914D;&#x7ED9;shuffle&#x7684;&#x5185;&#x5B58;&#x5360;&#x6BD4;&#xFF0C;&#x9ED8;&#x8BA4;0.2&#xFF0C;&#x5982;&#x679C;&#x6301;&#x4E45;&#x5316;&#x7528;&#x7684;&#x6BD4;&#x8F83;&#x5C11;&#x7684;&#x8BDD;&#x53EF;&#x4EE5;&#x9002;&#x5F53;&#x7684;&#x8C03;&#x5927;&#x8FD9;&#x4E2A;&#x6BD4;&#x4F8B;</li>
+<li>spark.shuffle.sort.bypassMergeThreshold &#x542F;&#x52A8;bypass&#x65B9;&#x5F0F;&#x7684;&#x9608;&#x503C; &#x9ED8;&#x8BA4;&#x662F;200&#xFF0C;&#x5F53;&#x4F7F;&#x7528;SortShuffleManager&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x7684;&#x786E;&#x4E0D;&#x9700;&#x8981;&#x6392;&#x5E8F;&#x64CD;&#x4F5C;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x8BAE;&#x5C06;&#x8FD9;&#x4E2A;&#x53C2;&#x6570;&#x8C03;&#x5927;&#x4E00;&#x4E9B;&#xFF0C;&#x51CF;&#x5C11;&#x4E86;&#x6392;&#x5E8F;&#x7684;&#x6027;&#x80FD;&#x5F00;&#x9500;</li>
+<li>spark.shuffle.consolidateFiles &#x9ED8;&#x8BA4;&#x503C;false&#xFF0C;&#x8868;&#x793A;HashShuffleManager&#x7684;&#x65F6;&#x5019;&#x8981;&#x4E0D;&#x8981;&#x5408;&#x5E76;map&#x7684;output&#x6587;&#x4EF6;  </li>
+</ul>
+<p>reduce&#x7AEF;&#x8C03;&#x53C2;&#xFF1A;  </p>
+<ul>
+<li>mapred.reduce.parallel.conpies &#x9ED8;&#x8BA4;5 copy&#x6570;&#x636E;&#x7684;&#x7EBF;&#x7A0B;&#x6570;</li>
+<li>io.sort.factor &#x9ED8;&#x8BA4;10 &#x6700;&#x5927;&#x7684;&#x5408;&#x5E76;&#x6587;&#x4EF6;&#x6570;</li>
+<li>mapred.job.shuffle.input.buffer.percent &#x9ED8;&#x8BA4;0.7 &#x5728;shuffle&#x9636;&#x6BB5;&#x5206;&#x914D;&#x7ED9;reduce&#x7684;&#x5806;&#x5185;&#x5B58;&#x5360;&#x6BD4;</li>
+<li>mapred.job.shuffle.merge.percent &#x9ED8;&#x8BA4;0.66 reduce&#x7F13;&#x5B58;&#x6EA2;&#x51FA;&#x7684;&#x5360;&#x6BD4;</li>
+<li>reduce&#x6BB5;&#x9ED8;&#x8BA4;&#x62C9;&#x53D6;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x4E00;&#x6B21;48M&#xFF0C;&#x8C03;&#x5927;&#xFF0C;&#x51CF;&#x5C11;&#x8BF7;&#x6C42;&#x8FDE;&#x63A5;&#x6B21;&#x6570;</li>
+<li>spark.shuffle.io.maxRetries reduce&#x62C9;&#x53D6;&#x6570;&#x636E;&#x5931;&#x8D25;&#x7684;&#x91CD;&#x8BD5;&#x6B21;&#x6570; &#x9ED8;&#x8BA4;&#x662F;3&#xFF0C;&#x53EF;&#x4EE5;&#x6539;&#x5230;60</li>
+<li>spark.shuffle.io.retryWait reduce &#x62C9;&#x53D6;&#x6570;&#x636E;&#x5931;&#x8D25;&#x91CD;&#x8BD5;&#x7684;&#x7B49;&#x5F85;&#x65F6;&#x95F4;&#x9ED8;&#x8BA4;5s&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x5230;60</li>
+</ul>
+<h4 id="24-shuffle&#x4E2D;&#x7684;&#x95EE;&#x9898;">2.4 Shuffle&#x4E2D;&#x7684;&#x95EE;&#x9898;</h4>
+<ul>
+<li>&#x6570;&#x636E;&#x503E;&#x659C;&#xFF0C;&#x67D0;&#x4E2A;key&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#x91CF;&#x7279;&#x522B;&#x5927;&#x5BFC;&#x81F4;&#x6570;&#x636E;&#x503E;&#x659C;<br>&#x89E3;&#x51B3;&#x65B9;&#x6848;<br>1&#x3001;&#x8FC7;&#x6EE4;&#x5C11;&#x6570;&#x5BFC;&#x81F4;&#x503E;&#x659C;&#x7684;key<br>2&#x3001;&#x63D0;&#x9AD8;shuffle&#x64CD;&#x4F5C;&#x7684;&#x5E76;&#x884C;&#x5EA6;<br>3&#x3001;&#x5C40;&#x90E8;&#x805A;&#x5408;&#x548C;&#x5168;&#x5C40;&#x805A;&#x5408;    &#x6BD4;&#x5982;(hello, 1) (hello, 1) (hello, 1) (hello, 1)&#xFF0C;&#x5C31;&#x4F1A;&#x53D8;&#x6210;(1_hello, 1) (1_hello, 1) (2_hello, 1) (2_hello, 1)&#xFF0C;&#x6267;&#x884C;reduceByKey&#x7B49;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#xFF0C;&#x8FDB;&#x884C;&#x5C40;&#x90E8;&#x805A;&#x5408;&#xFF0C;&#x90A3;&#x4E48;&#x5C40;&#x90E8;&#x805A;&#x5408;&#x7ED3;&#x679C;&#xFF0C;&#x5C31;&#x4F1A;&#x53D8;&#x6210;&#x4E86;(1_hello, 2) (2_hello, 2)&#x3002;&#x7136;&#x540E;&#x5C06;&#x5404;&#x4E2A;key&#x7684;&#x524D;&#x7F00;&#x7ED9;&#x53BB;&#x6389;&#xFF0C;&#x5C31;&#x4F1A;&#x53D8;&#x6210;(hello,2)(hello,2)&#xFF0C;&#x518D;&#x6B21;&#x8FDB;&#x884C;&#x5168;&#x5C40;&#x805A;&#x5408;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x4E86;&#xFF0C;&#x6BD4;&#x5982;(hello, 4)  </li>
+</ul>
+<blockquote>
+<p>&#x53C2;&#x8003;&#xFF1A;<br><a href="http://www.cnblogs.com/edisonchou/p/4298423.html" target="_blank">Hadoop&#x5B66;&#x4E60;&#x7B14;&#x8BB0;&#x2014;10.Shuffle&#x8FC7;&#x7A0B;&#x90A3;&#x70B9;&#x4E8B;&#x513F;</a><br><a href="http://flyingdutchman.iteye.com/blog/1879642" target="_blank">Hadoop&#x6DF1;&#x5165;&#x5B66;&#x4E60;&#xFF1A;MapReduce&#x7684;Shuffle&#x8FC7;&#x7A0B;&#x8BE6;&#x89E3;</a><br><a href="http://www.cnblogs.com/arachis/p/Spark_Shuffle.html" target="_blank">Spark Shuffle&#x539F;&#x7406;&#x3001;Shuffle&#x64CD;&#x4F5C;&#x95EE;&#x9898;&#x89E3;&#x51B3;&#x548C;&#x53C2;&#x6570;&#x8C03;&#x4F18;</a><br><a href="http://blog.csdn.net/hust_sheng/article/details/47276715" target="_blank">MapReduce&#x8FC7;&#x7A0B;&#x3001;Spark&#x548C;Hadoop&#x4EE5;Shuffle&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x5BF9;&#x6BD4;&#x5206;&#x6790;</a><br><a href="http://blog.csdn.net/wuwenxiang91322/article/details/68955067" target="_blank">HashShuffleManager&#x89E3;&#x6790;</a><br><a href="https://0x0fff.com/spark-architecture-shuffle/" target="_blank">Distributed Systems Architecture</a><br><a href="http://blog.csdn.net/hust_sheng/article/details/47276715" target="_blank"> MapReduce&#x8FC7;&#x7A0B;&#x3001;Spark&#x548C;Hadoop&#x4EE5;Shuffle&#x4E3A;&#x4E2D;&#x5FC3;&#x7684;&#x5BF9;&#x6BD4;&#x5206;&#x6790;</a><br><a href="http://blog.csdn.net/u012102306/article/details/51637732" target="_blank">Spark&#x6027;&#x80FD;&#x4F18;&#x5316;&#xFF1A;shuffle&#x8C03;&#x4F18;</a></p>
+</blockquote>
+<h3 id="&#x4E09;&#x3001;rdd&#x4ECB;&#x7ECD;">&#x4E09;&#x3001;RDD&#x4ECB;&#x7ECD;</h3>
+<h4 id="31-partitions&#x5206;&#x533A;">3.1 partitions(&#x5206;&#x533A;)</h4>
+<ul>
+<li>&#x6BCF;&#x4E2A;RDD&#x90FD;&#x6709;&#x591A;&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;Task&#xFF0C;&#x6BCF;&#x4E00;&#x4E2A;RDD&#x90FD;&#x662F;&#x4E0D;&#x53EF;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E00;&#x65E6;RDD&#x786E;&#x5B9A;&#xFF0C;&#x5176;&#x5206;&#x533A;&#x6570;&#x4E5F;&#x662F;&#x786E;&#x5B9A;&#x7684;&#xFF0C;repartition&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x65B0;&#x7684;RDD  </li>
+<li>&#x521D;&#x59CB;&#x5316;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;HadoopPartition&#x6839;&#x636E;blockSize&#x3001;minSize&#x3001;goolSize&#x6765;&#x5224;&#x65AD;&#x5408;&#x9002;&#x7684;splitSize&#xFF0C;&#x5212;&#x5206;&#x51FA;totalSize&#xFF0F;splitSize&#x7684;&#x5206;&#x533A;&#xFF0C;&#x6B64;&#x65F6;&#x4E00;&#x4E2A;block&#x5BF9;&#x5E94;&#x4E86;&#x4E00;&#x4E2A;partition&#x3002;  </li>
+<li>&#x6267;&#x884C;&#x7B97;&#x5B50;&#x7684;&#x65F6;&#x5019;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x5E76;&#x884C;&#x5EA6;&#x7684;&#x8BDD;reduceByKey(XXX _, 18)&#xFF0C;&#x8BBE;&#x7F6E;&#x7684;&#x662F;shuffle&#x7684;&#x65F6;&#x5019;reduce&#x7684;&#x5E76;&#x884C;&#x5EA6;&#xFF0C;&#x4E5F;&#x662F;result rdd&#x7684;&#x5206;&#x533A;&#x6570;</li>
+<li>RDD&#x5206;&#x533A;&#x9009;&#x53D6;&#x7B56;&#x7565;</li>
+<li>&#x5982;&#x679C;&#x4F9D;&#x8D56;&#x7684;RDD&#x4E2D;&#x5B58;&#x5728;RDD&#x5DF2;&#x7ECF;&#x8BBE;&#x7F6E;&#x4E86;RDD.partitioner&#xFF0C;&#x5219;&#x4ECE;&#x8BBE;&#x7F6E;&#x4E86;&#x5206;&#x533A;&#x7684;RDD&#x4E2D;&#x5219;&#x6311;&#x9009;&#x51FA;&#x5206;&#x533A;&#x6570;&#x6700;&#x5927;&#x7684;RDD.partitioner</li>
+<li>&#x5982;&#x679C;&#x4F9D;&#x8D56;&#x7684;&#x6240;&#x6709;RDD&#x90FD;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;RDD.partitioner&#xFF0C;&#x4F46;&#x662F;&#x8BBE;&#x7F6E;&#x4E86;Spark.default.parallelism&#xFF0C;&#x90A3;&#x4E48;&#x6839;&#x636E;spark.default.parallelism&#x8BBE;&#x7F6E;&#x521B;&#x5EFA;HashPartitioner&#xFF0C;&#x4F5C;&#x4E3A;ShuffledRDD&#x7684;&#x5206;&#x533A;&#x4F9D;&#x636E;</li>
+<li>&#x4EE5;&#x4E0A;2&#x70B9;&#x90FD;&#x4E0D;&#x6EE1;&#x8DB3;&#xFF0C;&#x5219;&#x4ECE;&#x4F9D;&#x8D56;&#x7684;RDD&#x4E2D;&#xFF0C;&#x53BB;&#x9664;&#x5206;&#x533A;&#x6570;&#x6700;&#x5927;&#x7684;RDD&#x7684;&#x5206;&#x533A;&#x4E2A;&#x6570;&#xFF0C;&#x521B;&#x5EFA;HashPartitioner&#xFF0C;&#x4F5C;&#x4E3A;ShuffledRDD&#x7684;&#x5206;&#x533A;&#x4F9D;&#x636E;</li>
+</ul>
+<h4 id="32-partitioner&#x5206;&#x533A;&#x65B9;&#x6CD5;">3.2 partitioner(&#x5206;&#x533A;&#x65B9;&#x6CD5;)</h4>
+<p>&#x76EE;&#x524D;&#x53EA;&#x6709;&#x4E24;&#x79CD;HashPartitioner&#xFF08;&#x9ED8;&#x8BA4;&#xFF09;&#x3001;RangePartitioner</p>
+<h4 id="33-dependencies&#x4F9D;&#x8D56;&#x5173;&#x7CFB;">3.3 dependencies(&#x4F9D;&#x8D56;&#x5173;&#x7CFB;)</h4>
+<p>&#x7A84;&#x4F9D;&#x8D56;&#xFF1A;&#x7236; RDD &#x7684; partition &#x81F3;&#x591A;&#x88AB;&#x4E00;&#x4E2A;&#x5B50; RDD partition &#x4F9D;&#x8D56;&#xFF08;OneToOneDependency&#xFF0C;RangeDependency&#xFF09;  </p>
+<ul>
+<li>1&#x4E2A;&#x5B50;RDD&#x7684;&#x5206;&#x533A;&#x5BF9;&#x5E94;&#x4E8E;1&#x4E2A;&#x7236;RDD&#x7684;&#x5206;&#x533A;&#xFF0C;&#x6BD4;&#x5982;map&#xFF0C;filter&#xFF0C;union&#x7B49;&#x7B97;&#x5B50;</li>
+<li>1&#x4E2A;&#x5B50;RDD&#x7684;&#x5206;&#x533A;&#x5BF9;&#x5E94;&#x4E8E;N&#x4E2A;&#x7236;RDD&#x7684;&#x5206;&#x533A;&#xFF0C;&#x6BD4;&#x5982;co-partioned join    </li>
+</ul>
+<p>&#x5BBD;&#x4F9D;&#x8D56;&#xFF1A;&#x7236; RDD &#x7684; partition &#x88AB;&#x591A;&#x4E2A;&#x5B50; RDD partitions &#x4F9D;&#x8D56;&#xFF08;ShuffleDependency&#xFF09;</p>
+<ul>
+<li>1&#x4E2A;&#x7236;RDD&#x5BF9;&#x5E94;&#x975E;&#x5168;&#x90E8;&#x591A;&#x4E2A;&#x5B50;RDD&#x5206;&#x533A;&#xFF0C;&#x6BD4;&#x5982;groupByKey&#xFF0C;reduceByKey&#xFF0C;sortByKey</li>
+<li><p>1&#x4E2A;&#x7236;RDD&#x5BF9;&#x5E94;&#x6240;&#x6709;&#x5B50;RDD&#x5206;&#x533A;&#xFF0C;&#x6BD4;&#x5982;&#x672A;&#x7ECF;&#x534F;&#x540C;&#x5212;&#x5206;&#x7684;join
+<img src="../pic/spark/broad_ narrow_dependent.png" alt="broad_ narrow_dependent"></p>
+</li>
+<li><p>&#x5728;&#x5BB9;&#x707E;&#x6062;&#x590D;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x7A84;&#x4F9D;&#x8D56;&#x7684;&#x65F6;&#x5019;&#x53EA;&#x9700;&#x8981;&#x6062;&#x590D;&#x7236;RDD&#x7684;&#x4E00;&#x5206;&#x5206;&#x533A;&#xFF0C;&#x4F46;&#x662F;&#x5BBD;&#x4F9D;&#x8D56;&#x4F1A;&#x9700;&#x8981;&#x6062;&#x590D;&#x591A;&#x4E2A;&#x5206;&#x533A;&#xFF0C;&#x4F1A;&#x5E26;&#x6765;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#x7684;&#x8BA9;&#x8D39;</p>
+</li>
+<li>&#x7A84;&#x4F9D;&#x8D56;&#x53EF;&#x4EE5;&#x89E6;&#x53D1;&#x6D41;&#x6C34;&#x7EBF;&#x64CD;&#x4F5C;<br>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5C3D;&#x91CF;&#x5199;&#x7A84;&#x4F9D;&#x8D56;&#x7684;&#x7A0B;&#x5E8F; </li>
+</ul>
+<h4 id="34-compute&#x83B7;&#x53D6;&#x5206;&#x533A;&#x8FED;&#x4EE3;&#x5217;&#x8868;">3.4 compute(&#x83B7;&#x53D6;&#x5206;&#x533A;&#x8FED;&#x4EE3;&#x5217;&#x8868;)</h4>
+<p>&#x4E00;&#x4E2A;RDD&#x6709;&#x591A;&#x4E48;&#x590D;&#x6742;&#xFF0C;&#x5176;&#x6700;&#x7EC8;&#x90FD;&#x4F1A;&#x8C03;&#x7528;&#x5185;&#x90E8;&#x7684;compute&#x51FD;&#x6570;&#x6765;&#x8BA1;&#x7B97;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x7684;&#x6570;&#x636E;&#xFF0C;compute&#x662F;&#x7236;RDD&#x5206;&#x533A;&#x6570;&#x636E;&#x5230;&#x5B50;RDD&#x5206;&#x533A;&#x6570;&#x636E;&#x7684;&#x53D8;&#x6362;&#x903B;&#x8F91;&#x3002;</p>
+<blockquote>
+<p>&#x53C2;&#x8003;<br><a href="http://blog.csdn.net/jiangpeng59/article/details/53213694" target="_blank">Spark&#x6838;&#x5FC3;RDD&#xFF1A;&#x8BA1;&#x7B97;&#x51FD;&#x6570;compute</a><br><a href="http://blog.csdn.net/u011564172/article/details/53611109" target="_blank">Spark RDD&#x4E4B;Partition</a><br><a href="https://www.zhihu.com/question/37310539" target="_blank">&#x600E;&#x6837;&#x7406;&#x89E3;spark&#x4E2D;&#x7684;partition&#x548C;block&#x7684;&#x5173;&#x7CFB;?</a></p>
+</blockquote>
+<h3 id="&#x56DB;&#x3001;spark&#x8C03;&#x4F18;">&#x56DB;&#x3001;spark&#x8C03;&#x4F18;</h3>
+<h4 id="41-&#x7A0B;&#x5E8F;&#x8C03;&#x4F18;">4.1 &#x7A0B;&#x5E8F;&#x8C03;&#x4F18;</h4>
+<h5 id="1&#x3001;&#x4F18;&#x5316;&#x5E76;&#x884C;&#x5EA6;&#x3010;parallel&#x3011;">1&#x3001;&#x4F18;&#x5316;&#x5E76;&#x884C;&#x5EA6;&#x3010;parallel&#x3011;</h5>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x5206;&#x533A;&#x5BF9;&#x5E94;&#x4E00;&#x4E2A;map&#x4EFB;&#x52A1;&#xFF0C;&#x5E76;&#x884C;&#x5EA6;&#x6307;&#x7684;&#x662F;reduce&#x7684;&#x4EFB;&#x52A1;&#x4E2A;&#x6570;</p>
+<ul>
+<li>&#x5728;&#x6570;&#x636E;&#x6DF7;&#x6D17;&#x7684;&#x65F6;&#x5019;&#x4F20;&#x5408;&#x7406;&#x7684;&#x53C2;&#x6307;&#x5B9A;&#x5E76;&#x884C;&#x5EA6;  </li>
+</ul>
+<h5 id="2&#x3001;&#x51FD;&#x6570;&#x4F18;&#x5316;-&#x4F18;&#x5316;&#x5206;&#x533A;&#x3010;partition&#x3011;-&#x51CF;&#x5C11;shuffle&#x4EFB;&#x52A1;-&#x51CF;&#x5C11;&#x526F;&#x672C;">2&#x3001;&#x51FD;&#x6570;&#x4F18;&#x5316; &#x4F18;&#x5316;&#x5206;&#x533A;&#x3010;partition&#x3011; &#x51CF;&#x5C11;shuffle&#x4EFB;&#x52A1; &#x51CF;&#x5C11;&#x526F;&#x672C;</h5>
+<ul>
+<li>&#x5BF9;&#x5DF2;&#x6709;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x91CD;&#x65B0;&#x5206;&#x533A;repartition&#x3001;&#x51CF;&#x5C11;&#x5206;&#x533A;&#x6570;coalesce  </li>
+<li>&#x6267;&#x884C;&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#x7EE7;&#x627F;&#x7236;RDD&#x7684;&#x5206;&#x533A;&#xFF0C;&#x51CF;&#x5C11;shuffle</li>
+<li>&#x4F7F;&#x7528;map-side&#x9884;&#x805A;&#x5408;&#x7684;shuffle&#x64CD;&#x4F5C;</li>
+<li>reduceByKey/aggregateByKey&#x66FF;&#x4EE3;groupByKey<br>reduceByKey/aggregateByKey&#x5E95;&#x5C42;&#x4F7F;&#x7528;combinerByKey&#x5B9E;&#x73B0;&#xFF0C;&#x4F1A;&#x5728;map&#x7AEF;&#x8FDB;&#x884C;&#x5C40;&#x90E8;&#x805A;&#x5408;&#xFF1B;groupByKey&#x4E0D;&#x4F1A;</li>
+<li>mapPartitions&#x66FF;&#x4EE3;map&#x3001;foreachPartitions&#x66FF;&#x4EE3;foreach<br>mapPartitions&#x7C7B;&#x7684;&#x7B97;&#x5B50;&#xFF0C;&#x4E00;&#x6B21;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x4F1A;&#x5904;&#x7406;&#x4E00;&#x4E2A;partition&#x6240;&#x6709;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E00;&#x6B21;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5904;&#x7406;&#x4E00;&#x6761;&#xFF0C;&#x5728;&#x9700;&#x8981;&#x94FE;&#x63A5;&#x5916;&#x90E8;&#x8D44;&#x6E90;&#x6BD4;&#x5982;redis&#x7684;&#x65F6;&#x5019;&#x4F1A;&#x663E;&#x5F97;&#x5F88;&#x9AD8;&#x6548;&#x3002;&#x5B9E;&#x8DF5;&#x4E2D;&#x53D1;&#x73B0;&#xFF0C;&#x5BF9;&#x4E8E;1&#x4E07;&#x6761;&#x5DE6;&#x53F3;&#x7684;&#x6570;&#x636E;&#x91CF;&#x5199;MySQL&#xFF0C;&#x6027;&#x80FD;&#x53EF;&#x4EE5;&#x63D0;&#x5347;30%&#x4EE5;&#x4E0A;</li>
+<li>repartitionAndSortWithinPartitions&#x66FF;&#x4EE3;repartition&#x4E0E;sort&#x7C7B;&#x64CD;&#x4F5C;<br>repartitionAndSortWithinPartitions&#x7B97;&#x5B50;&#x53EF;&#x4EE5;&#x4E00;&#x8FB9;&#x8FDB;&#x884C;&#x91CD;&#x5206;&#x533A;&#x7684;shuffle&#x64CD;&#x4F5C;&#xFF0C;&#x4E00;&#x8FB9;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3002;shuffle&#x4E0E;sort&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#xFF0C;&#x6BD4;&#x5148;shuffle&#x518D;sort&#x6765;&#x8BF4;&#xFF0C;&#x6027;&#x80FD;&#x53EF;&#x80FD;&#x662F;&#x8981;&#x9AD8;&#x7684;</li>
+<li>&#x4F18;&#x5148;&#x4F7F;&#x7528;broadcast
+&#x5E7F;&#x64AD;&#x53D8;&#x91CF;&#x4E0D;&#x4F1A;&#x6709;&#x526F;&#x672C;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5927;&#x6587;&#x4EF6;&#x53D8;&#x91CF;&#x7684;&#x65F6;&#x5019;&#x51CF;&#x5C11;&#x526F;&#x672C;&#x50A8;&#x5B58;&#x4F20;&#x8F93;&#xFF0C;&#x5E7F;&#x64AD;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x628A;&#x53D8;&#x91CF;&#x4ECE;task&#x7EA7;&#x522B;&#x63D0;&#x9AD8;&#x5230;executor&#x7EA7;&#x522B;&#x7684;&#x5171;&#x4EAB;</li>
+</ul>
+<h5 id="3&#x3001;&#x8BBE;&#x7F6E;kyro&#x7684;&#x7CFB;&#x5217;&#x5316;&#x65B9;&#x5F0F;">3&#x3001;&#x8BBE;&#x7F6E;kyro&#x7684;&#x7CFB;&#x5217;&#x5316;&#x65B9;&#x5F0F;</h5>
+<pre><code>&#x5B98;&#x65B9;&#x4ECB;&#x7ECD;&#xFF0C;Kryo&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;&#x6BD4;Java&#x5E8F;&#x5217;&#x5316;&#x673A;&#x5236;&#xFF0C;&#x6027;&#x80FD;&#x9AD8;10&#x500D;&#x5DE6;&#x53F3;&#x3002;Spark&#x4E4B;&#x6240;&#x4EE5;&#x9ED8;&#x8BA4;&#x6CA1;&#x6709;&#x4F7F;&#x7528;Kryo&#x4F5C;&#x4E3A;&#x5E8F;&#x5217;&#x5316;&#x7C7B;&#x5E93;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;Kryo&#x8981;&#x6C42;&#x63D0;&#x524D;&#x6CE8;&#x518C;&#x597D;&#x6240;&#x6709;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6BD4;&#x8F83;&#x9EBB;&#x70E6;&#x3002; 
+</code></pre><ul>
+<li>&#x666E;&#x901A;&#x7684;&#x5E8F;&#x5217;&#x5316;<pre><code class="lang-scala"><span class="hljs-keyword">val</span> conf = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>()
+conf.set(<span class="hljs-string">&quot;spark.serializer&quot;</span>, <span class="hljs-string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)
+</code></pre>
+</li>
+<li>&#x6709;&#x6CE8;&#x518C;&#x8FC7;&#x7684;&#x5E8F;&#x5217;&#x5316;<pre><code class="lang-scala"><span class="hljs-keyword">val</span> conf = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>()
+conf.set(<span class="hljs-string">&quot;spark.serializer&quot;</span>, <span class="hljs-string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)
+conf.registerKryoClasses(<span class="hljs-type">Array</span>(classOf[<span class="hljs-type">MyClass</span>], classOf[<span class="hljs-type">MyOtherClass</span>]))
+</code></pre>
+</li>
+<li>&#x6709;&#x5F3A;&#x5236;&#x8981;&#x6C42;&#x5FC5;&#x987B;&#x6CE8;&#x518C;&#x7684;&#x5E8F;&#x5217;&#x5316;<pre><code class="lang-scala"><span class="hljs-keyword">val</span> conf = <span class="hljs-keyword">new</span> <span class="hljs-type">SparkConf</span>()
+conf.set(<span class="hljs-string">&quot;spark.serializer&quot;</span>, <span class="hljs-string">&quot;org.apache.spark.serializer.KryoSerializer&quot;</span>)
+<span class="hljs-comment">// &#x4E25;&#x683C;&#x8981;&#x6C42;&#x6CE8;&#x518C;&#x7C7B;</span>
+conf.set(<span class="hljs-string">&quot;spark.kryo.registrationRequired&quot;</span>, <span class="hljs-string">&quot;true&quot;</span>)
+conf.registerKryoClasses(<span class="hljs-type">Array</span>(classOf[<span class="hljs-type">MyClass</span>], classOf[<span class="hljs-type">MyOtherClass</span>]))
+</code></pre>
+</li>
+</ul>
+<h5 id="4&#x3001;&#x7F13;&#x5B58;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#x8C03;&#x4F18;&#x3010;persist&#x3011;">4&#x3001;&#x7F13;&#x5B58;&amp;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#x8C03;&#x4F18;&#x3010;persist&#x3011;</h5>
+<ul>
+<li>&#x7F13;&#x5B58;&#x7236;&#x7C7B;RDD&#x6709;&#x5229;&#x4E8E;&#x5B50;&#x7C7B;&#x8BA1;&#x7B97;  </li>
+<li>&#x6539;&#x8FDB;&#x7F13;&#x5B58;&#x7B56;&#x7565;&#xFF0C;&#x6BD4;&#x65B9;&#x8BF4;MEMORY_ONLY &#x6539;&#x4E3A; MEMORY_AND_DISK&#xFF0C;&#x5F53;&#x6570;&#x636E;&#x7F13;&#x5B58;&#x7A7A;&#x95F4;&#x4E0D;&#x591F;&#x7684;&#x65F6;&#x5019;&#x5C31;&#x4E0D;&#x4F1A;&#x5220;&#x9664;&#x65E7;&#x6570;&#x636E;&#x5BFC;&#x81F4;&#x91CD;&#x65B0;&#x52A0;&#x8F7D;&#x8BA1;&#x7B97;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x4ECE;&#x78C1;&#x76D8;load&#x6570;&#x636E;&#xFF1B;&#x518D;&#x6BD4;&#x65B9;&#x8BF4;MEMORY_ONLY &#x6539;&#x4E3A; MEMORY_AND_DISK_SER &#x6216;&#x8005; MEMORY_ONLY_SER&#xFF0C;&#x867D;&#x7136;&#x589E;&#x52A0;&#x4E86;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x4EE5;&#x5927;&#x91CF;&#x7684;&#x51CF;&#x5C11;GC&#x7684;&#x65F6;&#x95F4;</li>
+<li>MEMORY_ONLY --&gt; MEMORY_ONLY_SER --&gt; MEMORY_AND_DISK_SER</li>
+</ul>
+<h4 id="42-&#x53C2;&#x6570;&#x8C03;&#x4F18;">4.2 &#x53C2;&#x6570;&#x8C03;&#x4F18;</h4>
+<h5 id="1&#x3001;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x5C06;&#x6267;&#x884C;&#x5668;&#x8282;&#x70B9;&#x5206;&#x914D;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x7269;&#x7406;&#x673A;&#x5668;&#x4E0A;">1&#x3001;&#x5C3D;&#x53EF;&#x80FD;&#x7684;&#x5C06;&#x6267;&#x884C;&#x5668;&#x8282;&#x70B9;&#x5206;&#x914D;&#x5728;&#x540C;&#x4E00;&#x53F0;&#x7269;&#x7406;&#x673A;&#x5668;&#x4E0A;</h5>
+<p>&#x8BBE;&#x7F6E;&#x53C2;&#x6570;spark.deploy.spreadOut=false &#x5C3D;&#x91CF;&#x51CF;&#x5C11;&#x7269;&#x7406;&#x8282;&#x70B9;&#x7684;&#x5206;&#x914D;&#xFF0C;&#x5982;&#x679C;&#x4F60;&#x6709;&#x4E00;&#x4E2A;&#x96C6;&#x7FA4;&#xFF08;20&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#xFF0C;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;4cores&#xFF09;&#xFF0C;&#x5F53;&#x4F60;&#x63D0;&#x4EA4;&#x4E00;&#x4E2A;&#x4EFB;&#x52A1;&#xFF08;8cores&#xFF0C;&#x6BCF;&#x4E2A;core1G&#xFF09;&#xFF0C;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;Spark&#x5C06;&#x4F1A;&#x5728;8&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#x4E0A;&#x53EC;&#x5524;&#x8D77;8&#x4E2A;core&#xFF0C;&#x6BCF;&#x4E2A;core1G&#xFF0C;&#x8BBE;&#x7F6E;&#x4E3A;false&#x540E;&#x5C3D;&#x53EF;&#x80FD;&#x5C11;&#x7684;&#x7269;&#x7406;&#x8282;&#x70B9;&#x2014;&#x2014;2&#x53F0;&#x7269;&#x7406;&#x8282;&#x70B9;&#x3001;2*4cores</p>
+<h5 id="2&#x3001;&#x91CD;&#x65B0;&#x5206;&#x914D;rdd&#x5B58;&#x50A8;&#x3001;&#x6570;&#x636E;&#x6DF7;&#x6D17;&#x805A;&#x5408;&#x5B58;&#x50A8;&#x3001;&#x7528;&#x6237;&#x5B58;&#x50A8;&#x5360;&#x6BD4;&#xFF0C;&#x8C03;&#x5927;shuffle&#x7684;&#x5185;&#x5B58;&#x5360;&#x6BD4;">2&#x3001;&#x91CD;&#x65B0;&#x5206;&#x914D;RDD&#x5B58;&#x50A8;&#x3001;&#x6570;&#x636E;&#x6DF7;&#x6D17;&#x805A;&#x5408;&#x5B58;&#x50A8;&#x3001;&#x7528;&#x6237;&#x5B58;&#x50A8;&#x5360;&#x6BD4;&#xFF0C;&#x8C03;&#x5927;shuffle&#x7684;&#x5185;&#x5B58;&#x5360;&#x6BD4;</h5>
+<ul>
+<li>&#x9ED8;&#x8BA4;60% RDD&#x5B58;&#x50A8; spark.storage.memoryFraction</li>
+<li>&#x9ED8;&#x8BA4;20% &#x6570;&#x636E;&#x6E05;&#x6D17;&#x4E0E;&#x805A;&#x5408; spark.shuffle.memoryFraction</li>
+<li>&#x9ED8;&#x8BA4;20% &#x7528;&#x6237;&#x4EE3;&#x7801; &#x4E0E;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x4E2D;&#x95F4;&#x6570;&#x636E;&#x5B58;&#x50A8;&#xFF0C;&#x6BD4;&#x5982;&#x521B;&#x5EFA;&#x6570;&#x7EC4;</li>
+</ul>
+<h4 id="43&#x673A;&#x5668;&#x8C03;&#x4F18;">4.3&#x673A;&#x5668;&#x8C03;&#x4F18;</h4>
+<h5 id="1&#x3001;&#x53CC;&#x500D;&#x7684;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF08;cpu&#x3001;core&#xFF09;&#x5F80;&#x5F80;&#x80FD;&#x5E26;&#x6765;&#x5E94;&#x7528;&#x65F6;&#x95F4;&#x51CF;&#x534A;&#x7684;&#x6548;&#x679C;">1&#x3001;&#x53CC;&#x500D;&#x7684;&#x786C;&#x4EF6;&#x8D44;&#x6E90;&#xFF08;CPU&#x3001;Core&#xFF09;&#x5F80;&#x5F80;&#x80FD;&#x5E26;&#x6765;&#x5E94;&#x7528;&#x65F6;&#x95F4;&#x51CF;&#x534A;&#x7684;&#x6548;&#x679C;</h5>
+<h5 id="2&#x3001;&#x66F4;&#x5927;&#x7684;&#x672C;&#x5730;&#x78C1;&#x76D8;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x63D0;&#x9AD8;spark&#x7684;&#x5E94;&#x7528;&#x6027;&#x80FD;">2&#x3001;&#x66F4;&#x5927;&#x7684;&#x672C;&#x5730;&#x78C1;&#x76D8;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x63D0;&#x9AD8;Spark&#x7684;&#x5E94;&#x7528;&#x6027;&#x80FD;</h5>
+<blockquote>
+<p>&#x53C2;&#x8003;
+<a href="https://www.cnblogs.com/arachis/p/Spark_API.html" target="_blank">Spark&#x7B97;&#x5B50;&#x9009;&#x62E9;&#x7B56;&#x7565;</a>
+<a href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html" target="_blank">Spark&#x6027;&#x80FD;&#x4F18;&#x5316;&#x6307;&#x5357;&#x2014;&#x2014;&#x57FA;&#x7840;&#x7BC7;</a>  </p>
+</blockquote>
+<h3 id="&#x4E94;&#x3001;hadoop&#xFF0C;spark&#x5185;&#x90E8;&#x901A;&#x8BAF;-&#x4ECE;akka&#x5230;netty">&#x4E94;&#x3001;Hadoop&#xFF0C;Spark&#x5185;&#x90E8;&#x901A;&#x8BAF; &#x4ECE;akka&#x5230;netty</h3>
+<p>&#x542F;&#x52A8;Master&#x5E76;&#x5F00;&#x542F;&#x6E05;&#x7A7A;&#x8D85;&#x65F6;Worker&#x7684;&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;
+Worker&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5728;preStart&#x65B9;&#x6CD5;&#x4E2D;&#x8FDE;&#x63A5;Master,&#x5E76;&#x5411;Master&#x6CE8;&#x518C;&#x81EA;&#x5DF1;&#x7684;&#x76F8;&#x5173;&#x4FE1;&#x606F;
+Master&#x6536;&#x5230;worker&#x7684;&#x6CE8;&#x518C;&#x5E76;&#x8FD4;&#x56DE;&#x81EA;&#x5DF1;&#x7684;url&#x7ED9;Worker&#xFF0C;&#x8868;&#x793A;&#x8BE5;Worker&#x6CE8;&#x518C;&#x6210;&#x529F;
+Worker&#x6536;&#x5230;&#x6CE8;&#x518C;&#x6210;&#x529F;&#x7684;&#x6D88;&#x606F;&#x540E;&#xFF0C;&#x5B9A;&#x65F6;&#x7ED9;Master&#x53D1;&#x751F;&#x5FC3;&#x8DF3;&#x6D88;&#x606F;</p>
+<ul>
+<li>&#x4E3A;&#x4EC0;&#x4E48;&#x7528;netty&#x4EE3;&#x66FF;akka<br>&#x4E3B;&#x8981;&#x539F;&#x56E0;&#x662F;&#x89E3;&#x51B3;&#x7528;&#x6237;&#x7684;Spark Application&#x4E2D;akka&#x7248;&#x672C;&#x548C;Spark&#x5185;&#x7F6E;&#x7684;akka&#x7248;&#x672C;&#x51B2;&#x7A81;&#x7684;&#x95EE;&#x9898;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x7528;&#x6237;&#x5F00;&#x53D1;&#x7684;Spark Application&#x4E2D;&#x7528;&#x5230;&#x4E86;Spray&#x6846;&#x67B6;&#xFF0C;Spray&#x4F9D;&#x8D56;&#x7684;akka&#x7248;&#x672C;&#x8DDF;Spark&#x7684;&#x4E0D;&#x4E00;&#x81F4;&#x5C31;&#x4F1A;&#x5BFC;&#x81F4;&#x51B2;&#x7A81;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F71;&#x54CD;&#x6BD4;&#x8F83;&#x91CD;&#x8981;</li>
+</ul>
+<h3 id="&#x516D;&#x3001;&#x91CD;&#x70B9;&#x51FD;&#x6570;&#x7A81;&#x7834;">&#x516D;&#x3001;&#x91CD;&#x70B9;&#x51FD;&#x6570;&#x7A81;&#x7834;</h3>
+<h4 id="repartition-vs-coalesce">repartition VS coalesce</h4>
+<p>repartition(numPartitions:Int):RDD[T]&#x548C;coalesce(numPartitions:Int&#xFF0C;shuffle:Boolean=false):RDD[T]&#xFF0C;repartition&#x53EA;&#x662F;coalesce&#x63A5;&#x53E3;&#x4E2D;shuffle&#x4E3A;true&#x7684;&#x7B80;&#x6613;&#x5B9E;&#x73B0;  </p>
+<ul>
+<li>before numPartitions &gt; after numPartitions<br>&#x6B64;&#x65F6;&#x53EA;&#x9700;&#x8981;&#x5408;&#x5E76;&#x591A;&#x4E2A;&#x5206;&#x533A;&#x7684;&#x6570;&#x636E;&#x5373;&#x53EF;&#xFF0C;&#x8BBE;&#x7F6E;shuffle=false&#x66F4;&#x4E3A;&#x9AD8;&#x6548;</li>
+<li>before numPartitions &gt;&gt; after numPartitions<br>&#x8003;&#x8651;&#x5230;&#x5408;&#x5E76;&#x7684;&#x6570;&#x636E;&#x91CF;&#x592A;&#x591A;&#x4E86;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;shuffle=true</li>
+<li>before numPartitions &lt; after numPartitions<br>&#x6B64;&#x65F6;&#x4E00;&#x5B9A;&#x4F1A;&#x53D1;&#x751F;shuffle&#xFF0C;&#x76F4;&#x63A5;&#x4F7F;&#x7528;repartition</li>
+</ul>
+<h4 id="persist-vs-cache">persist VS cache</h4>
+<p>cache&#x65B9;&#x6CD5;&#x7B49;&#x4EF7;&#x4E8E;StorageLevel.MEMORY_ONLY&#x7684;persist&#x65B9;&#x6CD5;<br>SparkContext&#x4E2D;&#x7EF4;&#x62A4;&#x4E86;&#x4E00;&#x5F20;&#x54C8;&#x5E0C;&#x8868;persistRdds&#xFF0C;&#x7528;&#x4E8E;&#x767B;&#x8BB0;&#x6240;&#x6709;&#x88AB;&#x6301;&#x4E45;&#x5316;&#x7684;RDD&#xFF0C;&#x6267;&#x884C;persist&#x64CD;&#x4F5C;&#x662F;&#xFF0C;&#x4F1A;&#x5C06;RDD&#x7684;&#x7F16;&#x53F7;&#x4F5C;&#x4E3A;&#x952E;&#xFF0C;&#x628A;RDD&#x8BB0;&#x5F55;&#x5230;persistRdds&#x8868;&#x4E2D;&#xFF0C;unpersist&#x51FD;&#x6570;&#x4F1A;&#x8C03;&#x7528;SparkContext&#x5BF9;&#x8C61;&#x7684;unpersistRDD&#x65B9;&#x6CD5;&#xFF0C;&#x9664;&#x4E86;&#x5C06;RDD&#x4ECE;&#x54C8;&#x5E0C;&#x8868;persistRdds&#x4E2D;&#x79FB;&#x9664;&#x4E4B;&#x5916;&#xFF0C;&#x8BE5;&#x65B9;&#x6CD5;&#x8FD8;&#x4F1A;&#x5C06;&#x8BE5;RDD&#x4E2D;&#x7684;&#x5206;&#x533A;&#x5BF9;&#x4E8E;&#x7684;&#x6240;&#x6709;&#x5757;&#x4ECE;&#x5B58;&#x50A8;&#x4ECB;&#x8D28;&#x4E2D;&#x5220;&#x9664;</p>
+<h4 id="combinebykey">combineByKey</h4>
+<p>groupByKey,reduceByKey&#x7B49;&#x7684;&#x5E95;&#x5C42;&#x90FD;&#x662F;&#x8C03;&#x7528;combineByKey&#x5B9E;&#x73B0;&#x7684;</p>
+<pre><code class="lang-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">combineByKey</span></span>[<span class="hljs-type">C</span>](  
+      createCombiner: <span class="hljs-type">V</span> =&gt; <span class="hljs-type">C</span>,  
+      mergeValue: (<span class="hljs-type">C</span>, <span class="hljs-type">V</span>) =&gt; <span class="hljs-type">C</span>,  
+      mergeCombiners: (<span class="hljs-type">C</span>, <span class="hljs-type">C</span>) =&gt; <span class="hljs-type">C</span>,  
+      partitioner: <span class="hljs-type">Partitioner</span>,  
+      mapSideCombine: <span class="hljs-type">Boolean</span> = <span class="hljs-literal">true</span>,  
+      serializer: <span class="hljs-type">Serializer</span> = <span class="hljs-literal">null</span>)
+</code></pre>
+<pre><code class="lang-scala">scala&gt; <span class="hljs-keyword">val</span> initialScores = <span class="hljs-type">Array</span>((<span class="hljs-string">&quot;Fred&quot;</span>, <span class="hljs-number">88.0</span>), (<span class="hljs-string">&quot;Fred&quot;</span>, <span class="hljs-number">95.0</span>), (<span class="hljs-string">&quot;Fred&quot;</span>, <span class="hljs-number">91.0</span>), (<span class="hljs-string">&quot;Wilma&quot;</span>, <span class="hljs-number">93.0</span>), (<span class="hljs-string">&quot;Wilma&quot;</span>, <span class="hljs-number">95.0</span>), (<span class="hljs-string">&quot;Wilma&quot;</span>, <span class="hljs-number">98.0</span>))
+initialScores: <span class="hljs-type">Array</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Double</span>)] = <span class="hljs-type">Array</span>((<span class="hljs-type">Fred</span>,<span class="hljs-number">88.0</span>), (<span class="hljs-type">Fred</span>,<span class="hljs-number">95.0</span>), (<span class="hljs-type">Fred</span>,<span class="hljs-number">91.0</span>), (<span class="hljs-type">Wilma</span>,<span class="hljs-number">93.0</span>), (<span class="hljs-type">Wilma</span>,<span class="hljs-number">95.0</span>), (<span class="hljs-type">Wilma</span>,<span class="hljs-number">98.0</span>))
+
+scala&gt; <span class="hljs-keyword">val</span> d1 = sc.parallelize(initialScores)
+d1: org.apache.spark.rdd.<span class="hljs-type">RDD</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Double</span>)] = <span class="hljs-type">ParallelCollectionRDD</span>[<span class="hljs-number">0</span>] at parallelize at &lt;console&gt;:<span class="hljs-number">23</span>
+
+scala&gt; <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">mytype</span> </span>= (<span class="hljs-type">Int</span>, <span class="hljs-type">Double</span>)
+defined <span class="hljs-class"><span class="hljs-keyword">type</span> <span class="hljs-title">alias</span> <span class="hljs-title">mytype</span></span>
+
+scala&gt; d1.combineByKey(
+     | score =&gt; (<span class="hljs-number">1</span>, score),
+     | (c1: mytype, newScore) =&gt; (c1._1 + <span class="hljs-number">1</span>, c1._2 + newScore),
+     | (c1: mytype, c2: mytype) =&gt; (c1._1 + c2._1, c1._2 + c2._2)
+     | ).map { <span class="hljs-keyword">case</span> (name, (num, socre)) =&gt; (name, socre / num) }.collect
+res0: <span class="hljs-type">Array</span>[(<span class="hljs-type">String</span>, <span class="hljs-type">Double</span>)] = <span class="hljs-type">Array</span>((<span class="hljs-type">Wilma</span>,<span class="hljs-number">95.33333333333333</span>), (<span class="hljs-type">Fred</span>,<span class="hljs-number">91.33333333333333</span>))
+</code></pre>
+<h4 id="aggregate">aggregate</h4>
+<pre><code class="lang-scala"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">aggregate</span></span>[<span class="hljs-type">U</span>](zeroValue: <span class="hljs-type">U</span>)
+    (
+        seqOp: (<span class="hljs-type">U</span>, <span class="hljs-type">T</span>) &#x21D2; <span class="hljs-type">U</span>, 
+        combOp: (<span class="hljs-type">U</span>, <span class="hljs-type">U</span>) &#x21D2; <span class="hljs-type">U</span>
+    )
+    (<span class="hljs-keyword">implicit</span> arg0: <span class="hljs-type">ClassTag</span>[<span class="hljs-type">U</span>]) : <span class="hljs-type">U</span>
+
+## aggregate&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;
+scala&gt; rdd1.aggregate(<span class="hljs-number">2</span>)(
+     |           {(x : <span class="hljs-type">Int</span>,y : <span class="hljs-type">Int</span>) =&gt; x + y}, 
+     |           {(a : <span class="hljs-type">Int</span>,b : <span class="hljs-type">Int</span>) =&gt; a * b}
+     |     )
+res18: <span class="hljs-type">Int</span> = <span class="hljs-number">1428</span>
+
+##zeroValue=<span class="hljs-number">2</span>
+##<span class="hljs-number">1</span>&#x3001;part_0&#x4E2D; zeroValue+<span class="hljs-number">5</span>+<span class="hljs-number">4</span>+<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+<span class="hljs-number">1</span> = <span class="hljs-number">2</span>+<span class="hljs-number">5</span>+<span class="hljs-number">4</span>+<span class="hljs-number">3</span>+<span class="hljs-number">2</span>+<span class="hljs-number">1</span> = <span class="hljs-number">17</span>
+##<span class="hljs-number">1</span>&#x3001;part_1&#x4E2D; zeroValue+<span class="hljs-number">10</span>+<span class="hljs-number">9</span>+<span class="hljs-number">8</span>+<span class="hljs-number">7</span>+<span class="hljs-number">6</span> = <span class="hljs-number">2</span>+<span class="hljs-number">10</span>+<span class="hljs-number">9</span>+<span class="hljs-number">8</span>+<span class="hljs-number">7</span>+<span class="hljs-number">6</span> = <span class="hljs-number">42</span>
+##<span class="hljs-number">2</span>&#x3001;&#x6700;&#x540E;&#xFF1A;zeroValue*part_0*part_1 = <span class="hljs-number">2</span> * <span class="hljs-number">17</span> * <span class="hljs-number">42</span> = <span class="hljs-number">1428</span>
+&#x56E0;&#x6B64;&#xFF0C;zeroValue&#x5373;&#x786E;&#x5B9A;&#x4E86;<span class="hljs-type">U</span>&#x7684;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x4F1A;&#x5BF9;&#x7ED3;&#x679C;&#x4EA7;&#x751F;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4F7F;&#x7528;&#x65F6;&#x5019;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#x3002;
+</code></pre>
+<h3 id="&#x4E03;&#x3001;&#x6570;&#x636E;&#x503E;&#x659C;">&#x4E03;&#x3001;&#x6570;&#x636E;&#x503E;&#x659C;</h3>
+<ul>
+<li>&#x627E;&#x51FA;&#x6570;&#x636E;&#x503E;&#x659C;&#x7684;&#x539F;&#x56E0;</li>
+<li>&#x63D0;&#x9AD8;shuffle&#x7684;&#x5E76;&#x884C;&#x5EA6;</li>
+<li>&#x4E24;&#x9636;&#x6BB5;&#x805A;&#x5408;&#xFF08;&#x5C40;&#x90E8;&#x805A;&#x5408;+&#x5168;&#x5C40;&#x805A;&#x5408;&#xFF09;&#xFF0C;&#x5148;&#x52A0;&#x968F;&#x673A;&#x524D;&#x7F00;&#xFF0C;&#x540E;&#x53BB;&#x6389;&#x524D;&#x7F00;&#x6267;&#x884C;&#x4E00;&#x904D;&#x5168;&#x5C40;&#x805A;&#x5408;</li>
+<li>reduce join &#x8F6C;&#x4E3A; map join&#xFF0C;&#x5C06;&#x5C0F;&#x8868;&#x7F13;&#x5B58;&#x53D8;&#x6210;&#x5E7F;&#x64AD;&#x53D8;&#x91CF;</li>
+<li>&#x968F;&#x673A;&#x524D;&#x7F00;+&#x6269;&#x5C55;RDD&#xFF0C;&#x5DE6;&#x8FB9;&#x6709;&#x6570;&#x636E;&#x503E;&#x659C;&#x7684;RDD&#x8FDB;&#x884C;&#x968F;&#x673A;&#x524D;&#x7F00;&#xFF0C;&#x53F3;&#x8FB9;&#x5C0F;&#x6570;&#x636E;RDD&#x6269;&#x5C55;N&#x500D;&#xFF0C;&#x6B63;&#x5E38;join&#x64CD;&#x4F5C;</li>
+</ul>
+<blockquote>
+<p>&#x53C2;&#x8003;&#x6587;&#x7AE0;<br><a href="https://www.cnblogs.com/bonelee/p/6039469.html" target="_blank">&#x7528;&#x5B9E;&#x4F8B;&#x8BF4;&#x660E;Spark stage&#x5212;&#x5206;&#x539F;&#x7406;</a>  </p>
+<h2 id="spark&#x6027;&#x80FD;&#x4F18;&#x5316;&#x6307;&#x5357;&#x2014;&#x2014;&#x9AD8;&#x7EA7;&#x7BC7;----"><a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html" target="_blank">Spark&#x6027;&#x80FD;&#x4F18;&#x5316;&#x6307;&#x5357;&#x2014;&#x2014;&#x9AD8;&#x7EA7;&#x7BC7;</a>    </h2>
+<p>@ &#x5B66;&#x5FC5;&#x6C42;&#x5176;&#x5FC3;&#x5F97;&#xFF0C;&#x4E1A;&#x5FC5;&#x8D35;&#x5176;&#x4E13;&#x7CBE;<br>@ WHAT - HOW - WHY<br>@ &#x4E0D;&#x79EF;&#x8DEC;&#x6B65; - &#x65E0;&#x4EE5;&#x81F3;&#x5343;&#x91CC;   </p>
+</blockquote>
+<footer class="page-footer"><span class="copyright">Copyright (c) 2019 Tencent PRUCE &amp; KB. all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">time&#xFF1A;
+2019-12-01 17:30:23
+</span></footer>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="spark_streaming_quick_start.html" class="navigation navigation-prev " aria-label="Previous page: Spark Streaming Quick Start">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../hadoop/hadoop_deploy_linux.html" class="navigation navigation-next " aria-label="Next page: 在Ubuntu_Centos上部署Hadoop">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Spark划重点","level":"2.4","depth":1,"next":{"title":"在Ubuntu_Centos上部署Hadoop","level":"3.1","depth":1,"path":"hadoop/hadoop_deploy_linux.md","ref":"hadoop/hadoop_deploy_linux.md","articles":[]},"previous":{"title":"Spark Streaming Quick Start","level":"2.3","depth":1,"path":"spark/spark_streaming_quick_start.md","ref":"spark/spark_streaming_quick_start.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","splitter","expandable-chapters-small","-sharing","search-pro","tbfed-pagefooter","github","donate","multipart","mathjax","echarts"],"styles":{"website":"./styles/website.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright (c) 2019 Tencent PRUCE & KB.","modify_label":"time：","modify_format":"YYYY-MM-DD HH:mm:ss"},"github":{"url":"https://github.com/prucehuang/bigdata-introduction.git"},"splitter":{},"search-pro":{},"search":{},"multipart":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"https://github.com/prucehuang/common-resources/blob/master/pictures/zhifubao_pay.jpg?raw=true","alipayText":"支付宝","button":"赏","title":"","wechat":"https://github.com/prucehuang/common-resources/blob/master/pictures/wechat_pay.jpg?raw=true","wechatText":"微信"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"expandable-chapters-small":{},"echarts":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":true},"chart":{}},"theme":"default","author":"pruce","pdf":{"pageNumbers":true,"fontSize":16,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"bigdata-introduction","language":"zh-hans","gitbook":"3.2.3","description":"bigdata notes"},"file":{"path":"spark/spark_important.md","mtime":"2019-12-01T09:30:23.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-12-01T09:30:28.029Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters-small/expandable-chapters-small.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-donate/plugin.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
