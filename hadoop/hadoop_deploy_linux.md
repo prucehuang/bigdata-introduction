@@ -537,6 +537,6 @@ vi /etc/sysconfig/iptables 打开配置文件加入如下语句:
 /etc/init.d/iptables status
 4、关闭系统防火墙。这是最容易出现的问题。用此命令service iptables stop关闭后，一切正常集群正常使用
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

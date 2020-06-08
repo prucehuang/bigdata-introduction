@@ -196,6 +196,6 @@ map join的执行流程中已经不再具有reduce阶段，和shuffle阶段，�
 [Hive JOIN使用详解](http://shiyanjun.cn/archives/588.html)  
 [Hive SQL的编译过程](https://tech.meituan.com/hive-sql-to-mapreduce.html)
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

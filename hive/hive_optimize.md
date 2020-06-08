@@ -213,6 +213,6 @@ on (t1.suin = t2.suin)
 [控制hive任务中的map数和reduce数](http://lxw1234.com/archives/2015/04/15.htm)  
 [hive计算map数和reduce数](http://blog.csdn.net/dxl342/article/details/77886551)
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

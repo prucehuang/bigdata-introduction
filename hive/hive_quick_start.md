@@ -150,6 +150,6 @@ select distinct  get_json_object(json_string,'$.uid') from impression_reformat w
 /usr/lib/hive/bin/hive -e "alter table article_gmp add partition (date='20160921', min='0310') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0310/' partition (date='20160921', min='0300') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0300/' partition (date='20160921', min='0250') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0250/' partition (date='20160921', min='0240') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0240/' partition (date='20160921', min='0230') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0230/' partition (date='20160921', min='0220') location '/inveno-projects/offline/article-gmp/data/article-gmp/history/20160921/0220/'"
 ```
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

@@ -131,6 +131,6 @@ SHUTDOWN_MSG: Shutting down NameNode at Andrew-liudeMacBook-Pro.local/192.168.1.
 ```
 成功启动服务后, 可以直接在浏览器中输入http://localhost:50070/访问Hadoop页面
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

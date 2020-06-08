@@ -454,6 +454,7 @@ res18: Int = 1428
 > [用实例说明Spark stage划分原理](https://www.cnblogs.com/bonelee/p/6039469.html)  
 > [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)    
 ------
-> @ 学必求其心得，业必贵其专精  
+
 > @ WHAT - HOW - WHY  
 > @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

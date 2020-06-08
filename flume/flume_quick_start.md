@@ -51,9 +51,9 @@ flume-ng version
 
 2. 结构图详解：  
 - 单个  
-  ![image](../pic/flume/flume.png)
+![image](../pic/flume/flume.png)
 - 多个  
-  ![image](../pic/flume/flumes.png)
+![image](../pic/flume/flumes.png)
 - 复杂型  
 ![image](../pic/flume/flumess.png)
 
@@ -284,6 +284,6 @@ agent.sinks.k1.batchSize = 20
 agent.sinks.k1.channel = c1
 ```
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

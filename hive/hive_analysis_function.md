@@ -1,4 +1,6 @@
-# 分析窗口函数
+[toc]
+
+# 分析函数
 
 ## 一、数据准备
 
@@ -226,6 +228,90 @@ ORDER BY
 | cookie2  | 2015-04-15 | 2    | 2    | default        | default         | 2015-04-14       | 2015-04-16      |      |
 | cookie2  | 2015-04-16 | 3    | 3    | 2015-04-14     | default         | 2015-04-14       | 2015-04-16      |      |
 
+## 五、多维分析（ROLLUP、CUBE、grouping函数）
+- ROLLUP（按顺序增加小组聚合）  
+对groupby的扩展，将分组字段一一制空，增加聚合的求和列，减少多次数据读取，增加效率  
+```mysql
+select expr1, expr2, expr3, sum(expr4) as expr_sum from A 
+group by expr1, expr2, expr3
+with rollup
+```
+等价于
+```mysql
+select expr1, expr2, expr3, sum(expr4) as expr_sum from A group by expr1, expr2, expr3
+UNION
+-- 新增聚合
+select expr1, expr2, null, sum(expr4) as expr_sum from A group by expr1, expr2 
+UNION 
+-- 新增聚合
+select expr1, null, null, sum(expr4) as expr_sum from A group by expr1 
+```
+
+- CUBE（排列组合的增加小组聚合）  
+对GROUP BY的扩展，返回CUBE中所有列组合的聚合
+```mysql
+select expr1, expr2, expr3, sum(expr4) as expr_sum from A
+group by expr1, expr2, expr3
+with cube
+```
+等价于
+```mysql
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr2, expr3
+UNION 
+select expr1, expr2, null, sum(expr4) as expr_sum group by expr1, expr2 
+UNION 
+select expr1, null, expr3, sum(expr4) as expr_sum group by expr1, expr3 
+UNION 
+select expr1, null, expr3, sum(expr4) as expr_sum group by expr2, expr3 
+UNION 
+select expr1, null, null, sum(expr4) as expr_sum group by expr1 
+UNION 
+select expr1, null, null, sum(expr4) as expr_sum group by expr2 
+UNION 
+select expr1, null, null, sum(expr4) as expr_sum group by expr3
+```
+等价于(全靠着uinon消重)
+```mysql
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr2, expr3
+with rollup
+UNION 
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr3, expr2
+with rollup
+UNION 
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr2, expr3, expr1
+with rollup
+UNION 
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr2, expr1, expr3
+with rollup
+UNION 
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr3, expr2, expr1
+with rollup
+UNION 
+select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr3, expr1, expr2
+with rollup
+```
+- GROUPINGSETS  
+对GROUP BY进行扩展，返回GROUPINGSETS中每个列的分组聚合，将多个分类项写到一块
+```mysql
+select expr1, expr2, sum(expr3) as expr_sum, GROUPING__ID from A 
+group by expr1, expr2
+GROUPINGSETS(expr1, expr2, (expr1, expr2))
+```
+等价于
+```mysql
+select expr1, expr2, sum(expr3) as expr_sum, 0 as GROUPING__ID from A group by expr1
+UNION 
+select expr1, expr2, sum(expr3) as expr_sum, 1 as GROUPING__ID from A group by expr2
+UNION 
+select expr1, expr2, sum(expr3) as expr_sum, 2 as GROUPING__ID from A group by expr1, expr2
+```
+注意：  
+1.为了避免出错，特别是在有非select、from、group by、where、having子句的情况下，最好用as   给select列起别名，并在那些子句中使用别名，但这不是强制性的，而是与其他SQL的惯例一致  
+2.考虑到含义存疑，多维分析暂不支持select distinct  
+3.当使用group把多个普通列组合在一起时，不允许group的多层嵌套，当然也不允许在group中嵌套cube或rollup  
+4.多维分析不支持SELECT *    
+[Hive-GROUPING SETS、GROUPING__ID、CUBE和ROLLUP](https://www.cnblogs.com/qingyunzong/p/8798987.html)  
+
 ## 大牛文章参考
 [Hive分析窗口函数(一) SUM,AVG,MIN,MAX](http://lxw1234.com/archives/2015/04/176.htm)  
 [Hive分析窗口函数(二) NTILE,ROW_NUMBER,RANK,DENSE_RANK](http://lxw1234.com/archives/2015/04/181.htm)  
@@ -234,6 +320,6 @@ ORDER BY
 [Hive分析窗口函数(五) GROUPING SETS,GROUPING__ID,CUBE,ROLLUP](http://lxw1234.com/archives/2015/04/193.htm)  
 [oracle 分析函数](http://blog.csdn.net/tanyit/article/details/6937366)
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精

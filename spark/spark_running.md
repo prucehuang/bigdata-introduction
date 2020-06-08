@@ -246,6 +246,6 @@ conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 1、双倍的硬件资源（CPU、Core）往往能带来应用时间减半的效果  
 2、更大的本地磁盘可以帮助提高Spark的应用性能
 
-> @ 学必求其心得，业必贵其专精
-> @ WHAT - HOW - WHY
-> @ 不积跬步 - 无以至千里
+> @ WHAT - HOW - WHY  
+> @ 不积跬步 - 无以至千里  
+> @ 学必求其心得 - 业必贵其专精
