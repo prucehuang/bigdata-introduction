@@ -1,4 +1,4 @@
-# Spark Streaming Quick Start
+[toc]
 
 Spark Streaming的基本数据结构是DRDD（discretized stream），DRDD和RDD类似，但是引入了时间的概念。DRDD中三个最重要的时间变量
 - windowDuration，每次处理的时间窗口大小
@@ -8,11 +8,13 @@ Spark Streaming的基本数据结构是DRDD（discretized stream），DRDD和RDD
 为了保证数据的可容灾性，DRDD里面新加了**checkpoint**的机制，数据可以从任何一个checkpoint恢复，以确保任务能够7*24小时执行  
 
 Spark Streaming的操作分为转化和输出，不同于RDD的转化和行动 
-[官网](https://spark.apache.org/docs/latest/streaming-programming-guide.html)
 
-### 一、Demo
+> 官网  
+> https://spark.apache.org/docs/latest/streaming-programming-guide.html
 
-```scala
+# 一、Demo
+
+```
 /**
   * @description
   * 监听localhost的7777端口，处理每一行的输入
@@ -62,31 +64,31 @@ object StreamingSocket {
 ## 建议直接走官网的详细demo
 ```
 
-### 二、架构设计
-![spark_streaming](../pic/spark/spark_streaming.png)
+# 二、架构设计
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/BEB30AD3C0C740D7B5D13F3FA0AF1D03/23425)
 参考来自《Saprk快速大数据分析》，很详细清楚的说明了spark streaning的执行过程。针对每一种数据源，都将有一个与之对应的长期运行的接收器，所以收到的数据都会有一个备份，任务的执行都将发生在副本上，万一数据丢失，将直接从接收器上重新将数据copy过来。
 
 Spark Streaming的运行模式可以根据带不带window分为以下两种
-#### 2.1 每个batchInterval执行一次，无状态的运行
-![streaming-dstream-ops](../pic/spark/streaming-dstream-ops.png)
+## 2.1 每个batchInterval执行一次，无状态的运行
+![image](https://spark.apache.org/docs/latest/img/streaming-dstream-ops.png)
 
-#### 2.2 指定windowDuration、slideDuration的运行，每次移动特定的步伐，运行一个window里面的所有数据
-![streaming-dstream-window](../pic/spark/streaming-dstream-window.png)
+## 2.2 指定windowDuration、slideDuration的运行，每次移动特定的步伐，运行一个window里面的所有数据
+![image](https://spark.apache.org/docs/latest/img/streaming-dstream-window.png)
 
-### 三、转化
-#### 3.1 无状态转化
+# 三、转化
+## 3.1 无状态转化
 每批次的任务数据和之前的批次数据没有任何关系，无状态转化的操作和普通RDD的转化十分类似，强调transform函数，transform()的常见应用场景就是重用RDD的处理函数 
-```scala
+```
 val outlierDStream = accessLogsDStream.transform { rdd =>
        extractOutliers(rdd)
 }
 ```
-#### 3.2 有状态转化
+## 3.2 有状态转化
 每批次的任务数据和之前的批次数据有交集，有交集就可以有优化，尽量使得所有的数据只需要被处理一次
-##### 3.2.1 基于于滑动窗口
-![reduce_by_window](../pic/spark/reduce_by_window.png)
+### 3.2.1 基于于滑动窗口
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/51EAD1CDADBE4CA7A609B73F75161F54/23462)
 
-```scala
+```
 val ipDStream = accessLogsDStream.map(logEntry => (logEntry.getIpAddress(), 1))
 val ipCountDStream = ipDStream.reduceByKeyAndWindow(
     {(x, y) => x + y}, // for new
@@ -96,9 +98,9 @@ val ipCountDStream = ipDStream.reduceByKeyAndWindow(
 )
 ```
 
-##### 3.2.2 状态更新 updateStateByKey
+### 3.2.2 状态更新 updateStateByKey
 用来一直追踪一个事件的状态
-```scala
+```
 def updateRunningSum(values: Seq[Long], state: Option[Long]) = {
        Some(state.getOrElse(0L) + values.size)
 }
@@ -106,23 +108,23 @@ val responseCodeDStream = accessLogsDStream.map(log => (log.getResponseCode(), 1
 val responseCodeCountDStream = responseCodeDStream.updateStateByKey(updateRunningSum _)
 ```
 
-### 四、输出
-![output_operations](../pic/spark/output_operations.png)
+# 四、输出
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/B60740366A6F495E81E3F0DC6EF2DD0B/23477)
 
-### 五、容灾
-#### 5.1 checkpoint
-```scala
+# 五、容灾
+## 5.1 checkpoint
+```
 ssc.checkpoint("hdfs://...")
 ```
-#### 5.2 driver程序容灾
+## 5.2 driver程序容灾
 使用StreamingContext.getOrCreate()函数，可以重新从检查点目录中初始化出streamingContext然后继续处理
-```scala
+```
 StreamingContext.getOrCreate()
 ```
 spark独立管理器还可以设置参数来监控程序，自动拉起任务
-#### 5.3 executor节点容灾
+## 5.3 executor节点容灾
 数据在多个工作节点上备份
-#### 5.4 接收器容灾
+## 5.4 接收器容灾
 将数据备份，允许一台工作节点数据丢失
 
 > @ WHAT - HOW - WHY  

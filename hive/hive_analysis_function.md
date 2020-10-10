@@ -1,10 +1,8 @@
 [toc]
 
-# 分析函数
+# 一、数据准备
 
-## 一、数据准备
-
-```sql
+```
 -----------------------------------
 --- 创建表
 -----------------------------------
@@ -33,23 +31,20 @@ INSERT INTO 0_test VALUES ('cookie2', '2015-04-16', 3);
 select * from 0_test;
 ```
 
-## 二、统计窗口函数
-窗口，也就是分组的概念，统计窗口函数就是分组后的统计函数。  
-分组的关键字是**PARTITION BY**，相当于GROUP BY  
-- 如没有ORDER BY，统计的就是全组的数据，
-- 如有ORDER BY，就是根据排序字段的一个累积统计
-常用的使用场景比如：
-- 统计每个组内某个字段最大的记录
-- 统计每个组内某个字段在全组中的权重占比
-- 统计每个组内某个字段的累积值等等
 
-```sql
+# 二、统计窗口函数
+窗口，也就是分组的概念，统计窗口函数就是分组后的统计函数。  
+
+分组的关键字是PARTITION BY，相当于GROUP BY，如果没有加上ORDER BY语句，统计的就是全组的数据，有ORDER BY的话就是根据排序字段的一个累积统计，详见下面的PV_\*\_1 和 PV_\*\_2  
+
+常用的使用场景比如：统计每个组内某个字段最大的记录、统计每个组内某个字段在全组中的权重占比、统计每个组内某个字段的累积值等等
+```
 -----------------------------------
--- SUM ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
--- AVG ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
--- MAX ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
--- MIN ([DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
--- RATIO_TO_REPORT  (expr) OVER ([query_partition_clause] [order_by_clause])
+-- SUM ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
+-- AVG ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
+-- MAX ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
+-- MIN ( [ DISTINCT ] expr )OVER ( [query_partition_clause] [order_by_clause] )
+-- RATIO_TO_REPORT  ( expr )OVER ( [query_partition_clause] [order_by_clause] )
 -----------------------------------
 SELECT 
 	cookieid,
@@ -75,23 +70,24 @@ FROM
 
 **运行结果**
 
-| cookieid | createtime | pv   | pv_sum_1 | pv_sum_2 | pv_avg_1           | pv_avg_2           | pv_max_1 | pv_max_2 | pv_min_1 | pv_min_2 | pv_ratio_to_report_1 | pv_ratio_to_report_2 |
-| -------- | ---------- | ---- | -------- | -------- | ------------------ | ------------------ | -------- | -------- | -------- | -------- | -------------------- | -------------------- |
-| cookie1  | 2015-04-10 | 1    | 1        | 26       | 1.0                | 3.7142857142857144 | 1        | 7        | 1        | 1        | 1.0                  | 0.038461538461538464 |
-| cookie1  | 2015-04-11 | 5    | 6        | 26       | 3.0                | 3.7142857142857144 | 5        | 7        | 1        | 1        | 0.8333333333333334   | 0.19230769230769232  |
-| cookie1  | 2015-04-12 | 7    | 13       | 26       | 4.333333333333333  | 3.7142857142857144 | 7        | 7        | 1        | 1        | 0.5384615384615384   | 0.2692307692307692   |
-| cookie1  | 2015-04-13 | 3    | 16       | 26       | 4.0                | 3.7142857142857144 | 7        | 7        | 1        | 1        | 0.1875               | 0.11538461538461539  |
-| cookie1  | 2015-04-14 | 2    | 18       | 26       | 3.6                | 3.7142857142857144 | 7        | 7        | 1        | 1        | 0.1111111111111111   | 0.07692307692307693  |
-| cookie1  | 2015-04-15 | 4    | 22       | 26       | 3.6666666666666665 | 3.7142857142857144 | 7        | 7        | 1        | 1        | 0.18181818181818182  | 0.15384615384615385  |
-| cookie1  | 2015-04-16 | 4    | 26       | 26       | 3.7142857142857144 | 3.7142857142857144 | 7        | 7        | 1        | 1        | 0.15384615384615385  | 0.15384615384615385  |
-| cookie2  | 2015-04-14 | 1    | 1        | 6        | 1.0                | 2.0                | 1        | 3        | 1        | 1        | 1.0                  | 0.16666666666666666  |
-| cookie2  | 2015-04-15 | 2    | 3        | 6        | 1.5                | 2.0                | 2        | 3        | 1        | 1        | 0.6666666666666666   | 0.3333333333333333   |
-| cookie2  | 2015-04-16 | 3    | 6        | 6        | 2.0                | 2.0                | 3        | 3        | 1        | 1        | 0.5                  | 0.5                  |
+cookieid | createtime | pv | pv_sum_1 | pv_sum_2 | pv_avg_1 | pv_avg_2 | pv_max_1 | pv_max_2 | pv_min_1 | pv_min_2 | pv_ratio_to_report_1 | pv_ratio_to_report_2
+---|---|---|---|---|---|---|---|---|---|---|--|---|---
+cookie1 | 2015-04-10 | 1 | 1 | 26 | 1.0 | 3.7142857142857144 | 1 | 7 | 1 | 1 | 1.0 | 0.038461538461538464
+cookie1 | 2015-04-11 | 5 | 6 | 26 | 3.0 | 3.7142857142857144 | 5 | 7 | 1 | 1 | 0.8333333333333334 | 0.19230769230769232
+cookie1 | 2015-04-12 | 7 | 13 | 26 | 4.333333333333333 | 3.7142857142857144 | 7 | 7 | 1 | 1 | 0.5384615384615384 | 0.2692307692307692
+cookie1 | 2015-04-13 | 3 | 16 | 26 | 4.0 | 3.7142857142857144 | 7 | 7 | 1 | 1 | 0.1875 | 0.11538461538461539
+cookie1 | 2015-04-14 | 2 | 18 | 26 | 3.6 | 3.7142857142857144 | 7 | 7 | 1 | 1 | 0.1111111111111111 | 0.07692307692307693
+cookie1 | 2015-04-15 | 4 | 22 | 26 | 3.6666666666666665 | 3.7142857142857144 | 7 | 7 | 1 | 1 | 0.18181818181818182 | 0.15384615384615385
+cookie1 | 2015-04-16 | 4 | 26 | 26 | 3.7142857142857144 | 3.7142857142857144 | 7 | 7 | 1 | 1 | 0.15384615384615385 | 0.15384615384615385
+cookie2 | 2015-04-14 | 1 | 1 | 6 | 1.0 | 2.0 | 1 | 3 | 1 | 1 | 1.0 | 0.16666666666666666
+cookie2 | 2015-04-15 | 2 | 3 | 6 | 1.5 | 2.0 | 2 | 3 | 1 | 1 | 0.6666666666666666 | 0.3333333333333333
+cookie2 | 2015-04-16 | 3 | 6 | 6 | 2.0 | 2.0 | 3 | 3 | 1 | 1 | 0.5 | 0.5
 
-```sql
-# 为了加深分组|窗口的理解，单独介绍一下count over函数，统计当前分组的内的次数
+
+```
+# 为了加深分组|窗口的理解，单独介绍一下count over函数
 -----------------------------------
---- COUNT( 1 | [DISTINCT] expr) OVER ([query_partition_clause] [order_by_clause])
+--- COUNT( 1 | [ DISTINCT ] expr)OVER ( [query_partition_clause] [order_by_clause] )
 -----------------------------------
 SELECT
 	cookieid,
@@ -104,21 +100,21 @@ FROM
 ```
 
 **运行结果**
-| cookieid | count_over_1 | count_over_2 | count_over_20 | count_over_distinct_pv |
-| -------- | ------------ | ------------ | ------------- | ---------------------- |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie2  | 3            | 3            | 3             | 3                      |
-| cookie2  | 3            | 3            | 3             | 3                      |
-| cookie2  | 3            | 3            | 3             | 3                      |
+cookieid | count_over_1 | count_over_2 | count_over_20 | count_over_distinct_pv
+---|---|---|---|---
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie1 | 7 | 7 | 7 | 6
+cookie2 | 3 | 3 | 3 | 3
+cookie2 | 3 | 3 | 3 | 3
+cookie2 | 3 | 3 | 3 | 3
 
 
-```sql
+```
 # 类似的常规SQL
 SELECT 
 	cookieid,
@@ -133,29 +129,29 @@ GROUP BY
 ```
 
 **运行结果**
-| cookieid | count_over_1 | count_over_2 | count_over_20 | count_over_distinct_pv |
-| -------- | ------------ | ------------ | ------------- | ---------------------- |
-| cookie1  | 7            | 7            | 7             | 6                      |
-| cookie2  | 3            | 3            | 3             | 3                      |
+cookieid | count_over_1 | count_over_2 | count_over_20 | count_over_distinct_pv
+---|---|---|---|---
+cookie1 | 7 | 7 | 7 | 6
+cookie2 | 3 | 3 | 3 | 3
 
 **区别**
-- 使用带有OVER的窗口函数查询出来的行数等于原始数据行数，而GROUP BY行数为分组的组数
+- 使用带有OVER的窗口函数查询出来的行数等于原始数据行数，而GROUP BY行数的分组的组数
 - 窗口函数在不带ORDER BY语句的时候使用方法和效果同基本函数
 
-## 三、排序窗口函数
+
+# 三、排序窗口函数
 ROW_NUMBER、DENSE_RANK、RANK都是进行组内排序，他们可以为每一行输出一个组内的顺序编号。区别在于
 - ROW_NUMBER 每一行都有一个**唯一**的编号
 - DENSE_RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号连续，比如两个并列第三名，下一个就是第四名
-- RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号不连续，比如两个并列第三名，下一个就是第五名  
-常用的使用场景比如
-- 统计每个班每个同学的成绩排名
-- 统计每个组根据某个字段排序的第N条记录
+- RANK 每一行都有一个编号，数据相同的并列为一个编号，下一行数据编号不连续，比如两个并列第三名，下一个就是第五名
 
-```sql
+常用的使用场景比如：统计每个班每个同学的成绩排名、统计每个组根据某个字段排序的第N条记录
+
+```
 -----------------------------------
--- ROW_NUMBER() OVER([query_partition_clause] order_by_clause)
--- DENSE_RANK() OVER([query_partition_clause] order_by_clause)
--- RANK() OVER([query_partition_clause] order_by_clause)
+-- ROW_NUMBER ( ) OVER ( [query_partition_clause] order_by_clause 
+-- DENSE_RANK ( ) OVER ( [query_partition_clause] order_by_clause 
+-- RANK ( ) OVER ( [query_partition_clause] order_by_clause 
 -----------------------------------
 SELECT 
 	cookieid,
@@ -169,32 +165,32 @@ FROM 0_test
 
 **运行结果**
 
-| cookieid | createtime | pv   | pv_row_number | pv_dense_rank | pv_rank |
-| -------- | ---------- | ---- | ------------- | ------------- | ------- |
-| cookie1  | 2015-04-12 | 7    | 1             | 1             | 1       |
-| cookie1  | 2015-04-11 | 5    | 2             | 2             | 2       |
-| cookie1  | 2015-04-16 | 4    | 3             | 3             | 3       |
-| cookie1  | 2015-04-15 | 4    | 4             | 3             | 3       |
-| cookie1  | 2015-04-13 | 3    | 5             | 4             | 5       |
-| cookie1  | 2015-04-14 | 2    | 6             | 5             | 6       |
-| cookie1  | 2015-04-10 | 1    | 7             | 6             | 7       |
-| cookie2  | 2015-04-16 | 3    | 1             | 1             | 1       |
-| cookie2  | 2015-04-15 | 2    | 2             | 2             | 2       |
-| cookie2  | 2015-04-14 | 1    | 3             | 3             | 3       |
+cookieid | createtime | pv | pv_row_number | pv_dense_rank | pv_rank
+---|---|---|---|---|---|---|---
+cookie1 | 2015-04-12 | 7 | 1 | 1 | 1
+cookie1 | 2015-04-11 | 5 | 2 | 2 | 2
+cookie1 | 2015-04-16 | 4 | 3 | 3 | 3
+cookie1 | 2015-04-15 | 4 | 4 | 3 | 3
+cookie1 | 2015-04-13 | 3 | 5 | 4 | 5
+cookie1 | 2015-04-14 | 2 | 6 | 5 | 6
+cookie1 | 2015-04-10 | 1 | 7 | 6 | 7
+cookie2 | 2015-04-16 | 3 | 1 | 1 | 1
+cookie2 | 2015-04-15 | 2 | 2 | 2 | 2
+cookie2 | 2015-04-14 | 1 | 3 | 3 | 3
 
-## 四、位移窗口函数
+
+# 四、位移窗口函数
 在每个分组中，每行记录都有自己的顺序，也就有了位移的概念。  
-- LAG OVER函数可以方便的获得自己前N行记录的某个字段的内容，
-- LEAD OVER与之相反，取的是后N行的记录数据  
-所有offset必然都是一个正整数，值得注意的是，每行记录在每个分组中都会有自己的顺序，统计值根据位移来统计，所以如果最后输出的顺序不一致的话可能导致每个组的统计位移和最后输出的顺序不一致的情况，建议加上ORDER BY
-使用场景比如：
-- 统计每一组中最早加入的人
-```sql
+LAG OVER函数可以方便的获得自己前N行记录的某个字段的内容，LEAD OVER与之相反，取的是后N行的记录数据，所有offset必然都是一个正整数  
+值得注意的是，每行记录在每个分组中都会有自己的顺序，统计值根据位移来统计，所以如果最后输出的顺序不一致的话可能导致每个组的统计位移和最后输出的顺序不一致的情况，建议加上ORDER BY
+
+使用场景比如：统计每一组中最早加入的人
+```
 -----------------------------------
--- LAG (value_expr [, offset] [, default]) OVER ([query_partition_clause] order_by_clause)
--- LEAD (value_expr [, offset] [, default]) OVER ([query_partition_clause] order_by_clause)
--- FIRST_VALUE (expr) OVER ([query_partition_clause] [order_by_clause])
--- LAST_VALUE (expr) OVER ([query_partition_clause] [order_by_clause])
+-- LAG ( value_expr [, offset ] [, default] )OVER ( [query_partition_clause] order_by_clause )
+-- LEAD (value_expr [, offset ] [, default ] ) OVER ( [query_partition_clause] order_by_clause )
+-- FIRST_VALUE ( expr ) OVER ( [query_partition_clause] [order_by_clause] )
+-- LAST_VALUE ( expr ) OVER ( [query_partition_clause] [order_by_clause] )
 -----------------------------------
 SELECT 
 	cookieid,
@@ -215,104 +211,21 @@ ORDER BY
 
 **运行结果**
 
-| cookieid | createtime | pv   | rk   | lag_createtime | lead_createtime | first_createtime | last_createtime |      |
-| -------- | ---------- | ---- | ---- | -------------- | --------------- | ---------------- | --------------- | ---- |
-| cookie1  | 2015-04-10 | 1    | 1    | default        | 2015-04-12      | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-11 | 5    | 2    | default        | 2015-04-13      | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-12 | 7    | 3    | 2015-04-10     | 2015-04-14      | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-13 | 3    | 4    | 2015-04-11     | 2015-04-15      | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-14 | 2    | 5    | 2015-04-12     | 2015-04-16      | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-15 | 4    | 6    | 2015-04-13     | default         | 2015-04-10       | 2015-04-16      |      |
-| cookie1  | 2015-04-16 | 4    | 7    | 2015-04-14     | default         | 2015-04-10       | 2015-04-16      |      |
-| cookie2  | 2015-04-14 | 1    | 1    | default        | 2015-04-16      | 2015-04-14       | 2015-04-16      |      |
-| cookie2  | 2015-04-15 | 2    | 2    | default        | default         | 2015-04-14       | 2015-04-16      |      |
-| cookie2  | 2015-04-16 | 3    | 3    | 2015-04-14     | default         | 2015-04-14       | 2015-04-16      |      |
+cookieid | createtime | pv | rk | lag_createtime | lead_createtime | first_createtime | last_createtime |  
+---|---|---|---|---|---|---|---
+cookie1 | 2015-04-10 | 1 | 1 | default | 2015-04-12 | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-11 | 5 | 2 | default | 2015-04-13 | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-12 | 7 | 3 | 2015-04-10 | 2015-04-14 | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-13 | 3 | 4 | 2015-04-11 | 2015-04-15 | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-14 | 2 | 5 | 2015-04-12 | 2015-04-16 | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-15 | 4 | 6 | 2015-04-13 | default | 2015-04-10 | 2015-04-16
+cookie1 | 2015-04-16 | 4 | 7 | 2015-04-14 | default | 2015-04-10 | 2015-04-16
+cookie2 | 2015-04-14 | 1 | 1 | default | 2015-04-16 | 2015-04-14 | 2015-04-16
+cookie2 | 2015-04-15 | 2 | 2 | default | default | 2015-04-14 | 2015-04-16
+cookie2 | 2015-04-16 | 3 | 3 | 2015-04-14 | default | 2015-04-14 | 2015-04-16
 
-## 五、多维分析（ROLLUP、CUBE、grouping函数）
-- ROLLUP（按顺序增加小组聚合）  
-对groupby的扩展，将分组字段一一制空，增加聚合的求和列，减少多次数据读取，增加效率  
-```mysql
-select expr1, expr2, expr3, sum(expr4) as expr_sum from A 
-group by expr1, expr2, expr3
-with rollup
-```
-等价于
-```mysql
-select expr1, expr2, expr3, sum(expr4) as expr_sum from A group by expr1, expr2, expr3
-UNION
--- 新增聚合
-select expr1, expr2, null, sum(expr4) as expr_sum from A group by expr1, expr2 
-UNION 
--- 新增聚合
-select expr1, null, null, sum(expr4) as expr_sum from A group by expr1 
-```
 
-- CUBE（排列组合的增加小组聚合）  
-对GROUP BY的扩展，返回CUBE中所有列组合的聚合
-```mysql
-select expr1, expr2, expr3, sum(expr4) as expr_sum from A
-group by expr1, expr2, expr3
-with cube
-```
-等价于
-```mysql
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr2, expr3
-UNION 
-select expr1, expr2, null, sum(expr4) as expr_sum group by expr1, expr2 
-UNION 
-select expr1, null, expr3, sum(expr4) as expr_sum group by expr1, expr3 
-UNION 
-select expr1, null, expr3, sum(expr4) as expr_sum group by expr2, expr3 
-UNION 
-select expr1, null, null, sum(expr4) as expr_sum group by expr1 
-UNION 
-select expr1, null, null, sum(expr4) as expr_sum group by expr2 
-UNION 
-select expr1, null, null, sum(expr4) as expr_sum group by expr3
-```
-等价于(全靠着uinon消重)
-```mysql
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr2, expr3
-with rollup
-UNION 
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr1, expr3, expr2
-with rollup
-UNION 
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr2, expr3, expr1
-with rollup
-UNION 
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr2, expr1, expr3
-with rollup
-UNION 
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr3, expr2, expr1
-with rollup
-UNION 
-select expr1, expr2, expr3, sum(expr4) as expr_sum group by expr3, expr1, expr2
-with rollup
-```
-- GROUPINGSETS  
-对GROUP BY进行扩展，返回GROUPINGSETS中每个列的分组聚合，将多个分类项写到一块
-```mysql
-select expr1, expr2, sum(expr3) as expr_sum, GROUPING__ID from A 
-group by expr1, expr2
-GROUPINGSETS(expr1, expr2, (expr1, expr2))
-```
-等价于
-```mysql
-select expr1, expr2, sum(expr3) as expr_sum, 0 as GROUPING__ID from A group by expr1
-UNION 
-select expr1, expr2, sum(expr3) as expr_sum, 1 as GROUPING__ID from A group by expr2
-UNION 
-select expr1, expr2, sum(expr3) as expr_sum, 2 as GROUPING__ID from A group by expr1, expr2
-```
-注意：  
-1.为了避免出错，特别是在有非select、from、group by、where、having子句的情况下，最好用as   给select列起别名，并在那些子句中使用别名，但这不是强制性的，而是与其他SQL的惯例一致  
-2.考虑到含义存疑，多维分析暂不支持select distinct  
-3.当使用group把多个普通列组合在一起时，不允许group的多层嵌套，当然也不允许在group中嵌套cube或rollup  
-4.多维分析不支持SELECT *    
-[Hive-GROUPING SETS、GROUPING__ID、CUBE和ROLLUP](https://www.cnblogs.com/qingyunzong/p/8798987.html)  
-
-## 大牛文章参考
+# 大牛文章参考
 [Hive分析窗口函数(一) SUM,AVG,MIN,MAX](http://lxw1234.com/archives/2015/04/176.htm)  
 [Hive分析窗口函数(二) NTILE,ROW_NUMBER,RANK,DENSE_RANK](http://lxw1234.com/archives/2015/04/181.htm)  
 [Hive分析窗口函数(三) CUME_DIST,PERCENT_RANK](http://lxw1234.com/archives/2015/04/185.htm)  

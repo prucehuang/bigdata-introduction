@@ -1,25 +1,25 @@
-# Spark_Running
+[toc]
 
-### 一、工程打包
-#### 1.1 Maven
+# 一、工程打包
+## 1.1 Maven
 
-```shell
+```
 mvn clean
 mvn package
 jar tf target/*jar
 ```
 
-#### 1.2 sbt
+## 1.2 sbt
 
-```shell
+```
 sbt clean
 sbt package
 jar tf target/scala-2.10/*jar
 ```
 
-### 二、Spark Submit
-#### 2.1 启动
-```shell
+# 二、Spark Submit
+## 2.1 启动
+```
 $ ./bin/spark-submit 
     --master yarn \
     --deploy-mode cluster \
@@ -32,7 +32,7 @@ $ ./bin/spark-submit
     lib/spark-examples*.jar \
     app_arg1 app_arg2
 ```
-```shell
+```
 #!\bin\bash
 
 SPARK_SUBMIT_SCRIPT=${SPARK_HOME}/bin/spark-submit
@@ -44,23 +44,22 @@ ${SPARK_SUBMIT_SCRIPT} \
 
 ```
 
-#### 2.2 Spark Conf参数配置
-http://spark.apache.org/docs/latest/configuration.html#application-properties
-| 常用参数          | 描述                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| --master          | 表示要连接的集群管理器                                       |
-| --deploy-mode     | 选择驱动器程序的位置，1)本地客户端“client”，即在 spark-submit 被调用的这台机器上启动； 2）集群“cluster”，即驱动器程序会被传输并执行 于集群的一个工作节点上。默认是本地模式 |
-| --class           | 运行 Java 或 Scala 程序时应用的主类                          |
-| --name            | 应用的显示名，会显示在 Spark 的网页用户界面中                |
-| --jars            | 需要上传并放到应用的 CLASSPATH 中的 JAR                      |
-| --files           | 需要放到应用工作目录中的文件的列表。这个参数一般用来放需要分发到各节点的 数据文件 |
-| --executor-memory | 执行器进程使用的内存量，以字节为单位。可以使用后缀指定更大的单位，比如 “512m”(512 MB)或“15g”(15 GB) |
-| --driver-memory   | 驱动器进程使用的内存量，以字节为单位。可以使用后缀指定更大的单位，比如 “512m”(512 MB)或“15g”(15 GB) |
+## 2.2 Spark Conf参数配置
+http://spark.apache.org/docs/1.6.1/configuration.html#application-properties
+常用参数 | 描述
+---|---
+--master | 表示要连接的集群管理器
+--deploy-mode | 选择驱动器程序的位置，1)本地客户端“client”，即在 spark-submit 被调用的这台机器上启动； 2）集群“cluster”，即驱动器程序会被传输并执行 于集群的一个工作节点上。默认是本地模式
+--class | 运行 Java 或 Scala 程序时应用的主类
+--name | 应用的显示名，会显示在 Spark 的网页用户界面中
+--jars | 需要上传并放到应用的 CLASSPATH 中的 JAR
+--files | 需要放到应用工作目录中的文件的列表。这个参数一般用来放需要分发到各节点的 数据文件
+--executor-memory | 执行器进程使用的内存量，以字节为单位。可以使用后缀指定更大的单位，比如 “512m”(512 MB)或“15g”(15 GB)
+--driver-memory | 驱动器进程使用的内存量，以字节为单位。可以使用后缀指定更大的单位，比如 “512m”(512 MB)或“15g”(15 GB)
 
 - Spark中可以设置参数的地方有四，优先级从高到低分别是  
-
-  1、程序设定set
-```scala
+1、程序设定set
+```
 // 创建一个conf对象
 val conf = new SparkConf()
 conf.set("spark.app.name", "My Spark App") 
@@ -72,7 +71,7 @@ val sc = new SparkContext(conf)
 ```
 
 2、spark submit 传参数指定
-```shell
+```
 spark-submit \
    --class com.example.MyApp \
    --master local[4] \
@@ -82,14 +81,13 @@ spark-submit \
 ```
 
 3、spark submit 传配置文件设定
-
-```shell
+```
 spark-submit \
    --class com.example.MyApp \
    --properties-file my-config.conf \
    myApp.jar
    
-## Contents of my-config.conf ##
+# Contents of my-config.conf #
 spark.master    local[4]
 spark.app.name  "My Spark App"
 spark.ui.port   36000
@@ -101,21 +99,21 @@ Spark 安装目录中找到 conf/spark-defaults.conf 文件，尝试读取该文
 ```
 
 
-## 三、运行参数详解
-### 3.1 --master
-http://spark.apache.org/docs/latest/submitting-applications.html
-| 值                | 描述                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| spark://host:port | 连接到指定端口的 Spark 独立集群上。默认情况下 Spark 独立主节点使用 7077 端口 |
-| mesos://host:port | 连接到指定端口的 Mesos 集群上。默认情况下 Mesos 主节点监听 5050 端口 |
-| yarn              | 连接到一个 YARN 集群。当在 YARN 上运行时，需要设置环境变量 HADOOP _CONF_DIR 指向 Hadoop 配置目录，以获取集群信息 |
-| local             | 运行本地模式，使用单核                                       |
-| local[N]          | 运行本地模式，使用 N 个核心                                  |
-| local[*]          | 运行本地模式，使用尽可能多的核心                             |
+# 三、运行参数详解
+## 3.1 --master
+http://spark.apache.org/docs/1.6.1/submitting-applications.html
+值 | 描述
+---|---
+spark://host:port | 连接到指定端口的 Spark 独立集群上。默认情况下 Spark 独立主节点使用 7077 端口
+mesos://host:port | 连接到指定端口的 Mesos 集群上。默认情况下 Mesos 主节点监听 5050 端口
+yarn | 连接到一个 YARN 集群。当在 YARN 上运行时，需要设置环境变量 HADOOP _CONF_DIR 指向 Hadoop 配置目录，以获取集群信息
+local | 运行本地模式，使用单核
+local[N] | 运行本地模式，使用 N 个核心
+local[*] | 运行本地模式，使用尽可能多的核心
 
-### 四、集群管理器
-#### 4.1 Saprk自带的独立集群管理器
-http://spark.apache.org/docs/latest/spark-standalone.html
+# 四、集群管理器
+## 4.1 Saprk自带的独立集群管理器
+http://spark.apache.org/docs/1.6.1/spark-standalone.html
 - 启动独立集群管理器
 
 ```
@@ -135,13 +133,13 @@ $ chmod 644 ~/.ssh/authorized_keys
 
 - 检查管理器是否正常
 
-```shell
+```
 spark-shell --master spark://masternode:7077
 ```
 
 - 提交程序
 
-```shell
+```
 spark-submit --master spark://masternode:7077 yourapp
 
 管理界面
@@ -157,8 +155,8 @@ http://masternode:8080
 
 > 如果你有一个集群（20台物理节点，每个节点4cores），当你提交一个任务（8cores，每个core1G），默认情况下，Spark将会在8台物理节点上召唤起8个core，每个core1G，当然我们也可以通过配置spark.deploy.spreadOut=false来要求申请尽可能少的物理节点，比如2台物理节点、2*4cores
 
-#### 4.2 YARN
-http://spark.apache.org/docs/latest/running-on-yarn.html
+## 4.2 YARN
+http://spark.apache.org/docs/1.6.1/running-on-yarn.html
 
 - 配置并提交任务
 ```
@@ -168,31 +166,31 @@ http://spark.apache.org/docs/latest/running-on-yarn.html
     spark-submit --master yarn yourapp
 ```
 
-#### 4.3 Mesos
+## 4.3 Mesos
 
-http://spark.apache.org/docs/latest/running-on-mesos.html
+http://spark.apache.org/docs/1.6.1/running-on-mesos.html
 
 - 执行器之间的资源共享，分为细粒度模式（默认，执行器cores的数量会随着任务的执行而变化），和粗粒度模式（spark.mesos.coarse=true, 比较适合streaming这样的高实效性任务，减少core调度之间的延迟）
 
-#### 4.4 EC2
+## 4.4 EC2
 
-http://spark.apache.org/docs/latest/ec2-scripts.html
+http://spark.apache.org/docs/1.6.1/ec2-scripts.html
 
 - 比较适合搭配S3
 
-### 五、任务管理界面
+# 五、任务管理界面
 - Jobs \ Stages 方便查看各个任务的执行时间
-![jobs](../pic/spark/jobs.png)
-- ![stages](../pic/spark/stages.png)
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/5DA437F92A824FA5B97A9010E1CD09EB/22570)
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/E9FB9106B6C54E1BB467C05FCC9EB217/22572)
 - Storage 表示已缓存的RDD信息
-![storage](../pic/spark/storage.png)
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/6A55A87EB711467BB08505B047FF6701/22574)
 - Environment 可以查看我们设置的配置信息
-![environment](../pic/spark/environment.png)
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/E0419A4B5D1F434A98555D6CEFF8E34C/22576)
 - Executors 各个节点的执行和配置情况
-![executors](../pic/spark/executors.png)
+![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/70378BCEED4B49C394A47D08B93C3450/22578)
 
-### 六、程序运行调优
-#### 6.1 优化分区数、并行度
+# 六、程序运行调优
+## 6.1 优化分区数、并行度
 - 在数据混洗的时候传合理的参指定并行度
 
 - 对已有的数据进行从新分区 repartition、减少分区数coalesce
@@ -212,7 +210,7 @@ http://spark.apache.org/docs/latest/ec2-scripts.html
 >>> lines.count()
 ```
 
-#### 6.2 设置kyro的系列化方式
+## 6.2 设置kyro的系列化方式
 org.apache.spark.serializer.KryoSerializer会优于默认的java序列化的库
 - 普通的序列化
 ```
@@ -238,11 +236,11 @@ conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 
 ```
 
-#### 6.3 修改内存使用策略
+## 6.3 修改内存使用策略
 1、重新分配RDD存储、数据混洗聚合存储、用户存储占比  
 2、改进缓存策略，比方说MEMORY_ONLY 改为 MEMORY_AND_DISK，当数据缓存空间不够的时候就不会删除旧数据导致重新加载计算，而是直接从磁盘load数据；再比方说MEMORY_ONLY 改为 MEMORY_AND_DISK_SER 或者 MEMORY_ONLY_SER，虽然增加了序列化的时间，但是可以大量的减少GC的时间
 
-#### 6.4 硬件优化
+## 6.4 硬件优化
 1、双倍的硬件资源（CPU、Core）往往能带来应用时间减半的效果  
 2、更大的本地磁盘可以帮助提高Spark的应用性能
 
