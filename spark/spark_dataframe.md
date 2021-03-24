@@ -70,6 +70,23 @@ df = df.filter(df['age']>21)
 df = df.where(df['age']>21)
 ```
 
+## join
+
+```
+train_predictions = gbtc_train_predictions.join(gbtr_train_predictions, key)\
+                                          .select(gbtc_train_predictions.vroleid, gbtc_train_predictions.label1, gbtc_train_predictions.label2, 
+                                                  gbtc_train_predictions.cprediction, gbtr_train_predictions.rprediction)
+
+train_predictions = train_predictions.withColumn('prediction', when(train_predictions.cprediction==0, 0)\
+                                                 .when(train_predictions.cprediction>0, gbtr_train_predictions.rprediction)\
+                                                 .otherwise(0))
+train_predictions.show(10)
+```
+
+
+
+
+
 
 
 ## 2.2 统计信息
@@ -128,10 +145,34 @@ df.select(df.name, F.when(df.age > 4, 1).when(df.age < 3, -1).otherwise(0)).show
 ```
 
 ## 2.6 直接使用SQL语法
+
 ```python
 # 首先dataframe注册为临时表，然后执行SQL查询
 color_df.createOrReplaceTempView("color_df")
 spark.sql("select count(1) from color_df").show()
+```
+
+
+
+## 2.7 Group By
+
+```python
+# 方式一，聚合函数更简洁
+huodong_df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
+    .groupBy(['izoneareaid', 'huodongid']) \
+    .agg({'vroleid':'count', 'goumaijine':'sum'}) \
+    .withColumnRenamed('sum(goumaijine)', 'goumaijine_sum')
+    .sort('goumaijine_sum', ascending=False) \
+    .show()
+    
+# 方式二，重命名更简洁
+from pyspark.sql import functions as f
+huodong_df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
+    .groupBy(['izoneareaid', 'huodongid']) \
+    .agg(f.count(huodong_df.vroleid),
+         f.sum(huodong_df.goumaijine).alias('goumaijine_sum')) \
+    .sort('goumaijine_sum', ascending=False) \
+    .show()
 ```
 
 
