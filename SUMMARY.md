@@ -18,6 +18,7 @@
 * [Join解析](hive/hive_join.md)
 * [分析函数](hive/hive_analysis_function.md)
 * [SQL优化](hive/hive_optimize.md)
+* [Hive划重点](hive/hive_important.md)
 
 ## Kafka
 * [Kafka Quick Start](kafka/kafka_quick_start.md)

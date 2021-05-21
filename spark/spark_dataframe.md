@@ -36,6 +36,9 @@ df.age.show()
 df["age"].show()
 
 df.collect()
+
+# 打印全部信息，不加省略号
+.show(20, False)
 ```
 
 ### select
@@ -82,10 +85,6 @@ train_predictions = train_predictions.withColumn('prediction', when(train_predic
                                                  .otherwise(0))
 train_predictions.show(10)
 ```
-
-
-
-
 
 
 
@@ -177,6 +176,19 @@ huodong_df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
 
 
 
+```
+# 保留有效数字
+result_df.withColumn('prediction_error(%)', F.bround( \
+                100*(result_df['sum(prediction)']-result_df['sum(label2)']) / result_df['sum(label2)'], \
+                scale=4))  \
+         .sort('sum(label2)', ascending=False) \
+         .show(20, False)
+```
+
+
+
+
+
 # 三、修改
 
 
@@ -219,6 +231,14 @@ color_df2.show()
 # spark-4
 # alias 方法
 color_df.select(color_df.color.alias('color2')).show()
+
+
+# 新增一列常数项
+huodong_df = huodong_df.withColumnRenamed('vopenid', 'vopenid_hd')\
+                        .withColumnRenamed('vroleid', 'vroleid_hd')\
+                        .withColumnRenamed('izoneareaid', 'izoneareaid_hd')\
+                        .withColumn(huodong_label, F.lit(1))
+
 ```
 
 

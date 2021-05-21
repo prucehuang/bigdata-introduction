@@ -1,7 +1,7 @@
 [toc]
 
 ## 一、Kafka结构
-![image](http://www.jasongj.com/img/kafka/KafkaColumn1/KafkaArchitecture.png)
+![image](../pic/kafka_quick_start/KafkaArchitecture.png)
 
 名词 | 定义
 ---|---
@@ -42,11 +42,11 @@ log.segment.bytes=1073741824
 
 ## 二、kafka数据product
 ### 1、数据存储结构
-![topic input](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/5C786A9BEF614BCAA2529658B2ACFAFF/30820)
+![topic input](../pic/kafka_quick_start/30820)
 
 - partition是一个目录名称，命名规则 —— topic加序号  
 - topic -> partition -> segment -> .index | .log -> offset  
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/8CACA133CEF64286B9E955D443C585DC/30827)
+![](../pic/kafka_quick_start/30827)
 
 - 每一条消息都有一个key —— 也就是offset，key可以作为分partition的依据
 - 每一个segment里面包含了两个文件 —— 索引文件、数据文件  ，segment文件以offset区间的起始值命名，长度固定20位，不足的位用0填充
@@ -81,22 +81,22 @@ headers：array 类型，Nullable
 
 ### 3、数据写入容灾，保证数据可靠性
 #### 1）ACK机制
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/C11AC5D578694512A276C1294F84A2F5/30819)  
+![](../pic/kafka_quick_start/30819)  
 为保证数据能可靠地发送到指定的topic，每个partition收到producer 发送的数据后，都需要向producer发送ack（acknowledge确认收到），如果 producer收到ack，就会进行下一轮的发送，否则重新发送数据  
 ack值的设置
 - 0，【At most once】producer不需要等待broker的ack返回，broker收到数据即可
 - 1，producer等待leader写入成功后的broker返回ack，如果follower在同步成功前leader故障，则数据丢失
 - -1，【At least one】producer等待所有的leader、follower写完后的broker返回ack，如果同步过程中leader故障，选取出来的新leader已经复制数据成功，则会发生数据重复情况
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/E7046DF2EF9C4A5AB2E672BA6F5B296D/30823)
+![](../pic/kafka_quick_start/30823)
 
 #### 2）ISR机制
 leader维护了一个动态的in-sync replica set（ISR,和leader保持同步的 follower集合)    
 当ISR集合中的follower完成数据的同步之后，leader就会给follower发送 ack。如果follower长时间未向leader同步数据，则该follower将被踢出ISR集合，该时间阈值由replica.lag.time.max.ms参数设定  
 leader发生故障后，就会从ISR中选举出新的leader
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/8717AE89910047BA906FC0406CEF1BC8/23566)
+![image](../pic/kafka_quick_start/23566)
 
 #### 3）故障处理机制
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/015C2A1006314B66B92EBDCF2A13E902/30815)
+![](../pic/kafka_quick_start/30815)
 
 **LEO：局部的，每个副本最大的 offset**  
 **HW：全局的，消费者能见到的最大的offset，ISR队列中最小的LEO**  
@@ -127,17 +127,17 @@ kafka有两种分配策略，默认是range
 将所有的topic的partition就行hash排序，放一列，  
 所有的同group下的consumer放一列，  
 从第一个partition开始将所有的partition按顺序的循环的分配给所有的consumer  
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/6898A8387302448898B298AAB26BA279/30818)
+![](../pic/kafka_quick_start/30818)
 优点：多个consumer负载均衡，负责的partition各种最多相差1个  
 缺点：同group不区分partition是属于哪个topic的，consumer1订阅topic1，consumer1订阅topic2的时候，会出现topic1、topic2的数据在consumer1、consumer2混合交叉出现的现象  
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/DEE037A656F2476DBC7484E5B748C908/30817)
+![](../pic/kafka_quick_start/30817)
 
 - 2）Range  
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/5DCBFEE923084DA8B554CBD4AB991C94/30816)
+![](../pic/kafka_quick_start/30816)
 考虑了topic，对于同一个topic的partition，大家一起来均分  
 优点：解决没有订阅交叉读取的现象  
 缺点：可能会有负载不均衡  
-![](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/EABC5304AD13487BACF89A87F0FE0870/30807)  
+![](../pic/kafka_quick_start/30807)  
 当consumer-0、consumer-1同时订阅了topic-A、topic-B的时候，  
 对于topic-A， 3=2+1，consumer-0得2
 对于topic-B， 3=2+1，consumer-0得2  
@@ -155,11 +155,12 @@ kafka的消息是最佳的方式写入的，这使得Kafka可以充分利用磁�
 Kafka官方给出了测试数据(Raid-5，7200rpm)：  
 顺序 I/O: 600MB/s  
 随机 I/O: 100KB/s
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/909B9080A5824C0FA162BA5F9315E70E/23558)
+![image](../pic/kafka_quick_start/23558)
+
 ### 2、零拷贝
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/2DFA72C6D91E48CBA793BBA105323836/23536)
+![image](../pic/kafka_quick_start/23536)
 升级为
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/A6C95AD94FEF45EBAF30C7A352861F04/23534)
+![image](../pic/kafka_quick_start/23534)
 在Linux kernel2.2 之后出现了一种叫做"零拷贝(zero-copy)"系统调用机制，就是跳过“用户缓冲区”的拷贝，建立一个磁盘空间和内存的直接映射，数据不再复制到“用户态缓冲区”。系统上下文切换减少为2次，可以提升一倍的性能
 
 ### 3、文件分区
@@ -172,7 +173,7 @@ kafka除了可以单条数据处理，还可以批处理，减少服务端的I/O
 Producer可以通过GZIP或Snappy格式对消息集合进行压缩，Consumer进行解压。压缩的好处就是减少传输的数据量，减轻对网络传输的压力。虽然增加了CPU的工作，但在对大数据处理上，瓶颈在网络上而不是CPU，所以这个成本很值得
 
 ## 五、Kafka通讯
-![image](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/8B5A7EE13A5A4DA4B59787DF9A69159B/23591)
+![image](../pic/kafka_quick_start/23591)
 这个图采用的是[SEDA多线程模型](http://www.jianshu.com/p/e184fdc0ade4)  
 1、对于broker来说，客户端连接数量有限，不会频繁新建大量连接。因此一个Acceptor thread线程处理新建连接绰绰有余    
 2、Kafka高吐吞量，则要求broker接收和发送数据必须快速，因此用proccssor   thread线程池处理，并把读取客户端数据转交给缓冲区，不会导致客户端请求大量堆积  
