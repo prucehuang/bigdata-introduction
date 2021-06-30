@@ -1,8 +1,11 @@
+[toc]
+
 # SQL优化
 
 ## 执行过程优化
 
 ### 1、尽量不使用笛卡尔乘积
+
 笛卡尔积数据量大，被分配的reduce任务个数少，耗时严重  
 以下两种形式的SQL会导致全表笛卡尔积：  
 
@@ -29,6 +32,7 @@ A join B on A.key = B.key and A.key > 10 join C on  A.key = C.key join  ... on  
 ```
 
 ### 2、尽量使用map join
+
 小表join大表的时候，使用mapjoin把小表放到内存中处理，  
 语法很简单只需要增加 /*+ MAPJOIN(pt) */ ，把需要分发的表放入到内存中
 

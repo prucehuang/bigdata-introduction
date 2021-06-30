@@ -1,28 +1,21 @@
-[toc]
+记录一下日常使用的df增删改查API，持续更新... 
+[官网正版docs传送门](https://pandas.pydata.org/docs/reference/io.html#)
 
 # 一、创建DF
-
 ![df-read-write](../pic/python_dataframe/df-read-write.svg)
-
-![df-axis](../pic/python_dataframe/df-axis.png)
-
 ``` python
 # 读取文件
-df = pd.read_csv("data/titanic.csv")
-```
+df = pd.read_csv('data/titanic.csv')
 
-``` python
-# 从字典中来
+# 读取字典
 d = {'col1': [1, 2], 'col2': [3, 4]}
 df = pd.DataFrame(data=d)
 df
    col1  col2
 0     1     3
 1     2     4
-```
 
-``` python
-# 从数组中来
+# 读取数组
 df2 = pd.DataFrame(np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]]),
                    columns=['a', 'b', 'c'])
 df2
@@ -32,22 +25,14 @@ df2
 2  7  8  9
 ```
 
-
-
 # 二、查询
 
-
+![df-axis](../pic/python_dataframe/df-axis.png)
 
 ## 2.1 基本信息
 
 ### head
 ``` python
-data.head()
-company  salary  age
-0     NaN      43   21
-1       A       8   41
-2       A      28   26
-
 # 查看前5行
 df.head()
 
@@ -60,12 +45,10 @@ df[0:1]
 # 查看 10到20行
 df[10:21]
 
-# 查看看Date列前5个数据
-df["date"].head() 
-
+# 查看Date列前5个数据
+df['date'].head() 
 df.date.head()
-
-df[["date","code", "open"]].head()
+df[['date','code', 'open']].head()
 ```
 
 ### tail
@@ -102,8 +85,7 @@ dtype: object
 
 ### isna 每个字段是否是NULL
 ``` python
-In [22]: data.isna()
-Out[22]:
+data.isna()
    company  salary    age
 0     True   False  False
 1    False   False  False
@@ -113,8 +95,7 @@ Out[22]:
 ### isin
 ``` python
 # 筛选出A公司和C公司的员工记录
-In [29]: data.loc[data['company'].isin(['A','C'])]
-Out[29]:
+data.loc[data['company'].isin(['A','C'])]
    number company  gender  salary
 1      31       A  female      36
 5      22       A    male      46
@@ -123,15 +104,13 @@ Out[29]:
 
 ### any 判断某一列是不是有True
 ``` python
-In [23]: data.isna().any()
+data.isna().any()
 Out[23]:
 company     True
 salary     False
 age        False
 dtype: bool
 ```
-
-
 
 ## 2.2 统计信息
 
@@ -189,21 +168,19 @@ A    4
 Name: company, dtype: int64
 ```
 
-
-
 ## 2.3 检索
 
 ### loc 按照索引、列名选取
 
 ``` python
 # 查看date, code列的第10行
-df.loc[10, ["date", "code"]]
+df.loc[10, ['date', 'code']]
 
 # 查看date, code列的第10行到20行
-df.loc[10:20, ["date", "code"]]
+df.loc[10:20, ['date', 'code']]
 
 # 查看第一行,open列的数据
-df.loc[0, "open"]
+df.loc[0, 'open']
 ```
 
 ### iloc 按照行、列号选取
@@ -233,8 +210,6 @@ df[(df.open > 10) & (df.open < 10.6)].head()
 # 查看open列大于10或open列小于10.6的前五行
 df[(df.open > 10) | (df.open < 10.6)].head()
 ```
-
-
 
 ## 2.4 排序，默认不修改源数据
 
@@ -272,14 +247,12 @@ Out[28]:
 4       A      33   26
 ```
 
-
-
 ## 2.5 分组
 
 ### groupby
 
 ``` python
-data.groupby("company").agg('mean')
+data.groupby('company').agg('mean')
 
 # 常用的函数，min, max, sum, mean, median, std, var, count
 data.groupby('company').agg({'salary':'median','age':'mean'})
@@ -315,11 +288,7 @@ Out[40]:
 2       C      43   35  
 ```
 
-
-
 # 三、修改
-
-
 
 ## 3.1 修改数据
 
@@ -328,14 +297,14 @@ Out[40]:
 把数据集中gender列的男替换为1，女替换为0
 ``` python
 # 使用字典进行映射
-data["gender"] = data["gender"].map({"男":1, "女":0})
+data['gender'] = data['gender'].map({'男':1, '女':0})
 
 # 使用函数
 def gender_map(x):
-    gender = 1 if x == "男" else 0
+    gender = 1 if x == '男' else 0
     return gender
 
-data["gender"] = data["gender"].map(gender_map)
+data['gender'] = data['gender'].map(gender_map)
 ```
 
 ### apply (行、列粒度)
@@ -347,27 +316,27 @@ def apply_age(x,bias):
     return x+bias
 
 #以元组的方式传入额外的参数
-data["age"] = data["age"].apply(apply_age, args=(-3,))
+data['age'] = data['age'].apply(apply_age, args=(-3,))
 ```
 axis=0代表操作对列columns进行  
 axis=1代表操作对行row进行  
 不同的算子计算方式不同，sum会全部求和，log会单个单个取log
 ``` python
 # 沿着0轴，列求和
-data[["height","weight","age"]].apply(np.sum, axis=0)
+data[['height','weight','age']].apply(np.sum, axis=0)
 
 # 沿着0轴，列轴取对数
-data[["height","weight","age"]].apply(np.log, axis=0)
+data[['height','weight','age']].apply(np.log, axis=0)
 ```
 计算每个人的BMI
 ``` python
 def BMI(series):
-    weight = series["weight"]
-    height = series["height"]/100
+    weight = series['weight']
+    height = series['height']/100
     BMI = weight/height**2
     return BMI
 
-data["BMI"] = data.apply(BMI, axis=1)
+data['BMI'] = data.apply(BMI, axis=1)
 ```
 
 lambda的用法  
@@ -376,14 +345,14 @@ lambda的用法
 df.Open = df.Open.apply(lambda x: x+1)
 
 # 将Open，Close列都数值上加1,如果多列，apply接收的对象是整个列
-df[["Open", "Close"]].head().apply(lambda x: x.apply(lambda x: x+1))
+df[['Open', 'Close']].head().apply(lambda x: x.apply(lambda x: x+1))
 ```
 
 ### applymap (元素粒度)
 
 DataFrame中所有的值保留两位小数显示
 ```
-df.applymap(lambda x:"%.2f" % x)
+df.applymap(lambda x:'%.2f' % x)
 ```
 
 ### fillna
@@ -462,21 +431,19 @@ pd.concat(split_columns, axis=1).head()
 df.append(df.iloc[0,:], ignore_index=True).tail()
 ```
 
-
-
 ## 3.2 修改属性
 
 ### astype 修改数据类型
-
 ``` python
-In [12]: data["age"] = data["age"].astype(int)
+data['age'] = data['age'].astype(int)
+# 不能直接转的时候，尝试用to_numeric函数
+df['sex'] = pd.to_numeric(df['sex'], errors='coerce').fillna(0).astype('int8')
 ```
 
 ### rename 修改列名
-
 ``` python
-将'age'更改为员工编号'number',并作用于原对象
-In [15]: data.rename(columns={'age':'number'},inplace=True)
+# 将'age'更改为员工编号'number',并作用于原对象
+In [15]: data.rename(columns={'age':'number'}, inplace=True)
 
 In [16]: data
 Out[16]:
@@ -485,13 +452,12 @@ Out[16]:
 1       A  female      36      31
 
 # 直接修改列的字段
-df.columns = ["Date", "Open","Close","High","Low","Volume","Code"]
+df.columns = ['Date', 'Open','Close','High','Low','Volume','Code']
 ```
 
 ### set_index 选一列、多列作为索引
-
 ``` python
-In [19]: data.set_index('number',inplace=True)
+In [19]: data.set_index('number', inplace=True)
 
 In [20]: data
 Out[20]:
@@ -501,11 +467,8 @@ number
 31           A  female      36
 ```
 
-
 # 四、删除
-
 ### dropna空数据的行
-
 ``` python
 In [24]: data.dropna()
 Out[24]:
@@ -516,7 +479,6 @@ Out[24]:
 ```
 
 ### drop
-
 ``` python
 # 删掉'gender'列
 In [27]: data.drop(columns = ['gender'])
@@ -527,7 +489,6 @@ Out[27]:
 ```
 
 ### drop_duplicates 去重
-
 ``` python
 In [26]: data['company'].drop_duplicates()
 Out[26]:
@@ -537,15 +498,16 @@ Out[26]:
 Name: company, dtype: object
 ```
 
-
-
-# 五、保存
-
+### del 删除变量
 ``` python
-# 将df数据保存到当前工作目录的stock.csv文件
-df.to_csv("stock.csv")
+del df
 ```
 
+# 五、保存
+``` python
+# 将df数据保存到当前工作目录的stock.csv文件
+df.to_csv('stock.csv')
+```
 
 
 >  参考链接  

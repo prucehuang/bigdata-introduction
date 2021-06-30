@@ -61,7 +61,7 @@ Spark runs on Hadoop, Mesos, standalone, or in the cloud. It can access diverse 
 一个Spark应用 --> 一个驱动器(driver program)节点 --> 多个工作节点(worker node)  
 一个工作节点 --> 一个执行器(executor) --> 多个并行任务(task)
 
-![image](http://spark.apache.org/docs/1.6.1/img/cluster-overview.png)
+![image](../pic/spark_quick_start/cluster-overview.png)
 
 ## 3.4 几个任务概念的区分 
 http://spark.apache.org/docs/1.6.1/cluster-overview.html
@@ -183,7 +183,7 @@ val local_lines = sc.parallelize(List("pandas", "i like pandas")
 ```
 
 ## 5.3 RDD的转化
-![transformation](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/A05B62CFAB8A4D739BA1B4C12D04C24A/22322)
+![transformation](../pic/spark_quick_start/22322)
 ![transformation](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/77567BF17B144D6385043D2D97CDBAFF/22324)
 系谱图记录各个RDD之间的转换关系
 
@@ -294,7 +294,7 @@ scala> numbers.cartesian(numbers_1).collect().foreach(println)
 (4,6)
 ```
 ## 5.4 RDD的行动
-![Actions](http://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/D6EFF9E491E24678B449B0402B51004A/22320)
+![Actions](../pic/spark_quick_start/22320)
 
 
 ```

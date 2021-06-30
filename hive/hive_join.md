@@ -197,8 +197,9 @@ FROM a JOIN b
 ON (a.id = b.id);
 ```
 
-![image](https://github.com/prucehuang/bigdata-introduction/blob/master/pic/hive/reduce_join.png?raw=true)
-![image](https://github.com/prucehuang/bigdata-introduction/blob/master/pic/hive/reduce_join_group_by.png?raw=true)
+![image](../pic/hive_join/reduce_join.png)
+![image](../pic/hive_join/reduce_join_group_by.png)
+
 - map 阶段
 1. 读取源数据表数据
 2. 解析成<key. value>结构，key是where条件字段，value是表名tag+select需要查询出的字段内容
@@ -213,7 +214,8 @@ ON (a.id = b.id);
 
 ## MAP JOIN
 map join的执行流程中已经不再具有reduce阶段，和shuffle阶段，直接从map端输出结果
-![image](https://github.com/prucehuang/bigdata-introduction/blob/master/pic/hive/map_join.png?raw=true)
+![image](../pic/hive_join/map_join.png)
+
 1. 在客户端本地执行Task A，读取小表b的数据，将其转换成hash的<key， value>结构
 2. 在客户端生成一个本地文件HashTableFile
 3. 将文件加载到DistributeCache中

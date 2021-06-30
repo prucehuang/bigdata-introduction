@@ -2,6 +2,9 @@
 
 * [Introduction](README.md)
 
+## Program Base
+* [程序设计划重点](program/program_important.md)
+
 ## Spark
 * [Spark Quick Start](spark/spark_quick_start.md)
 * [Spark Running](spark/spark_running.md)
@@ -28,6 +31,9 @@
 
 ## Zookeeper
 * [Zookeeper Quick Start](zookeeper/zookeeper_quick_start.md)
+
+## Analysis
+* [常用数据分析模型](analysis/analysis_model.md)
 
 ## Python
 * [Python DateFrame](python/python_dataframe.md)

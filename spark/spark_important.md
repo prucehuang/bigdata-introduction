@@ -3,7 +3,20 @@
 # 一、Application 【重点，stage划分策略】
 
 ## 1.1 任务提交 - spark conf
+
+![image](../pic/spark_important/cluster-overview.png)
+
+![image-20210529090859506](../pic/spark_important/image-20210529090859506.png)
+
+① 构建Application的运行环境，Driver创建一个SparkContext
+② SparkContext向资源管理器（Standalone、Mesos、Yarn）申请Executor资源，资源管理器启动StandaloneExecutorbackend（Executor） 
+③ Executor向SparkContext申请Task 
+④ SparkContext将应用程序分发给Executor 
+⑤ SparkContext就建成DAG图，DAGScheduler将DAG图解析成Stage，每个Stage有多个task，形成taskset发送给task Scheduler，由task Scheduler将Task发送给Executor运行
+⑥ Task在Executor上运行，运行完释放所有资源
+
 任务从本地机器执行spark-submit命令将任务提交到集群
+
 - --master yarn | local[*] 指定集群管理器
 - --deploy-mode cluster 指定driver节点是本机还是集群上的任意节点
 
@@ -25,7 +38,28 @@ http://www.cnblogs.com/bonelee/p/6039469.html
 
 - Application --> Driver Program --> DAG --> Jobs --> Stages --> Taskset --> TaskScheduler --> Executors --> Tasks
 
-## 1.3 partition划分
+## 1.3 Yarn执行一个任务的过程
+
+​     ![YARN任务执行过程.png](../pic/spark_important/YARN任务执行过程.png)
+
+​    1）客户端client向ResouceManager提交Application，ResouceManager接受Application并根据集群资源状况选取一个node来启动Application的任务调度器driver（ApplicationMaster）。
+  2）ResouceManager找到那个node，命令其该node上的nodeManager来启动一个新的 JVM进程运行程序的driver（ApplicationMaster）部分，driver（ApplicationMaster）启动时会首先向ResourceManager注册，说明由自己来负责当前程序的运行。
+  3）driver（ApplicationMaster）开始下载相关jar包等各种资源，基于下载的jar等信息决定向ResourceManager申请具体的资源内容。
+  4）ResouceManager接受到driver（ApplicationMaster）提出的申请后，会最大化的满足 资源分配请求，并发送资源的元数据信息给driver（ApplicationMaster）。
+  5）driver（ApplicationMaster）收到发过来的资源元数据信息后会根据元数据信息发指令给具体机器上的NodeManager，让其启动具体的container。
+  6）NodeManager收到driver发来的指令，启动container，container启动后必须向driver（ApplicationMaster）注册。
+  7）driver（ApplicationMaster）收到container的注册，开始进行任务的调度和计算，直到 任务完成。
+  注意：如果ResourceManager第一次没有能够满足driver（ApplicationMaster）的资源请求 ，后续发现有空闲的资源，会主动向driver（ApplicationMaster）发送可用资源的元数据信息以提供更多的资源用于当前程序的运行
+
+Driver Program  —— ApplicationMaster
+
+Cluster Manager —— ResouceManager
+
+Worker Node —— NodeManager
+
+Executor —— container
+
+## 1.4 partition划分
 
 ```
 ## step1：读文件
@@ -151,7 +185,7 @@ return Math.max(minSize, Math.min(goalSize, blockSize));
 2、一个分区最大的文件大小是一个块的大小
 ```
 
-## 1.4 partition和block的关系
+## 1.5 partition和block的关系
 - 一个partition 对应一个task
 - block位于存储空间、partition位于计算空间
 - block的大小是固定的、partition大小是不固定的
@@ -162,10 +196,11 @@ return Math.max(minSize, Math.min(goalSize, blockSize));
 ## 2.1 Hadoop Shuffle的过程（SortShuffleManager）
 【过程总说】  
 shuffle是map到reduce中间的一个数据传输和分配的过程，即，如何将map的数据产出，传输到reduce的输入。   
-常用的shuffle策略比如hash，(a,1)(b,2)(c,3)分别传到reduce各个节点上，hash（a） 然后对reduce的个数取余数，分配不同的reduce并行执行后面的过程。  
-![image](http://images.cnitblog.com/blog/381412/201502/240105358467767.png )
+常用的shuffle策略比如hash，(a,1)(b,2)(c,3)分别传到reduce各个节点上，hash（a） 然后对reduce的个数取余数，分配不同的reduce并行执行后面的过程。
 
+![image-20210525072814955](../pic/spark_important/image-20210525072814955.png)  
 【过程详解】
+
 - Map端: DataNode --> InputSplit --> 环形内存缓冲区 --> partition、sort和combine --> 逾出到本地磁盘 --> Merge
 - 第一步，Collect阶段  
 每个map有一个环形内存缓冲区，用于存储任务的输出。默认大小100MB（io.sort.mb属性），一旦达到阀值0.8(io.sort.spill.percent)，进入Spill阶段
@@ -184,10 +219,13 @@ map结束后所有的小文件会merge成一个大文件，并生成一个记录
 
 ## 2.2 Spark Shuffle的过程 - 1.2.0之前是HashShuffle，之后是SortShuffle
 顾名思义，hash和sort最大的不同就是前者没有走排序的过程，减少的运行中大量的时间消耗。一共有四个版本的shuffle。  
-HashShuffle优化之前和优化之后的、SortShuffle的普通模式和bypass模式。  
-HashShuffle优化之前的版本每个map会产出reducer个output文件，导致运行大任务的时候产生超级多（core_num * task_num * reducer_num）的小文件，效率很低。  
-优化后，每个executor节点的每个core会针对每个reducer建立一个FileSegment，所有这个节点上的map任务的输出都将合并到这一个文件上，一共会生成（core_num * reducer_num）个文件   
-新的SortShuffle的输出文件数量为2*reduce_num，一份文件，一份index。sortShuffle 的运行机制主要分成两种，一种是普通运行机制，另一种是bypass运行机制（当shuffle read task的数量小于等于spark.shuffle.sort.bypassMergeThreshold参数的值时（默认为200），就会启用bypass机制）
+
+| shuffle版本            | 说明                                                         | 输出文件数                        |
+| ---------------------- | ------------------------------------------------------------ | --------------------------------- |
+| HashShuffle优化前      | 每个map会产出reducer个output文件，导致运行大任务的时候产生超级多 | core_num * task_num * reducer_num |
+| HashShuffle优化后      | 每个executor节点的每个core会针对每个reducer建立一个FileSegment，所有这个节点上的map任务的输出都将合并到这一个文件上 | core_num * reducer_num            |
+| SortShuffle普通模式    | 一份文件，一份index                                          | 2*reduce_num                      |
+| SortShuffle bypass模式 | 一份文件，一份index；当shuffle read task的数量小于等于spark.shuffle.sort.bypassMergeThreshold参数的值时（默认为200），就会启用bypass机制 | 2*reduce_num                      |
 
 ```
 val bypassMergeThreshold: Int = conf.getInt("spark.shuffle.sort.bypassMergeThreshold", 200)
@@ -197,27 +235,27 @@ numPartitions <= bypassMergeThreshold && aggregator.isEmpty && keyOrdering.isEmp
 
 - 未优化的HashShuffle
 
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/BA55AA216A734C8CB6955C905AA0C275/31074)
+![image](../pic/spark_important/31074)
 shuffle write会生成M*R个小文件，shuffle read的拉取过程是一边拉取一边进行聚合的。每个shuffle read task都会有一个自己的buffer缓冲，每次都只能拉取与buffer缓冲相同大小的数据，然后通过内存中的一个Map进行聚合等操作。聚合完一批数据后，再拉取下一批数据，并放到buffer缓冲中进行聚合操作。以此类推，直到最后将所有数据到拉取完，并得到最终的结果。
 
 - 优化后的HashShuffle
 
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/975E4F935C6A41999ED616E1C28CE436/31075)
+![image](../pic/spark_important/31075)
 设置spark.shuffle.consolidateFiles参数为true，开启优化之路。consolidate机制允许不同的task复用同一批磁盘文件，这样就可以有效将多个task的磁盘文件进行一定程度上的合并，从而大幅度减少磁盘文件的数量，进而提升shuffle write的性能。shuffle write会生成Core_num*R个小文件
 
 - SortShuffle的普通运行机制  
 
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/27A1E54F66BD4739A89315796BDF4197/31079)  
+![image](../pic/spark_important/31079)  
 过程同Hadoop的shuffle是一样的，不过map的输出格式不再只是<K, V>了，需要根据shuffle的算子来确定，如reduceByKey，则选用Map数据结构；如是join，则选用Array数据结构。  
 在溢写到磁盘文件之前，会先根据key对内存数据结构中已有的数据进行排序。排序过后，会分批将数据写入磁盘文件。默认的batch数量是10000条，也就是说，排序好的数据，会以每批1万条数据的形式分批写入磁盘文件。写入磁盘文件是通过Java的BufferedOutputStream实现的。BufferedOutputStream是Java的缓冲输出流，首先会将数据缓冲在内存中，当内存缓冲满溢之后再一次写入磁盘文件中，这样可以减少磁盘IO次数，提升性能。  
 同样map的最后还有一个Merge的过程，输出是一个文件和一份索引文件，其中标识了下游各个task的数据在文件中的start offset与end offset。
 
 - bypass运行机制
 
-![image](https://note.youdao.com/yws/public/resource/2ac828482cacc7eb1b526d673dbf2bdd/xmlnote/5423DFAFBF034ABFA91D1BCAD590FDCE/31081)  
+![image](../pic/spark_important/31081)  
 bypass运行机制的触发条件如下：  
 1、shuffle map task数量小于spark.shuffle.sort.bypassMergeThreshold参数的值（默认为200）  
-2、不是排序类的shuffle算子（比如reduceByKey）  
+2、不是排序类的shuffle算子（比如reduceByKey)  
 执行流程和之前的一致，但是多个task共用了同一个buffer，每一个buffer都是针对一个reduce来创建的。数据按key进行hash然后根据key的hash值，将key写入对应的磁盘文件之中。最后，将所有临时磁盘文件都合并成一个磁盘文件，并创建一个单独的索引文件。    而该机制与普通SortShuffleManager运行机制的不同在于：  
 第一，磁盘写机制不同  
 第二，不会进行排序。也就是说，启用该机制的最大好处在于，shuffle write过程中，不需要进行数据的排序操作，也就节省掉了这部分的性能开销
@@ -258,6 +296,14 @@ bypass运行机制的触发条件如下：
 2、提高shuffle操作的并行度  
 3、局部聚合和全局聚合    比如(hello, 1) (hello, 1) (hello, 1) (hello, 1)，就会变成(1_hello, 1) (1_hello, 1) (2_hello, 1) (2_hello, 1)，执行reduceByKey等聚合操作，进行局部聚合，那么局部聚合结果，就会变成了(1_hello, 2) (2_hello, 2)。然后将各个key的前缀给去掉，就会变成(hello,2)(hello,2)，再次进行全局聚合操作，就可以得到最终结果了，比如(hello, 4)  
 
+## 2.5 简单说一下hadoop和spark的shuffle相同和差异？
+  1）从 high-level 的角度来看，两者并没有大的差别。 都是将 mapper（Spark 里是 ShuffleMapTask）的输出进行 partition，不同的 partition 送到不同的 reducer（Spark 里 reducer 可能是下一个 stage 里的 ShuffleMapTask，也可能是 ResultTask）。Reducer 以内存作缓冲区，边 shuffle 边 aggregate 数据，等到数据 aggregate 好以后进行 reduce() （Spark 里可能是后续的一系列操作）。
+  2）从 low-level 的角度来看，两者差别不小。 Hadoop MapReduce 是 sort-based，进入 combine() 和 reduce() 的 records 必须先 sort。这样的好处在于 combine/reduce() 可以处理大规模的数据，因为其输入数据可以通过外排得到（mapper 对每段数据先做排序，reducer 的 shuffle 对排好序的每段数据做归并）。目前的 Spark 默认选择的是 hash-based，通常使用 HashMap 来对 shuffle 来的数据进行 aggregate，不会对数据进行提前排序。如果用户需要经过排序的数据，那么需要自己调用类似 sortByKey() 的操作；如果你是Spark 1.1的用户，可以将spark.shuffle.manager设置为sort，则会对数据进行排序。在Spark 1.2中，sort将作为默认的Shuffle实现。
+  3）从实现角度来看，两者也有不少差别。 Hadoop MapReduce 将处理流程划分出明显的几个阶段：map(), spill, merge, shuffle, sort, reduce() 等。每个阶段各司其职，可以按照过程式的编程思想来逐一实现每个阶段的功能。在 Spark 中，没有这样功能明确的阶段，只有不同的 stage 和一系列的 transformation()，所以 spill, merge, aggregate 等操作需要蕴含在 transformation() 中。
+  如果我们将 map 端划分数据、持久化数据的过程称为 shuffle write，而将 reducer 读入数据、aggregate 数据的过程称为 shuffle read。那么在 Spark 中，问题就变为怎么在 job 的逻辑或者物理执行图中加入 shuffle write 和 shuffle read的处理逻辑？以及两个处理逻辑应该怎么高效实现？
+  Shuffle write由于不要求数据有序，shuffle write 的任务很简单：将数据 partition 好，并持久化。之所以要持久化，一方面是要减少内存存储空间压力，另一方面也是为了 fault-tolerance
+
+
 > 参考：  
 > [Hadoop学习笔记—10.Shuffle过程那点事儿](http://www.cnblogs.com/edisonchou/p/4298423.html)  
 > [Hadoop深入学习：MapReduce的Shuffle过程详解](http://flyingdutchman.iteye.com/blog/1879642)  
@@ -269,21 +315,37 @@ bypass运行机制的触发条件如下：
 > [Spark性能优化：shuffle调优](http://blog.csdn.net/u012102306/article/details/51637732)
 > [Spark性能优化指南——高级篇](https://tech.meituan.com/2016/05/12/spark-tuning-pro.html)
 > [彻底搞懂 Spark 的 shuffle 过程（shuffle write）](https://toutiao.io/posts/eicdjo/preview)
+>
+> https://www.cnblogs.com/jxhd1/p/6528540.html
 
-# 三、RDD介绍
-## 3.1 partitions(分区)
+# 三、RDD
+
+## 3.1 算子
+
+### 1、转化Transformation
+
+![transformation](../pic/spark_important/22322)
+
+### 2、执行Action
+
+![Actions](../pic/spark_important/22320)
+
+## 3.2 partitions(分区)
+
 - 每个RDD都有多个分区，每一个分区对应一个任务Task，每一个RDD都是不可修改的，所以一旦RDD确定，其分区数也是确定的，repartition会生成一个新的RDD  
-- 初始化读取文件的时候，HadoopPartition根据blockSize、minSize、goolSize来判断合适的splitSize，划分出totalSize／splitSize的分区，此时一个block对应了一个partition。  
+- 初始化读取文件的时候，HadoopPartition根据blockSize、minSize、goalSize来判断合适的splitSize，划分出totalSize／splitSize的分区，此时一个block对应了一个partition。  
 - 执行算子的时候如果指定并行度的话reduceByKey(XXX _, 18)，设置的是shuffle的时候reduce的并行度，也是result rdd的分区数
 - RDD分区选取策略
 1. 如果依赖的RDD中存在RDD已经设置了RDD.partitioner，则从设置了分区的RDD中则挑选出分区数最大的RDD.partitioner
 2. 如果依赖的所有RDD都没有设置RDD.partitioner，但是设置了Spark.default.parallelism，那么根据spark.default.parallelism设置创建HashPartitioner，作为ShuffledRDD的分区依据
 3. 以上2点都不满足，则从依赖的RDD中，去除分区数最大的RDD的分区个数，创建HashPartitioner，作为ShuffledRDD的分区依据
 
-## 3.2 partitioner(分区方法)
+## 3.3 partitioner(分区方法)
+
 目前只有两种HashPartitioner（默认）、RangePartitioner
 
-## 3.3 dependencies(依赖关系)
+## 3.4 dependencies(依赖关系)
+
 窄依赖：父 RDD 的 partition 至多被一个子 RDD partition 依赖（OneToOneDependency，RangeDependency）  
 - 1个子RDD的分区对应于1个父RDD的分区，比如map，filter，union等算子
 - 1个子RDD的分区对应于N个父RDD的分区，比如co-partioned join    
@@ -292,14 +354,27 @@ bypass运行机制的触发条件如下：
 - 1个父RDD对应非全部多个子RDD分区，比如groupByKey，reduceByKey，sortByKey
 - 1个父RDD对应所有子RDD分区，比如未经协同划分的join
 
-![image](http://images2015.cnblogs.com/blog/776149/201610/776149-20161013181036875-857329541.png)
+ ![image-20210525075948656](../pic/spark_important/image-20210525075948656.png)
 
-- 在容灾恢复的时候，窄依赖的时候只需要恢复父RDD的一分分区，但是宽依赖会需要恢复多个分区，会带来一些数据的让费
-- 窄依赖可以出发流水线操作  
-所以我们尽量写窄依赖的程序 
+宽窄依赖VS
 
-## 3.4 compute(获取分区迭代列表)
+- 在容灾恢复的时候，窄依赖的时候只需要恢复父RDD的一分分区，但是宽依赖会需要恢复多个分区，会带来一些数据的浪费
+
+- 窄依赖可以出发流水线操作 
+
+## 3.5 compute(获取分区迭代列表)
+
 一个RDD有多么复杂，其最终都会调用内部的compute函数来计算一个分区的数据，compute是父RDD分区数据到子RDD分区数据的变换逻辑。
+
+## 3.6 RDD的弹性表现在哪几点
+
+1）自动的进行内存和磁盘的存储切换
+2）基于Lineage的高效容错
+3）task如果失败会自动进行特定次数的重试
+4）stage如果失败会自动进行特定次数的重试，而且只会计算失败的分片
+5）checkpoint和persist，数据计算之后持久化缓存
+6）数据调度弹性，DAG TASK调度和资源无关
+7）数据分片的高度弹性
 
 > 参考  
 > [Spark核心RDD：计算函数compute](http://blog.csdn.net/jiangpeng59/article/details/53213694)  
@@ -308,11 +383,15 @@ bypass运行机制的触发条件如下：
 
 # 四、spark调优
 ## 4.1 程序调优
-### 1、优化并行度【parallel】
+### 1、避免创建重复的RDD，尽可能复用同一个RDD
+
+### 2、优化并行度【parallel】
+
 每一个分区对应一个map任务，并行度指的是reduce的任务个数
 - 在数据混洗的时候传合理的参指定并行度  
 
-### 2、优化分区【partition】 减少shuffle任务 减少副本
+### 3、优化分区【partition】 减少shuffle任务 减少副本
+
 - 对已有的数据进行重新分区repartition、减少分区数coalesce  
 - 执行操作的时候继承父RDD的分区，减少shuffle
 - reduceByKey/aggregateByKey替代groupByKey  
@@ -324,7 +403,8 @@ mapPartitions类的算子，一次函数调用会处理一个partition所有的�
 - 优先使用broadcast
   广播变量不会有副本，可以再大文件变量的时候减少副本储存传输
 
-### 3、设置kyro的系列化方式
+### 4、设置kyro的系列化方式
+
 - 普通的序列化
 ```
 val conf = new SparkConf()
@@ -345,9 +425,21 @@ conf.set("spark.kryo.registrationRequired", "true")
 conf.registerKryoClasses(Array(classOf[MyClass], classOf[MyOtherClass]))
 ```
 
-### 4、缓存&缓存策略调优【persist】
+### 5、缓存&缓存策略调优【persist】
+
 - 缓存父类RDD有利于子类计算  
+
 - 改进缓存策略，比方说MEMORY_ONLY 改为 MEMORY_AND_DISK，当数据缓存空间不够的时候就不会删除旧数据导致重新加载计算，而是直接从磁盘load数据；再比方说MEMORY_ONLY 改为 MEMORY_AND_DISK_SER 或者 MEMORY_ONLY_SER，虽然增加了序列化的时间，但是可以大量的减少GC的时间
+
+- 为什么要进行持久化？
+  spark所有复杂一点的算法都会有persist身影，spark默认数据放在内存，spark很多内容都是放在内存的，非常适合高速迭代，1000个步骤只有第一个输入数据，中间不产生临时数据，但分布式系统风险很高，所以容易出错，就要容错，rdd出错或者分片可以根据血统算出来，如果没有对父rdd进行persist 或者cache的化，就需要重头做
+
+- 什么场景会使用persist
+1、某个步骤计算非常耗时，需要进行persist持久化
+2、计算链条非常长，重新恢复要算很多步骤，很好使，persist
+3、checkpoint所在的rdd要持久化persist。checkpoint前，要持久化，写个rdd.cache或者rdd.persist，将结果保存起来，再写checkpoint操作，这样执行起来会非常快，不需要重新计算rdd链条了。checkpoint之前一定会进行persist。
+4、shuffle之后要persist，shuffle要进性网络传输，风险很大，数据丢失重来，恢复代价很大
+5、shuffle之前进行persist，框架默认将数据持久化到磁盘，这个是框架自动做的
 
 ## 4.2 参数调优
 ### 1、尽可能的将执行器节点分配在同一台物理机器上
@@ -449,6 +541,48 @@ res18: Int = 1428
 ```
 
 ## updateStateByKey
+
+## reduceByKey VS groupByKey
+
+```scala
+// pythoreduceByKey(func, numPartitions=None)
+// groupByKey(numPartitions=None)
+val words = Array("one", "two", "two", "three", "three", "three")
+val wordPairsRDD = sc.parallelize(words).map(word => (word, 1))
+ 
+val wordCountsWithReduce = wordPairsRDD.reduceByKey(_ + _)
+val wordCountsWithGroup = wordPairsRDD.groupByKey().map(t => (t._1, t._2.sum))
+```
+reduceByKey会先聚合，后reduce继续聚合  
+groupByKey只会先分组，reduce后，才聚合，相比之下比reduce会更消耗网络资源
+
+![image-20210523145043374](../pic/spark_important/image-20210523145043374.png)
+
+![image-20210523145057615](../pic/spark_important/image-20210523145057615.png)
+```scala
+from operator import add
+rdd = sc.parallelize([("a", 1), ("b", 1), ("a", 1)])
+sorted(rdd.reduceByKey(add).collect())
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 > @ WHAT - HOW - WHY  

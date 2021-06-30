@@ -3,6 +3,8 @@
 ## 一、Kafka结构
 ![image](../pic/kafka_quick_start/KafkaArchitecture.png)
 
+![img](../pic/kafka_quick_start/Kafka详细架构.jpg)
+
 名词 | 定义
 ---|---
 producer | 生产者
@@ -101,7 +103,9 @@ leader发生故障后，就会从ISR中选举出新的leader
 **LEO：局部的，每个副本最大的 offset**  
 **HW：全局的，消费者能见到的最大的offset，ISR队列中最小的LEO**  
 （1）Leader 故障  
-leader发生故障后 —— 从ISR中选新的 leader —— 为保证多个副本之间的数据一致性，其余的follower会先将各自的log 文件高于HW的部分截掉 —— 从新的leader同步数据 （2）ISR-Follower 故障  
+leader发生故障后 —— 从ISR中选新的 leader —— 为保证多个副本之间的数据一致性，其余的follower会先将各自的log 文件高于HW的部分截掉 —— 从新的leader同步数据 
+
+（2）ISR-Follower 故障  
 follower发生故障 —— 临时踢出ISR集合 —— follower恢复 —— 读取本地磁盘上次的HW —— 将log文件高于HW的部分截取掉 —— 从旧HW开始向 leader进行同步数据操作 —— 等该follower的LEO大于等于该partition的全局最新HW —— 重新加入ISR    
 
 **注意：这只能保证副本之间的数据一致性，并不能保证数据不丢失或者不重复**
