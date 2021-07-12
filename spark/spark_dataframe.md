@@ -56,7 +56,7 @@ df.where("id = 1 or c1 = 'b'" ).show()
 df.where("color like '%yellow%'")
 ```
 
-### 打印schema
+### schema
 ```python
 df.printSchema()
 df.dtypes
@@ -73,60 +73,19 @@ df = df.filter(df['age']>21)
 df = df.where(df['age']>21)
 ```
 
-## join
+### join
 
 ```
-train_predictions = gbtc_train_predictions.join(gbtr_train_predictions, key)\
-                                          .select(gbtc_train_predictions.vroleid, gbtc_train_predictions.label1, gbtc_train_predictions.label2, 
-                                                  gbtc_train_predictions.cprediction, gbtr_train_predictions.rprediction)
+df = df1.join(df2, key)\
+        .select(df1.vroleid, df1.label1, df1.label2, df1.cprediction, df2.rprediction)
 
-train_predictions = train_predictions.withColumn('prediction', when(train_predictions.cprediction==0, 0)\
-                                                 .when(train_predictions.cprediction>0, gbtr_train_predictions.rprediction)\
-                                                 .otherwise(0))
-train_predictions.show(10)
+df = df.withColumn('prediction', when(df.cprediction==0, 0)\
+                                     .when(df.cprediction>0, df2.rprediction)\
+                                     .otherwise(0))
+df.show(10)
 ```
 
-
-
-## 2.2 统计信息
-
-```python
-df.count()
-df.describe().show()
-```
-
-
-
-## 2.3 排序
-
-```python
-# spark排序
-color_df.sort('color',ascending=False).show()
-
-# 多字段排序
-color_df.filter(color_df['length']>=4)\
-        .sort('length', 'color', ascending=False).show()
-
-# 混合排序
-color_df.sort(color_df.length.desc(), color_df.color.asc()).show()
-
-# orderBy也是排序，返回的Row对象列表
-color_df.orderBy('length','color').take(4)
-train.orderBy(train.Purchase.desc()).show(5)
-```
-
-
-
-## 2.4 抽样
-
-```python
-t1 = train.sample(False, 0.2, 42)
-t2 = train.sample(False, 0.2, 43)
-```
-
-
-
-## 2.5 case when
+### case when
 
 ```python
 from pyspark.sql import functions as F
@@ -143,6 +102,60 @@ df.select(df.name, F.when(df.age > 4, 1).when(df.age < 3, -1).otherwise(0)).show
 +-----+---------------------------+
 ```
 
+### Group By
+
+```python
+# 方式一，聚合函数更简洁
+df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
+    .groupBy(['izoneareaid', 'huodongid']) \
+    .agg({'vroleid':'count', 'goumaijine':'sum'}) \
+    .withColumnRenamed('sum(goumaijine)', 'goumaijine_sum')
+    .sort('goumaijine_sum', ascending=False) \
+    .show()
+    
+# 方式二，重命名更简洁
+from pyspark.sql import functions as f
+df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
+    .groupBy(['izoneareaid', 'huodongid']) \
+    .agg(f.count(huodong_df.vroleid),
+         f.sum(huodong_df.goumaijine).alias('goumaijine_sum')) \
+    .sort('goumaijine_sum', ascending=False) \
+    .show()
+```
+
+## 2.2 统计信息
+
+```python
+df.count()
+df.describe().show()
+```
+
+## 2.3 排序
+
+```python
+# spark排序
+color_df.sort('color', ascending=False).show()
+
+# 多字段排序
+color_df.filter(color_df['length']>=4)\
+        .sort('length', 'color', ascending=False).show()
+
+# 混合排序
+color_df.sort(color_df.length.desc(), color_df.color.asc()).show()
+
+# orderBy也是排序，返回的Row对象列表
+color_df.orderBy('length','color').take(4)
+train.orderBy(train.Purchase.desc()).show(5)
+```
+
+## 2.4 抽样
+
+```python
+# DataFrame.sample(withReplacement=None, fraction=None, seed=None)
+t1 = train.sample(False, 0.2, 42)
+t2 = train.sample(False, 0.2, 43)
+```
+
 ## 2.6 直接使用SQL语法
 
 ```python
@@ -153,63 +166,10 @@ spark.sql("select count(1) from color_df").show()
 
 
 
-## 2.7 Group By
-
-```python
-# 方式一，聚合函数更简洁
-huodong_df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
-    .groupBy(['izoneareaid', 'huodongid']) \
-    .agg({'vroleid':'count', 'goumaijine':'sum'}) \
-    .withColumnRenamed('sum(goumaijine)', 'goumaijine_sum')
-    .sort('goumaijine_sum', ascending=False) \
-    .show()
-    
-# 方式二，重命名更简洁
-from pyspark.sql import functions as f
-huodong_df[['izoneareaid', 'vroleid', 'huodongid', 'goumaijine']] \
-    .groupBy(['izoneareaid', 'huodongid']) \
-    .agg(f.count(huodong_df.vroleid),
-         f.sum(huodong_df.goumaijine).alias('goumaijine_sum')) \
-    .sort('goumaijine_sum', ascending=False) \
-    .show()
-```
-
-
-
-```
-# 保留有效数字
-result_df.withColumn('prediction_error(%)', F.bround( \
-                100*(result_df['sum(prediction)']-result_df['sum(label2)']) / result_df['sum(label2)'], \
-                scale=4))  \
-         .sort('sum(label2)', ascending=False) \
-         .show(20, False)
-```
-
-
-
-
-
 # 三、修改
 
-
-
-## 3.1 增加列名
-
+## 3.1 修改列名
 ```python
-train.withColumn('Purchase_new', train.Purchase /2.0).select('Purchase','Purchase_new').show(5)
-Output:
-+--------+------------+
-|Purchase|Purchase_new|
-+--------+------------+
-|    8370|      4185.0|
-|   15200|      7600.0|
-|    1422|       711.0|
-|    1057|       528.5|
-|    7969|      3984.5|
-+--------+------------+
-
-df = df.withColumn("year2", df["year1"].cast("Int"))
-
 # spark-1
 # 在创建dataframe的时候重命名
 data = spark.createDataFrame(data=[("Alberto", 2), ("Dakota", 2)],
@@ -231,36 +191,49 @@ color_df2.show()
 # spark-4
 # alias 方法
 color_df.select(color_df.color.alias('color2')).show()
+```
 
+
+## 3.2 新增一列
+```python
+train.withColumn('Purchase_new', train.Purchase /2.0).select('Purchase','Purchase_new').show(5)
+Output:
++--------+------------+
+|Purchase|Purchase_new|
++--------+------------+
+|    8370|      4185.0|
+|   15200|      7600.0|
+|    1422|       711.0|
+|    1057|       528.5|
+|    7969|      3984.5|
++--------+------------+
 
 # 新增一列常数项
 huodong_df = huodong_df.withColumnRenamed('vopenid', 'vopenid_hd')\
-                        .withColumnRenamed('vroleid', 'vroleid_hd')\
-                        .withColumnRenamed('izoneareaid', 'izoneareaid_hd')\
-                        .withColumn(huodong_label, F.lit(1))
-
+                       .withColumn(huodong_label, F.lit(111))
+    
+# 保留有效数字
+df.withColumn('prediction_error(%)', F.bround( \
+              100*(df['sum(prediction)']-df['sum(label2)']) / df['sum(label2)'], \
+              scale=4))  \
+         .sort('sum(label2)', ascending=False) \
+         .show(20, False)
 ```
-
-
 
 ## 3.2 修改列数据类型
-
 ```python
-train_df_s = train_df_s.withColumn('vkaifushijian', train_df_s.vkaifushijian.cast('int'))\
-            					 .withColumn('vrolesex', train_df_s.vrolesex.cast('int'))\
-            					 .withColumn('vroleprofession', train_df_s.vroleprofession.cast('int'))\
-            					 .withColumnRenamed(target, 'label')
+df = df.withColumn('vkaifushijian', df.vkaifushijian.cast('int'))\
+	   .withColumn('vrolesex', df.vrolesex.cast('int'))
 ```
 
 
-
-## 3.3 pyspark dataframe 和 pandas DataFrame 互换
+## 3.3 Pyspark DF 和 Pandas DF 互换
 
 ```python
 # from pyspark.sql.dataframe.DataFrame to pandas.core.frame.DataFrame
-train_df = train_df_s.toPandas()
+df_p = df_s.toPandas()
 # 换回来
-test_df_s = spark.createDataFrame(test_X_p)
+df_s = spark.createDataFrame(df_p)
 ```
 
 

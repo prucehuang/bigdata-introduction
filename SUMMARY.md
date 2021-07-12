@@ -10,7 +10,7 @@
 ## Calculation
 * [Spark](spark/spark_quick_start.md)
     * [Spark Running](spark/spark_running.md)
-    * [Spark Streaming Quick Start](spark/spark_streaming_quick_start.md)
+    * [Spark Streaming](spark/spark_streaming.md)
     * [Spark划重点](spark/spark_important.md)
     * [Spark DataFrame](spark/spark_dataframe.md)
 * [Flink](flink/flink_quick_start.md)
